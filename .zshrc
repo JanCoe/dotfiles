@@ -15,7 +15,8 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 # Set the prompt. The %F{ } sets a colour and %f resets to the default.
-PS1="%F{20}%n%f %F{29}%2~%f %F{30}%#%f "
+# 3~ gives up to three parent directories. Follow it with a :
+PS1="%F{29}%3~:%f"
 
 # Python aliases
 alias pv='source .venv/bin/activate' # 'python venv': activate virtual environment in the .venv directory
