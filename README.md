@@ -13,13 +13,13 @@ git clone git@github.com:JanCoe/dotfiles.git ~/.dotfiles
 # ...or use HTTPS and switch remotes later.
 git clone https:/github.com/JanCoe/dotfiles.git ~/.dotfiles
 ~~~
-In practice, difficulty with getting permission inside the terminal means it is easier in Pycharm.
+In practice, difficulty with getting permission inside the terminal means it is easier inside an IDE.
 
-3. Create symlinks in the Home directory to the real files in the real files in the repo.
+3. Create symlinks in the Home directory to the real files in the repo.
 
 ~~~
 ln -s ~/.dotfiles/.zshrc ~/.zshrc
-ln -s ~/.dotfiles/.gitconfig ~/.zshrc
+ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 etc.
 ~~~
 
