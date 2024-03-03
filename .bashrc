@@ -12,22 +12,22 @@ PS1="$PS1"' $ '			# prompt: always $
 PS1="$PS1"'\[\033[0m\]'		# change color
 
 # Check what the operating system is and store in a variable
-operating_system=""
+OP_SYS=""
 case "$OSTYPE" in
-  linux*)   operating_system="linux" ;;
-  darwin*)  operating_system="mac" ;; 
-  msys*)    operating_system="windows" ;;
-  solaris*) operating_system="solaris" ;;
-  bsd*)     operating_system="bsd" ;;
-  *)        operating_system="unknown" ;;
+  linux*)   OP_SYS="linux" ;;
+  darwin*)  OP_SYS="mac" ;; 
+  msys*)    OP_SYS="windows" ;;
+  solaris*) OP_SYS="solaris" ;;
+  bsd*)     OP_SYS="bsd" ;;
+  *)        OP_SYS="unknown" ;;
 esac
 
 # Set aliases
 # 'python venv': activate virtual environment in the .venv directory
-if [ $operating_system = "mac" ]; then
-  alias pv='source .venv/bin/activate'
+if [ $OP_SYS = "mac" ]; then
+  alias pv='source .venv/bin/activate';
 else
-  alias pv='source .venv/scripts/activate'
+  alias pv='source .venv/scripts/activate';
 fi
 
 alias pr='python3 -m' # 'python run': run python module
