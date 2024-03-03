@@ -1,4 +1,5 @@
 set relativenumber
+set number
 
 set incsearch
 

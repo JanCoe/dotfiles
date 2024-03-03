@@ -1,6 +1,4 @@
 tap "homebrew/bundle"
-# Console Matrix
-brew "cmatrix"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # Command-line fuzzy finder written in Go
