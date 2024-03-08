@@ -37,7 +37,7 @@ else
 fi
 
 # 'python venv install requirements'
-alias pvr='python -m pip install -r requirements.txt' 
+alias pvr='python -m pip install -r requirements.txt'
 
 alias pr='python -m' # 'python run': run python module
 alias pt='python -m unittest discover' # 'python test': run unittest, need to specify directories
