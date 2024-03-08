@@ -1,5 +1,8 @@
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
+# Use VIM motions in the command line
+set -o vi
+
 # Set the prompt
 PS1='\[\033]0;$PWD\007\]' 	# set window title
 PS1="$PS1"'\n'			# new line
@@ -23,14 +26,25 @@ case "$OSTYPE" in
 esac
 
 # Set aliases
-# 'python venv': activate virtual environment in the .venv directory
+# 'python venv create': can add prompt by appending --prompt="name"
+python -m venv .venv --upgrade-deps
+
+# 'python venv activate': activate virtual environment in the .venv directory
 if [ $OP_SYS = "mac" ]; then
-  alias pv='source .venv/bin/activate';
+  alias pva='source .venv/bin/activate';
 else
-  alias pv='source .venv/scripts/activate';
+  alias pva='source .venv/scripts/activate';
 fi
 
-alias pr='python3 -m' # 'python run': run python module
-alias pt='python3 -m unittest discover' # 'python test': run unittest, need to specify directories
-alias pta='python3 -m unittest discover tests' # 'python test all': run all unittests
+# 'python venv install requirements'
+alias pvr='python -m pip install -r requirements.txt' 
 
+alias pr='python -m' # 'python run': run python module
+alias pt='python -m unittest discover' # 'python test': run unittest, need to specify directories
+alias pta='python -m unittest discover tests' # 'python test all': run all unittests
+
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
