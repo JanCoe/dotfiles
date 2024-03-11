@@ -27,21 +27,21 @@ esac
 
 # Set aliases
 # 'python venv create': can add prompt by appending --prompt="name"
-python -m venv .venv --upgrade-deps
+alias pvc="python -m venv .venv --upgrade-deps"
 
 # 'python venv activate': activate virtual environment in the .venv directory
 if [ $OP_SYS = "mac" ]; then
-  alias pva='source .venv/bin/activate';
+  alias pva="source .venv/bin/activate";
 else
-  alias pva='source .venv/scripts/activate';
+  alias pva="source .venv/scripts/activate";
 fi
 
 # 'python venv install requirements'
-alias pvr='python -m pip install -r requirements.txt'
+alias pvr="python -m pip install -r requirements.txt"
 
-alias pr='python -m' # 'python run': run python module
-alias pt='python -m unittest discover' # 'python test': run unittest, need to specify directories
-alias pta='python -m unittest discover tests' # 'python test all': run all unittests
+alias pr="python -m" # 'python run': run python module
+alias pt="python -m unittest discover" # 'python test': run unittest, need to specify directories
+alias pta="python -m unittest discover tests" # 'python test all': run all unittests
 
 alias ..="cd .."
 alias ...="cd ../.."

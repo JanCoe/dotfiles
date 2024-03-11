@@ -19,8 +19,8 @@ unset __conda_setup
 PS1="%F{29}%3~:%f"
 
 # Python aliases
-alias pv='source .venv/bin/activate' # 'python venv': activate virtual environment in the .venv directory
-alias pm='python3 -m' # 'python module': run python module
+alias pva='source .venv/bin/activate' # 'python venv': activate virtual environment in the .venv directory
+alias pr='python3 -m' # 'python module': run python module
 alias pt='python3 -m unittest discover' # 'python test': run unittest, need to specify directories
 alias pta='python3 -m unittest discover tests' # 'python test all': run all unittests
 
@@ -33,4 +33,3 @@ alias -s py=nvim
 alias -s config=nvim
 alias -s yaml=nvim
 alias -s rs=nvim
-

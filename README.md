@@ -35,6 +35,12 @@ brew bundle --file ~/.dotfiles/Brewfile
 cd ~/.dotfiles && brew bundle
 ~~~
 
+Command to update the content of the Brewfile is:
+~~~
+brew bundle dump
+~~~
+This creates a Brewfile in the current directory.
+
 ### TODO List
 
 - Learn how to use defaults to record and restore System Preferences and other macOS configurations.
