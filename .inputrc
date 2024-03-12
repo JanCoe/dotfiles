@@ -1,0 +1,4 @@
+# Shows the mode in prompt and then pipes the instruction to change the cursor through the prompt
+set show-mode-in-prompt
+set vi-cmd-mode-string "\1\e[1 q\2"
+set vi-ins-mode-string "\1\e[6 q\2"
