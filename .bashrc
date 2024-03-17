@@ -1,4 +1,7 @@
-export BASH_SILENCE_DEPRECATION_WARNING=1
+case $HOSTNAME in
+  "JCiMac.local") export PATH=$PATH:~/Projects/External/cargo-watch/target/release ;
+                  export BASH_SILENCE_DEPRECATION_WARNING=1 ;;
+esac
 
 # Use VIM motions in the command line
 set -o vi
