@@ -43,8 +43,7 @@ else
 fi
 
 alias pr="python -m" # 'python run': run python module
-alias pt="python -m unittest discover" # 'python test': run unittest, need to specify directories
-alias pta="python -m unittest discover tests" # 'python test all': run all unittests
+alias pt="python -m unittest discover" # 'python test': run unittest, can specify directories
 
 alias ..="cd .."
 alias ...="cd ../.."
