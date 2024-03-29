@@ -45,3 +45,5 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
+
+alias vi="/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=vim --file-forwarding org.vim.Vim"
