@@ -13,8 +13,9 @@ PS1="$PS1"' $ '           # prompt: always $
 PS1="$PS1"'\[\033[0m\]'   # change color
 
 # Settings that depend on operating system
-if [ "$OSTYPE" == "darwin" ]; then
-   export BASH_SILENCE_DEPRECATION_WARNING=1 ;
+if [ "$OSTYPE" == "darwin" ]  # MacOS
+then
+   export BASH_SILENCE_DEPRECATION_WARNING=1
 fi
 
 source ~/.bash_aliases
