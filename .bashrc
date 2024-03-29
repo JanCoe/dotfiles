@@ -13,37 +13,8 @@ PS1="$PS1"' $ '           # prompt: always $
 PS1="$PS1"'\[\033[0m\]'   # change color
 
 # Settings that depend on operating system
-case "$OSTYPE" in
-darwin*) PYTH=python3 ; # mac
-         export BASH_SILENCE_DEPRECATION_WARNING=1 ;
-         # 'python venv activate': activate virtual environment in the .venv directory
-	     alias pva="source .venv/bin/activate" ;;
-msys*) PYTH=python ; # windows
-       # 'python venv activate': activate virtual environment in the .venv directory
-       alias pva="source .venv/scripts/activate" ;;
-esac
+if [ "$OSTYPE" == "darwin" ]; then
+   export BASH_SILENCE_DEPRECATION_WARNING=1 ;
+fi
 
-# Set aliases
-# 'python venv create': first (optional) argument is name of prompt
-function pvc
-{
-  if [ "$#" -eq 0 ]; then
-    $PYTH -m venv .venv --upgrade-deps
-  else
-    $PYTH -m venv .venv --upgrade-deps --prompt="$1"
-  fi
-}
-
-# 'python venv install requirements'
-alias pvr="$PYTH -m pip install -r requirements.txt"
-
-alias pr="$PYTH -m"                   # 'python run': run python module
-alias pt="$PYTH -m unittest discover" # 'python test': run unittest, can specify directories
-
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
-alias ......="cd ../../../../.."
-
-alias vi="/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=vim --file-forwarding org.vim.Vim"
+source ~/.bash_aliases
