@@ -1,3 +1,5 @@
 [user]
 	name = JanCoe
 	email = jan@jancoe.io
+[init]
+	defaultBranch = main
