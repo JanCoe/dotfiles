@@ -16,17 +16,17 @@ function pvc
 {
     if [ "$#" -eq 0 ]
     then
-        python -m venv .venv --upgrade-deps
+        python3 -m venv .venv --upgrade-deps
     else
-       python -m venv .venv --upgrade-deps --prompt="$1"
+       python3 -m venv .venv --upgrade-deps --prompt="$1"
     fi
 }
 
 # 'Python Venv install Requirements'
-alias pvr="python -m pip install -r requirements.txt"
+alias pvr="python3 -m pip install -r requirements.txt"
 
-alias pr="python -m"                   # 'Python Run': run python module
-alias pt="python -m unittest discover" # 'Python Test': run unittest, can specify directories
+alias pr="python3 -m"                   # 'Python Run': run python module
+alias pt="python3 -m unittest discover" # 'Python Test': run unittest, can specify directories
 
 alias ..="cd .."
 alias ...="cd ../.."

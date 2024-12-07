@@ -13,7 +13,7 @@ PS1="$PS1"' $ '           # prompt: always $
 PS1="$PS1"'\[\033[0m\]'   # change color
 
 # Settings that depend on operating system
-if [ "$OSTYPE" == "darwin" ]  # MacOS
+if [ "$OSTYPE" == "darwin22" ]  # MacOS
 then
    export BASH_SILENCE_DEPRECATION_WARNING=1
 fi
