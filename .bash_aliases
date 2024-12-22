@@ -28,6 +28,8 @@ alias pvr="python3 -m pip install -r requirements.txt"
 alias pr="python3 -m"                   # 'Python Run': run python module
 alias pt="python3 -m unittest discover" # 'Python Test': run unittest, can specify directories
 
+alias wezterm="flatpak run org.wezfurlong.wezterm"
+
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."

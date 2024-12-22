@@ -31,3 +31,5 @@ if [ -d "$HOME/opt/bin" ] ; then
     PATH=${PATH:+${PATH}:}"$HOME/opt/bin"
 fi
 . "$HOME/.cargo/env"
+
+. "$HOME/.local/bin/env"

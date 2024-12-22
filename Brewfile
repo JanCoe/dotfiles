@@ -9,5 +9,3 @@ brew "gh"
 brew "neovim"
 # Terminal multiplexer
 brew "tmux"
-# Automatic tiling window manager similar to xmonad
-cask "amethyst"

@@ -18,4 +18,9 @@ then
    export BASH_SILENCE_DEPRECATION_WARNING=1
 fi
 
+# Add to path
+export PATH="$PATH:/opt/bin"
+
 source ~/.bash_aliases
+
+. "$HOME/.local/bin/env"

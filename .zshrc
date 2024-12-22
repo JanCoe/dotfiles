@@ -33,3 +33,4 @@ alias -s py=nvim
 alias -s config=nvim
 alias -s yaml=nvim
 alias -s rs=nvim
+. "$HOME/.local/bin/env"
