@@ -8,10 +8,12 @@ config.font = wezterm.font('JetBrains Mono')
 config.font_size = 12
 config.color_scheme = 'nord'
 
+config.max_fps = 120 
 -- Set the current working directory
 config.default_cwd = "~/Projects"
 
 config.tab_bar_at_bottom = true 
+
 
 -- Define the leader key
 config.leader = {key = 'a', mods = 'CTRL', timeout_milliseconds = 1000 }
