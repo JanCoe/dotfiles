@@ -9,8 +9,6 @@ config.font_size = 12
 config.color_scheme = "nord"
 
 config.max_fps = 120
--- Set the current working directory
-config.default_cwd = "/home/jan/Projects" -- "~/Projects"
 
 config.enable_tab_bar = false
 config.tab_bar_at_bottom = true
