@@ -57,44 +57,44 @@ require("lazy").setup({
   spec = {
     -- Nord colorscheme 
     {
-        "shaunsingh/nord.nvim",
-        lazy = false,
-        priority = 1000,
+      "shaunsingh/nord.nvim",
+      lazy = false,
+      priority = 1000,
     },
     -- lsp config server 
     {
-        "neovim/nvim-lspconfig",
-        lazy = true,
-        dependencies = {
-          {
-            "folke/lazydev.nvim",
-            ft = "lua", -- only load on lua files
-            opts = {
-              library = {
-                { path = "$(3rd)/luv/library", words = { "vim%.uv" } },
-              },
+      "neovim/nvim-lspconfig",
+      lazy = true,
+      dependencies = {
+        {
+          "folke/lazydev.nvim",
+          ft = "lua", -- only load on lua files
+          opts = {
+            library = {
+              { path = "$(3rd)/luv/library", words = { "vim%.uv" } },
             },
-           },
+          },
         },
+      },
       config = function()
-          require("lspconfig").lua_ls.setup {} -- activate lua lsp 
-          require("lspconfig").ruff.setup({
-            init_options = {
-                settings = {
-                    linelength = 108,
-                }
+        require("lspconfig").lua_ls.setup {} -- activate lua lsp 
+        require("lspconfig").ruff.setup({
+          init_options = {
+            settings = {
+              linelength = 108,
             }
-            })
-        end,
-  event = { "BufReadPre", "BufNewFile" }, -- load on buffer open
+          }
+        })
+      end,
+      event = { "BufReadPre", "BufNewFile" }, -- load on buffer open
     },
-},
+  },
 
--- Configure any other settings here. See the documentation for more details.
--- colorscheme that will be used when installing plugins.
-install = { colorscheme = { "nord" } },
--- automatically check for plugin updates
-checker = { enabled = true },
+  -- Configure any other settings here. See the documentation for more details.
+  -- colorscheme that will be used when installing plugins.
+  install = { colorscheme = { "nord" } },
+  -- automatically check for plugin updates
+  checker = { enabled = true },
 })
 
 -- Select colorscheme
