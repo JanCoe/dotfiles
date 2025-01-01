@@ -1,19 +1,19 @@
 -- Pull in the wezterm API
-local wezterm = require 'wezterm'
+local wezterm = require("wezterm")
 
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
-config.font = wezterm.font('JetBrains Mono')
+config.font = wezterm.font("JetBrains Mono")
 config.font_size = 12
-config.color_scheme = 'nord'
+config.color_scheme = "nord"
 
-config.max_fps = 120 
+config.max_fps = 120
 -- Set the current working directory
-config.default_cwd = "~/Projects"
+config.default_cwd = "/home/jan/Projects" -- "~/Projects"
 
-config.tab_bar_at_bottom = true 
-
+config.enable_tab_bar = false
+config.tab_bar_at_bottom = true
 
 -- Define the leader key
 config.leader = {key = 'a', mods = 'CTRL', timeout_milliseconds = 1000 }
@@ -22,14 +22,14 @@ config.leader = {key = 'a', mods = 'CTRL', timeout_milliseconds = 1000 }
 config.keys = {
   -- splitting
   {
-    key = "-",
+    key = '-',
     mods = "LEADER",
-    action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' }
+    action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' },
   },
   {
-    key = "=",
+    key = '=',
     mods = "LEADER",
-    action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' }
+    action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' },
   },
   -- maximising
   {
@@ -40,7 +40,7 @@ config.keys = {
   -- vim mode for navigating around and copying text  
   {
     key = 'Enter',
-    mods = 'LEADER', 
+    mods = 'LEADER',
     action = wezterm.action.ActivateCopyMode
   },
   {

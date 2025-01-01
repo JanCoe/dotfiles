@@ -8,6 +8,8 @@ set number
 
 set wrap=false
 
+set clipboard+=unnamedplus
+
 set hlsearch=false
 set incsearch
 

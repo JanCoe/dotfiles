@@ -31,6 +31,8 @@ vim.o.shiftwidth = 4
 vim.o.expandtab = true
 vim.o.softtabstop = 4
 
+vim.o.clipboard = "unnamedplus"
+
 vim.o.wrap = true 
 
 vim.o.ignorecase = true
@@ -54,23 +56,46 @@ vim.api.nvim_set_keymap('', 'L', '$', { noremap = true, silent = true } )
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
-    -- add your plugins here
+    -- Nord colorscheme 
     {
-        "shaunsingh/nord.nvim", -- Nord colorscheme
+        "shaunsingh/nord.nvim",
         lazy = false,
         priority = 1000,
     },
+    -- lsp config server 
     {
         "neovim/nvim-lspconfig",
         lazy = true,
-        event = { "BufReadPre", "BufNewFile" }, -- load on buffer open
+        dependencies = {
+          {
+            "folke/lazydev.nvim",
+            ft = "lua", -- only load on lua files
+            opts = {
+              library = {
+                { path = "$(3rd)/luv/library", words = { "vim%.uv" } },
+              },
+            },
+           },
+        },
+      config = function()
+          require("lspconfig").lua_ls.setup {} -- activate lua lsp 
+          require("lspconfig").ruff.setup({
+            init_options = {
+                settings = {
+                    linelength = 108,
+                }
+            }
+            })
+        end,
+  event = { "BufReadPre", "BufNewFile" }, -- load on buffer open
     },
-  },
-  -- Configure any other settings here. See the documentation for more details.
-  -- colorscheme that will be used when installing plugins.
-  install = { colorscheme = { "nord" } },
-  -- automatically check for plugin updates
-  checker = { enabled = true },
+},
+--
+-- Configure any other settings here. See the documentation for more details.
+-- colorscheme that will be used when installing plugins.
+install = { colorscheme = { "nord" } },
+-- automatically check for plugin updates
+checker = { enabled = true },
 })
 
 -- Select colorscheme

@@ -18,8 +18,10 @@ then
    export BASH_SILENCE_DEPRECATION_WARNING=1
 fi
 
-# Add to path
-export PATH="$PATH:/opt/bin"
+# Add to path if it is not in path already
+if [[ ":$PATH:" != *":/opt/bin:"* ]]; then
+    export PATH="$PATH:/opt/bin"
+fi
 
 source ~/.bash_aliases
 
