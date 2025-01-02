@@ -3,24 +3,29 @@
 " You can find a list of commands here: https://jb.gg/h38q75
 " Find more examples here: https://jb.gg/share-ideavimrc
 
+let mapleader = " "
+
 set relativenumber
 set number
 
+set scrolloff=6
+set signcolumn="yes"
+
 set wrap=false
+
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
 
 set clipboard+=unnamedplus
 
-set hlsearch=false
-set incsearch
+set highlightedyank
+set nerdtree
 
-set scrolloff=8
-set signcolumn="yes"
-
+inoremap jk <Esc>
 map H ^
 map L $
-
-" Don't use Ex mode, use Q for formatting.
-map Q gq
 
 " --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
 
@@ -29,13 +34,13 @@ Plug 'machakann/vim-highlightedyank'
 " Commentary plugin
 Plug 'tpope/vim-commentary'
 
+" Harpoon
+nmap <leader>hm <action>(HarpoonerQuickMenu)
+nmap <leader>ha <action>(HarpoonerAddFile)
+nmap <leader>hn <action>(HarpoonerNextFileAction)
+nmap <leader>hp <action>(HarpoonerPreviousFileAction)
 
-"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
-"" Map \r to the Reformat Code action
-"map \r <Action>(ReformatCode)
-
-"" Map <leader>d to start debug
-"map <leader>d <Action>(Debug)
-
-"" Map \b to toggle the breakpoint on the current line
-"map \b <Action>(ToggleLineBreakpoint)
+nmap <C-j> <action>(HarpoonerOpenFile0)
+nmap <C-k> <action>(HarpoonerOpenFile1)
+nmap <C-l> <action>(HarpoonerOpenFile2)
+nmap <C-;> <action>(HarpoonerOpenFile3)

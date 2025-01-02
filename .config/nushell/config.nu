@@ -18,10 +18,10 @@
 use std/dirs
 
 # Add some commonly used directories to access with 'dirs goto <num>'
-dirs add ~/.config
-dirs add ~/Projects
-dirs add ~/Projects/lpi_alm
-dirs add ~
+# dirs add ~/.config
+# dirs add ~/Projects
+# dirs add ~/Projects/lpi_alm
+# dirs add ~
 
 # No welcoming banner
 $env.config.show_banner = false
@@ -31,15 +31,16 @@ $env.PROMPT_COMMAND_RIGHT = {|| date now | format date '%H:%M:%S' }
 
 # Set path
 const gitbash = 'C:\Program Files\Git\usr\bin'
+const cargobin = 'C:\Users\coetzeej\.cargo\bin'
 if $nu.os-info.name == "windows" {
     $env.Path = ($env.Path | prepend $gitbash)
-}
-
-if not ($env.Path | any {|it| $it == "/opt/bin" }) {
-   $env.Path ++= ["/opt/bin"]
+    $env.Path = ($env.Path | prepend $cargobin)
+} else {
+    if not ($env.Path | any {|it| $it == "/opt/bin" }) {
+        $env.Path ++= ["/opt/bin"]
+    }
 }
 
 # Editing modes
 $env.config.edit_mode = "vi"
-$env.config.buffer_editor = "vi" 
-
+$env.config.buffer_editor = "vim"
