@@ -43,4 +43,4 @@ if $nu.os-info.name == "windows" {
 
 # Editing modes
 $env.config.edit_mode = "vi"
-$env.config.buffer_editor = "vim"
+$env.config.buffer_editor = "nvim"
