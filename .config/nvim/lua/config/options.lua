@@ -1,28 +1,32 @@
 vim.wo.relativenumber = true
 vim.wo.number = true
 
-vim.o.smartindent = true
-vim.o.autoindent = true
-vim.o.tabstop = 4
-vim.o.shiftwidth = 4
-vim.o.expandtab = true
-vim.o.softtabstop = 4
+vim.opt.scrolloff = 999
+vim.opt.colorcolumn = "108"
 
-vim.o.clipboard = "unnamedplus"
+vim.opt.wrap = false
 
-vim.o.wrap = true
+vim.opt.smartindent = true
+vim.opt.autoindent = true
 
-vim.o.ignorecase = true
-vim.o.smartcase = true
-vim.o.hlsearch = true
-vim.o.incsearch = true
+vim.opt.expandtab = true
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.softtabstop = 4
 
-vim.o.ttyfast = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.hlsearch = true
+vim.opt.incsearch = true
+vim.opt.inccommand = "split"
+vim.opt.showmatch = true
+vim.opt.matchtime = 2
 
-vim.o.showmatch = true
-vim.o.matchtime = 2
+vim.opt.virtualedit = "block"
+vim.opt.clipboard = "unnamedplus"
 
-vim.o.termguicolors = true
+vim.opt.splitbelow = true
+vim.opt.splitright = true
 
-vim.o.scrolloff = 5
-vim.o.colorcolumn = "108"
+vim.opt.termguicolors = true
+vim.opt.ttyfast = true

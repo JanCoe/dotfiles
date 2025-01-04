@@ -1,4 +1,4 @@
-vim.g.mapleader = " "
+vim.g.mapleader = "<C-a>"
 vim.g.maplocalleader = "//"
 
 vim.api.nvim_set_keymap('', 'H', '^', { noremap = true, silent = true })

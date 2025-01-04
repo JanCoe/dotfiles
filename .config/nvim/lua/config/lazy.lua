@@ -1,4 +1,3 @@
--- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -15,16 +14,17 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Setup lazy.nvim
 require("lazy").setup({
+  dependencies = { "config.keymaps" },
   spec = {
-    require("plugins.nord"), -- Nord colorscheme
-    require("plugins.lsp"), -- lsp config server
+    require("plugins.nord"),
+    require("plugins.treesitter"),
+    require("plugins.mason"),
+    require("plugins.masonconfig"),
+    require("plugins.lspconfig"),
+    --require("plugins.rustvim"),
+    --require("plugins.rustsave"),
   },
-
-  -- Configure any other settings here. See the documentation for more details.
-  -- colorscheme that will be used when installing plugins.
   install = { colorscheme = { "nord" } },
-  -- automatically check for plugin updates
   checker = { enabled = true },
 })
