@@ -26,7 +26,7 @@ use std/dirs
 # No welcoming banner
 $env.config.show_banner = false
 
-# Command prompt
+# Right prompt
 $env.PROMPT_COMMAND_RIGHT = {|| date now | format date '%H:%M:%S' }
 
 # Set path
@@ -44,3 +44,6 @@ if $nu.os-info.name == "windows" {
 # Editing modes
 $env.config.edit_mode = "vi"
 $env.config.buffer_editor = "nvim"
+
+# Source zoxide
+source ~/.zoxide.nu

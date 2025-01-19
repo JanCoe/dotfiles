@@ -26,3 +26,6 @@ fi
 source ~/.bash_aliases
 
 . "$HOME/.local/bin/env"
+
+# initialise zoxide
+eval "$(zoxide init bash)"
