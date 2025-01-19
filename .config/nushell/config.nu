@@ -18,15 +18,12 @@
 use std/dirs
 
 # Add some commonly used directories to access with 'dirs goto <num>'
-# dirs add ~/.config
-# dirs add ~/Projects
-# dirs add ~/Projects/lpi_alm
-# dirs add ~
+# dirs add <path>
 
 # No welcoming banner
 $env.config.show_banner = false
 
-# Right prompt
+# Command prompt
 $env.PROMPT_COMMAND_RIGHT = {|| date now | format date '%H:%M:%S' }
 
 # Set path
