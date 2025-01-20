@@ -1,13 +1,29 @@
+let mapleader = " "
+
 set relativenumber
 set number
 
-set incsearch
-
-set scrolloff=8
+set scrolloff=999
+set colorcolumn="108"
 set signcolumn="yes"
 
+set tabstop=4
+set shiftwidth=4
+
+set ignorecase
+set smartcase
+set hlsearch
+set incsearch
+set matchtime=2
+
+set virtualedit="block"
+set clipboard+=unnamedplus
+
+inoremap jk <Esc>
 map H ^
 map L $
+
+colorscheme blue
 
 "--- Cursor settings ---
 "These settings work with a more modern set up
