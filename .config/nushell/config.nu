@@ -45,4 +45,5 @@ if $nu.os-info.name == "windows" {
 $env.config.edit_mode = "vi"
 $env.config.buffer_editor = "nvim"
 
+# Source zoxide
 source ~/.zoxide.nu

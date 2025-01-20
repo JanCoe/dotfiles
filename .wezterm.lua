@@ -1,16 +1,17 @@
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
-config.font = wezterm.font { family = "JetBrains Mono" }
+config.font = wezterm.font { family = "JetBrains Mono", scale = 1.2 }
 config.font_size = 12
 config.color_scheme = "nord"
 config.colors = {
-  tab_bar = {
-    inactive_tab_edge = '#ECEFF4',
+  tab_bar = { inactive_tab_edge = '#ECEFF4',
     active_tab = { fg_color = '#D8DEE9', bg_color = '#4c566A' },
   }
 }
+config.window_background_opacity = 0.95
 config.max_fps = 120
+config.default_workspace = "main"
 
 config.enable_tab_bar = true
 config.tab_bar_at_bottom = true
@@ -20,36 +21,23 @@ config.tab_max_width = 32
 -- Define the leader key
 config.leader = {mods = 'CTRL', key = 'q', timeout_milliseconds = 1000 }
 
+local a = wezterm.action
+
 -- Define shortcut keys
 config.keys = {
   -- splitting
-  {
-    mods = "LEADER", key = '-',
-    action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' },
-  },
-  {
-    mods = "LEADER", key = '=',
-    action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' },
-  },
+  { mods = "LEADER", key = '-', action = a.SplitVertical { domain = 'CurrentPaneDomain' }, },
+  { mods = "LEADER", key = '|', action = a.SplitHorizontal { domain = 'CurrentPaneDomain' }, },
   -- maximising
-  {
-    mods = 'CMD', key = 'm',
-    action = wezterm.action.TogglePaneZoomState
-  },
+  { mods = 'CMD', key = 'm', action = a.TogglePaneZoomState },
   -- Move to a pane (prompt to which one)
-  {
-    mods = "CMD|SHIFT", key = "m",
-    action = wezterm.action.PaneSelect
-  },
+  { mods = "CMD|SHIFT", key = "m", action = a.PaneSelect },
   -- vim mode for navigating around and copying text  
-  {
-    mods = 'LEADER', key = 'Enter',
-    action = wezterm.action.ActivateCopyMode
-  },
+  { mods = 'LEADER', key = 'Enter', action = a.ActivateCopyMode },
   -- rename current tab
   {
     mods = 'CMD', key = 'r',
-    action = wezterm.action.PromptInputLine {
+    action = a.PromptInputLine {
       description = 'Enter new name for tab',
       action = wezterm.action_callback(
         function(window, _, line)
@@ -60,43 +48,16 @@ config.keys = {
       ),
     },
   },
-  {
-    mods = 'CMD', key = 'w',
-    action = wezterm.action.CloseCurrentPane { confirm = false },
-  },
-  {
-    mods = 'CMD|SHIFT', key = 'w',
-    action = wezterm.action.CloseCurrentTab { confirm = true },
-  },
-  -- use CTRL + [h|j|k|l] to move between panes
-  {
-    mods = "CTRL", key = "h",
-    action = wezterm.action.ActivatePaneDirection('Left')
-  },
-
-  {
-    mods = "CTRL", key = "j",
-    action = wezterm.action.ActivatePaneDirection('Down')
-  },
-
-  {
-    mods = "CTRL", key = "k",
-    action = wezterm.action.ActivatePaneDirection('Up')
-  },
-
-  {
-    mods = "CTRL", key = "l",
-    action = wezterm.action.ActivatePaneDirection('Right')
-  },
+  { mods = 'CMD', key = 'w', action = a.CloseCurrentPane { confirm = false }, },
+  { mods = 'CMD|SHIFT', key = 'w', action = a.CloseCurrentTab { confirm = true }, },
+  -- use ALT + h,j,k,l to move between panes
+  { mods = "ALT", key = "h", action = a.ActivatePaneDirection('Left') },
+  { mods = "ALT", key = "j", action = a.ActivatePaneDirection('Down') },
+  { mods = "ALT", key = "k", action = a.ActivatePaneDirection('Up') },
+  { mods = "ALT", key = "l", action = a.ActivatePaneDirection('Right') },
   -- Move to another pane (next or previous)
-  {
-    mods = "CTRL", key = "[",
-    action = wezterm.action.ActivatePaneDirection('Prev')
-  },
-  {
-    mods = "CTRL", key = "]",
-    action = wezterm.action.ActivatePaneDirection('Next')
-  },
+  { mods = "ALT", key = "[", action = a.ActivatePaneDirection('Prev') },
+  { mods = "ALT", key = "]", action = a.ActivatePaneDirection('Next') },
 }
 
 return config
