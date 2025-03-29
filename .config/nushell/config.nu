@@ -27,11 +27,14 @@ $env.config.show_banner = false
 $env.PROMPT_COMMAND_RIGHT = {|| date now | format date '%H:%M:%S' }
 
 # Set path
+const git = 'C:\Program Files\Git\mingw64\bin'
 const gitbash = 'C:\Program Files\Git\usr\bin'
 const cargobin = 'C:\Users\coetzeej\.cargo\bin'
 if $nu.os-info.name == "windows" {
+    $env.Path = ($env.Path | prepend $git)
     $env.Path = ($env.Path | prepend $gitbash)
     $env.Path = ($env.Path | prepend $cargobin)
+
 } else {
     if not ($env.Path | any {|it| $it == "/opt/bin" }) {
         $env.Path ++= ["/opt/bin"]

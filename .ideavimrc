@@ -8,24 +8,39 @@ let mapleader = " "
 set relativenumber
 set number
 
-set scrolloff=6
+set scrolloff=999
+set colorcolumn="108"
 set signcolumn="yes"
 
 set wrap=false
 
+set smartindent=true
+set autoindent=true
+
+set expandtab=true
+set tabstop=4
+set shiftwidth=4
+set softtabstob=4
+
 set ignorecase
 set smartcase
-set incsearch
 set hlsearch
+set incsearch
+set inccomand="split"
+set showmatch=true
+set matchtime=2
 
+set virtualedit="block"
 set clipboard+=unnamedplus
 
 set highlightedyank
 set nerdtree
 
 inoremap jk <Esc>
-map H ^
-map L $
+nnoremap H ^
+nnoremap L $
+vnoremap H ^
+vnoremap L $
 
 " --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
 
