@@ -27,7 +27,7 @@ local a = wezterm.action
 config.keys = {
   -- splitting
   { mods = "LEADER", key = '-', action = a.SplitVertical { domain = 'CurrentPaneDomain' }, },
-  { mods = "LEADER", key = '|', action = a.SplitHorizontal { domain = 'CurrentPaneDomain' }, },
+  { mods = "LEADER", key = '=', action = a.SplitHorizontal { domain = 'CurrentPaneDomain' }, },
   -- maximising
   { mods = 'CMD', key = 'm', action = a.TogglePaneZoomState },
   -- Move to a pane (prompt to which one)
@@ -50,14 +50,14 @@ config.keys = {
   },
   { mods = 'CMD', key = 'w', action = a.CloseCurrentPane { confirm = false }, },
   { mods = 'CMD|SHIFT', key = 'w', action = a.CloseCurrentTab { confirm = true }, },
-  -- use ALT + h,j,k,l to move between panes
-  { mods = "ALT", key = "h", action = a.ActivatePaneDirection('Left') },
-  { mods = "ALT", key = "j", action = a.ActivatePaneDirection('Down') },
-  { mods = "ALT", key = "k", action = a.ActivatePaneDirection('Up') },
-  { mods = "ALT", key = "l", action = a.ActivatePaneDirection('Right') },
+  -- use CTRL + h,j,k,l to move between panes
+  { mods = "CTRL", key = "h", action = a.ActivatePaneDirection('Left') },
+  { mods = "CTRL", key = "j", action = a.ActivatePaneDirection('Down') },
+  { mods = "CTRL", key = "k", action = a.ActivatePaneDirection('Up') },
+  { mods = "CTRL", key = "l", action = a.ActivatePaneDirection('Right') },
   -- Move to another pane (next or previous)
-  { mods = "ALT", key = "[", action = a.ActivatePaneDirection('Prev') },
-  { mods = "ALT", key = "]", action = a.ActivatePaneDirection('Next') },
+  { mods = "CTRL", key = "Tab", action = a.ActivatePaneDirection('Next') },
+  { mods = "CTRL|SHIFT", key = "Tab", action = a.ActivatePaneDirection('Prev') },
 }
 
 return config

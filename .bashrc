@@ -27,5 +27,6 @@ source ~/.bash_aliases
 
 . "$HOME/.local/bin/env"
 
-# initialise zoxide
+# initialise apps
 eval "$(zoxide init bash)"
+eval "$(starship init bash)"

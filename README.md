@@ -1,30 +1,53 @@
-## Steps to bootstrap a new Mac
-1. Install Apple's Command Line Tools, which are prerequisites for Git and Homebrew.
-
-~~~
+## Steps to setup a new machine
+### Install Apple's Command Line Tools (MacOs only)
+These tools are prerequisites for Git and Homebrew.
+~~~shell
 xcode-select --install
 ~~~
 
-2. Clone repo into new hidden directory.
+### rustup 
+Install rustup with command at rustup.rs.
+Run `rustup` in terminal.
+
+### Install github CLI
+
+This is a helper utility that deals with github authentication. It enables cloning from the terminal.
+~~~shell
+sudo apt install gh
 ~~~
+
+Authenticate with
+~~~shell
+gh auth login
+~~~
+
+Follow instructions to save token.
+
+Alternative is doing it inside an IDE.
+
+### Clone dotfiles repo
+~~~shell
 # Use SSH (if set up) ...
 git clone git@github.com:JanCoe/dotfiles.git ~/.dotfiles
 
 # ...or use HTTPS and switch remotes later.
 git clone https:/github.com/JanCoe/dotfiles.git ~/.dotfiles
 ~~~
-In practice, difficulty with getting permission inside the terminal means it is easier inside an IDE.
 
-3. Create symlinks in the Home directory to the real files in the repo.
+### Create symlinks
 
-~~~
+Create a symlink for each dotfile in the repo.
+~~~shell
 ln -s ~/.dotfiles/.zshrc ~/.zshrc
 ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 etc.
 ~~~
 
-4. Install Homebrew, followed by the software listed in the Brewfile.
-~~~
+### Install other software
+#### Homebrew packages (Mac only)
+
+Install homebrew and the files listed in the Brewfile.
+~~~shell
 # Install Homebrew
 /bin/bash -c "$(curl fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
@@ -40,6 +63,18 @@ Command to update the content of the Brewfile is:
 brew bundle dump
 ~~~
 This creates a Brewfile in the current directory.
+
+#### Other
+
+Install packages from package manager or directly if not up to date.
+
+Use cargo install for Rust based packages (on MacOs too):
+nushell
+ruff
+starship
+uv
+wezterm
+zoxide
 
 ### TODO List
 

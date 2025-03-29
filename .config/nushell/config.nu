@@ -44,3 +44,7 @@ $env.config.buffer_editor = "nvim"
 
 # Source zoxide
 source ~/.zoxide.nu
+
+# Activate starship
+mkdir ($nu.data-dir | path join "vendor/autoload")
+starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")

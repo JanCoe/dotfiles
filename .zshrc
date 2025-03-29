@@ -14,19 +14,14 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-# Set the prompt. The %F{ } sets a colour and %f resets to the default.
-# 3~ gives up to three parent directories. Follow it with a :
-PS1="%F{29}%3~:%f"
-
 # Python aliases
 alias pva='source .venv/bin/activate' # 'python venv': activate virtual environment in the .venv directory
 alias pr='python3 -m' # 'python module': run python module
-alias pt='python3 -m unittest discover' # 'python test': run unittest, need to specify directories
-alias pta='python3 -m unittest discover tests' # 'python test all': run all unittests
 
 # Other aliases
 alias fzn='fzf | xargs nvim' # 'fzf neovim': pipe fzf output into neovim
 alias fzp="fzf --preview 'cat {}' | xargs nvim" # 'fzf preview': get a preview of the fzf output and pipe it into neovim
+alias lines="git ls-files | grep .py | xargs cat | wc -l"
 
 # File extensions to run in neovim 
 alias -s py=nvim
@@ -34,3 +29,6 @@ alias -s config=nvim
 alias -s yaml=nvim
 alias -s rs=nvim
 . "$HOME/.local/bin/env"
+
+# Run starship
+eval "$(starship init zsh)"
