@@ -1,11 +1,14 @@
 tap "homebrew/bundle"
-# Simple, fast and user-friendly alternative to find
+tap "homebrew/services"
+tap "koekeishiya/formulae"
+brew "cmake"
 brew "fd"
-# Command-line fuzzy finder written in Go
 brew "fzf"
-# GitHub command-line tool
 brew "gh"
-# Ambitious Vim-fork focused on extensibility and agility
+brew "git-lfs"
+brew "htop"
 brew "neovim"
-# Terminal multiplexer
+brew "nushell"
 brew "tmux"
+brew "uv"
+cask "wezterm"

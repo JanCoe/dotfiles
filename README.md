@@ -1,5 +1,5 @@
 ## Steps to setup a new machine
-### Install Apple's Command Line Tools (MacOs only)
+### Install Apple's Command Line Tools (MacOS only)
 These tools are prerequisites for Git and Homebrew.
 ~~~shell
 xcode-select --install
@@ -68,17 +68,18 @@ This creates a Brewfile in the current directory.
 
 Install packages from package manager or directly if not up to date.
 
-Use cargo install for Rust based packages (on MacOs too):
+The following are Rust packages which could be installed using cargo:
 nushell
 ruff
 starship
-uv
+uutils
+uv (from git not crates.io because of reliance on unpublished crates)
 wezterm
 zoxide
 
 ### TODO List
 
-- Learn how to use defaults to record and restore System Preferences and other macOS configurations.
+- Learn how to use defaults to record and restore System Preferences and other MacOS configurations.
 - Automate symlinking and run script files with a bootstrapping tool like Dotbot.
 - Revisit the list in .zshrc to customize the shell.
 - Make a checklist of steps to decommission your computer before wiping your hard drive.
