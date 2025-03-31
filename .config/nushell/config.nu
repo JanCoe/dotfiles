@@ -27,27 +27,35 @@ $env.config.show_banner = false
 $env.PROMPT_COMMAND_RIGHT = {|| date now | format date '%H:%M:%S' }
 
 # Set path
-const git = 'C:\Program Files\Git\mingw64\bin'
-const gitbash = 'C:\Program Files\Git\usr\bin'
-const cargobin = 'C:\Users\coetzeej\.cargo\bin'
 if $nu.os-info.name == "windows" {
+    const git = 'C:\Program Files\Git\mingw64\bin'
+    const gitbash = 'C:\Program Files\Git\usr\bin'
+    const cargobin = 'C:\Users\coetzeej\.cargo\bin'
     $env.Path = ($env.Path | prepend $git)
     $env.Path = ($env.Path | prepend $gitbash)
     $env.Path = ($env.Path | prepend $cargobin)
-
 } else {
+    if not ($env.Path | any {|it| $it == "/usr/local/bin" }) {
+        $env.Path = ($env.PATH | prepend ["/usr/local/bin"])
+    }
     if not ($env.Path | any {|it| $it == "/opt/bin" }) {
         $env.Path ++= ["/opt/bin"]
     }
+    if not ($env.PATH | any {|it| $it == "~/.cargo/bin" }) {
+        $env.PATH ++= ["~/.cargo/bin"]
+    }
 }
+
+# Set neovim to read the man pages
+$env.PAGER = "nvim"
 
 # Editing modes
 $env.config.edit_mode = "vi"
 $env.config.buffer_editor = "nvim"
 
-# Source zoxide
-source ~/.zoxide.nu
-
 # Activate starship
 mkdir ($nu.data-dir | path join "vendor/autoload")
 starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
+
+# Source zoxide
+source ~/.zoxide.nu

@@ -26,8 +26,8 @@ local a = wezterm.action
 -- Define shortcut keys
 config.keys = {
   -- splitting
-  { mods = "LEADER", key = '-', action = a.SplitVertical { domain = 'CurrentPaneDomain' }, },
-  { mods = "LEADER", key = '=', action = a.SplitHorizontal { domain = 'CurrentPaneDomain' }, },
+  { mods = "LEADER", key = '=', action = a.SplitVertical { domain = 'CurrentPaneDomain' }, },
+  { mods = "LEADER", key = '-', action = a.SplitHorizontal { domain = 'CurrentPaneDomain' }, },
   -- maximising
   { mods = 'CMD', key = 'm', action = a.TogglePaneZoomState },
   -- Move to a pane (prompt to which one)

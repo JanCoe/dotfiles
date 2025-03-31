@@ -18,7 +18,7 @@ function pvc
     then
         python3 -m venv .venv --upgrade-deps
     else
-       python3 -m venv .venv --upgrade-deps --prompt="$1"
+        python3 -m venv .venv --upgrade-deps --prompt="$1"
     fi
 }
 
