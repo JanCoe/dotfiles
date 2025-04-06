@@ -30,9 +30,8 @@ fi
 if [ -d "$HOME/opt/bin" ] ; then
     PATH=${PATH:+${PATH}:}"$HOME/opt/bin"
 fi
-. "$HOME/.cargo/env"
 
-. "$HOME/.local/bin/env"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# source if it exists 
+[ -f "/usr/local/bin" ] && . "/usr/local/bin"
+[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
+[ -f "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"

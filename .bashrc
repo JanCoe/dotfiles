@@ -1,17 +1,6 @@
 # Use VIM motions in the command line
 set -o vi
 
-# Set the prompt
-PS1='\[\033]0;$PWD\007\]' # set window title
-PS1="$PS1"'\n'            # new line
-PS1="$PS1"'\[\033[32m\]'  # change to green
-PS1="$PS1"'\D{%H:%M:%S} ' # show current time
-PS1="$PS1"'\[\033[35m\]'  # change to purple
-PS1="$PS1"'\w'            # current working directory
-PS1="$PS1"'\[\033[33m\]'  # change to brownish yellow
-PS1="$PS1"' $ '           # prompt: always $
-PS1="$PS1"'\[\033[0m\]'   # change color
-
 # Settings that depend on operating system
 if [ "$OSTYPE" == "darwin22" ]  # MacOS
 then
@@ -23,10 +12,16 @@ if [[ ":$PATH:" != *":/opt/bin:"* ]]; then
     export PATH="$PATH:/opt/bin"
 fi
 
+# export PATH="$PATH:/usr/local/bin"
+
+# Source if file exists
+[ -f "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"
+
+# Set nvim for reading man pages
+export MANPAGER='nvim +Man!'
+
 source ~/.bash_aliases
 
-. "$HOME/.local/bin/env"
-
-# initialise apps
+# Initialise apps
 eval "$(zoxide init bash)"
 eval "$(starship init bash)"
