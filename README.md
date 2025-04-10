@@ -6,8 +6,7 @@ xcode-select --install
 ~~~
 
 ### rustup 
-Install rustup with command at rustup.rs.
-Run `rustup` in terminal.
+Install rust by running command at rustup.rs.
 
 ### Install github CLI
 
@@ -68,8 +67,8 @@ This creates a Brewfile in the current directory.
 
 Install packages from package manager or directly if not up to date.
 
-The following are Rust packages which could be installed using cargo:
-nushell
+The following are Rust packages which could be installed using cargo if not in the package manager:
+nu (nushell)
 ruff
 starship
 uutils
