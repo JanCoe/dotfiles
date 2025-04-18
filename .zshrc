@@ -1,19 +1,12 @@
+export XDG_DATA_DIRS="$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share:$HOME/.local/bin"
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/JanCoe/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/JanCoe/opt/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/JanCoe/opt/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/JanCoe/opt/anaconda3/bin:$PATH"
-    fi
+if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
+    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 fi
-unset __conda_setup
-# <<< conda initialize <<<
 
+export TERMINAL=wezterm
+
+export PATH
 # Python aliases
 alias pva='source .venv/bin/activate' # 'python venv': activate virtual environment in the .venv directory
 alias pr='python3 -m' # 'python module': run python module
@@ -28,7 +21,7 @@ alias -s py=nvim
 alias -s config=nvim
 alias -s yaml=nvim
 alias -s rs=nvim
-. "$HOME/.local/bin/env"
+# . "$HOME/.local/bin/env"
 
 # Run starship
 eval "$(starship init zsh)"

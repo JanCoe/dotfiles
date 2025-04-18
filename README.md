@@ -80,9 +80,7 @@ zoxide
 ### TODO List
 
 - Learn how to use defaults to record and restore System Preferences and other MacOS configurations.
-- Automate symlinking and run script files with a bootstrapping tool like Dotbot.
 - Revisit the list in .zshrc to customize the shell.
 - Make a checklist of steps to decommission your computer before wiping your hard drive.
 - Create a bootable USB installer for macOS.
 - Integrate other cloud services into your Dotfiles process (Dropbox, OneDrive, etc.).
-- Find inspiration and examples in other Dotfiles repositories at dotfiles.github.io.
