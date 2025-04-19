@@ -8,30 +8,38 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-# if running bash
-if [ -n "$BASH_VERSION" ]; then
-    # include .bashrc if it exists
-    if [ -f "$HOME/.bashrc" ]; then
-	. "$HOME/.bashrc"
-    fi
-fi
+path_add() {
+    for dir in "$@"; do
+        case ":$PATH:" in
+            *":$dir:"*) ;;  # Already in PATH — do nothing
+            *) PATH="${PATH:+$PATH:}$dir" ;;
+        esac
+    done
+    export PATH
+}
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.local/bin" ] ; then
-    PATH=${PATH:+${PATH}:}"$HOME/.local/bin"
-fi
+# export environment variables
+path_add "$HOME/bin" "$HOME/.local/bin"
+export EDITOR="nvim"
+export MANPAGER="nvim +Man!"
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    PATH=${PATH:+${PATH}:}"$HOME/bin"
-fi
+data_dirs_add() {
+    for dir in "$@"; do
+        case ":$XDG_DATA_DIRS:" in
+            *":$dir:"*) ;;  # Already in PATH — do nothing
+            *) XDG_DATA_DIRS="${XDG_DATA_DIRS:+$XDG_DATA_DIRS:}$dir" ;;
+        esac
+    done
+    export XDG_DATA_DIRS
+}
 
-# set PATH so it includes opt bin if it exists
-if [ -d "$HOME/opt/bin" ] ; then
-    PATH=${PATH:+${PATH}:}"$HOME/opt/bin"
-fi
+# export common environment variables
+data_dirs_add "/var/lib/flatpak/exports/share" "$HOME/.local/share/flatpak/exports/share" "$HOME/.local/bin"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
+export MANPAGER='nvim +Man!'
 
-# source if it exists 
-[ -f "/usr/local/bin" ] && . "/usr/local/bin"
+# initialise common tools if they exist
 [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 [ -f "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"

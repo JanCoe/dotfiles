@@ -23,26 +23,25 @@ use std/dirs
 # No welcoming banner
 $env.config.show_banner = false
 
-# Command prompt
-$env.PROMPT_COMMAND_RIGHT = {|| date now | format date '%H:%M:%S' }
-
 # Set path
-if $nu.os-info.name == "windows" {
-    const git = 'C:\Program Files\Git\mingw64\bin'
-    const gitbash = 'C:\Program Files\Git\usr\bin'
-    const cargobin = 'C:\Users\coetzeej\.cargo\bin'
-    $env.Path = ($env.Path | prepend $git)
-    $env.Path = ($env.Path | prepend $gitbash)
-    $env.Path = ($env.Path | prepend $cargobin)
+let path_entries = if $nu.os-info.name == "windows" {
+    [ 
+    "C:\\Program Files\\Git\\mingw64\\bin",
+    "C:\\Program Files\\Git\\usr\\bin",
+    "C:\\Users\\coetzeej\\.cargo\\bin"
+    ]
 } else {
-    if not ($env.Path | any {|it| $it == "/usr/local/bin" }) {
-        $env.Path = ($env.PATH | prepend ["/usr/local/bin"])
-    }
-    if not ($env.Path | any {|it| $it == "/opt/bin" }) {
-        $env.Path ++= ["/opt/bin"]
-    }
-    if not ($env.PATH | any {|it| $it == "~/.cargo/bin" }) {
-        $env.PATH ++= ["~/.cargo/bin"]
+    [
+    "/usr/local/bin",
+    "~/.local/bin",
+    "/opt/bin",
+    "~/.cargo/bin"
+    ]
+} 
+
+for path in $path_entries {
+    if not ($env.PATH | any {|it| $it == $path }) {
+        $env.PATH ++= [$path]
     }
 }
 
@@ -59,3 +58,10 @@ starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.n
 
 # Source zoxide
 source ~/.zoxide.nu
+
+alias ll = ls -la
+alias vim = nvim
+alias .. = cd ..
+alias ... = cd ../..
+alias .... = cd ../../..
+alias cd = z

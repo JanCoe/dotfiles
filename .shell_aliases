@@ -1,0 +1,24 @@
+# Settings that depend on operating system 
+if [[ "$OSTYPE" == "msys" ]] # Windows
+then #
+    alias pva="source .venv/scripts/activate" # Python Venv Activate
+else # Mac or Linux
+    alias pva="source .venv/bin/activate" # Python Venv Activate
+fi
+
+# Other aliases
+alias ll="ls -la"
+alias fzn="fzf | xargs nvim" # 'fzf neovim': pipe fzf output into neovim
+alias fzp="fzf --preview 'cat {}' | xargs nvim" # 'fzf preview': get a preview of the fzf output and pipe it into neovim
+alias lines="git ls-files | grep .py | xargs cat | wc -l"
+
+# cd'ing up levels
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
+
+# applications
+alias wezterm="flatpak run org.wezfurlong.wezterm"
+alias vim="nvim"
