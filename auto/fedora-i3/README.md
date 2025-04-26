@@ -20,7 +20,7 @@ sudo dnf upgrade --refresh
 6. From auto, run 'python -m fedora-i3.symlinks': this creates symlinks of the dotfiles.
 
 7. Create symlink to 'update.sh' script in your path
-sudo ln -s ~/.dotfiles/auto/fedora/update.sh /usr/local/bin/update
+sudo ln -s ~/.dotfiles/auto/fedora-i3/update.sh /usr/local/bin/update
 chmod +x /usr/local/bin/update
 
 8. To show background on login screen:
