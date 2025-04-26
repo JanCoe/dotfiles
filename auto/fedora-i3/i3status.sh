@@ -15,7 +15,7 @@ do
         fully-charged) battery0_icon="🔌";;
     esac
 
-    battery0_status="$battery0_icon $battery0_percentage"
+    battery0_status="Bat: $battery0_icon $battery0_percentage"
 
     # Get battery 1 info
     battery1=$(upower -i /org/freedesktop/UPower/devices/battery_BAT1 2>/dev/null)
@@ -30,6 +30,6 @@ do
 
     battery1_status="$battery1_icon $battery1_percentage"
     
-    # Output: Wi-Fi | Battery0 | Battery1 | i3status
-    echo "$battery0_status | $battery1_status | $line"
+    # Output: Battery0 Battery1 | i3status
+    echo "$battery0_status $battery1_status | $line"
 done
