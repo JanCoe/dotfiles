@@ -20,6 +20,7 @@ links: dict[str, str] = {
     ".zshrc": "",
     "config.yml": ".config/gh",
     "config": ".config/i3",
+    "config": ".config/i3status",
     "picom.conf": ".config/picom",
     "settings.ini": ".config/gtk-3.0",  # for gtk themed apps
     "settings.ini": ".config/gtk-4.0",  # for gtk themed apps

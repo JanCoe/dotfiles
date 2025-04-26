@@ -29,15 +29,15 @@ chmod +x /usr/local/bin/update
 
 9. Enable a Nord theme
     a. firefox: Nord Polar Night Theme by christos
-    b. thunderbird: Nord Hardt by azcst(?) (download and install)
+    b. thunderbird: Nord Hardt by artrz (download and install)
 
-10. Setup and sync OneDrive
+10. Setup and sync OneDrive.
 
 11. Setup Proton Bridge, Thunderbird and neomutt.
 
 12. Add 1password extension to Firefox.
 
-13. Set up Obsidian.
+13. Sync with Obsidian vault. The following steps appear to be automatic:
     a. Create vault in Documents.
     b. Create a VAULT/.obsidian/themes directory
     c. Inside that directory run 'git clone git@github.com:EndlessReform/obsidian-nord-muted'

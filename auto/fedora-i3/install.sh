@@ -30,6 +30,7 @@ PKG_DNF=(
     thunderbird
     vlc
     toolbox
+    onedrive
 )
 PKG_CARGO=(
     starship
@@ -48,13 +49,13 @@ echo "==> Refreshing Fedora..."
 echo $pwd | sudo -S dnf upgrade --refresh -y
 
 echo "==> Adding nushell to repo..."  # do this step manually
-# config_text="[gemfury-nushell]
-# name=Gemfury Nushell Repo
-# baseurl=https://yum.fury.io/nushell/
-# enabled=1:
-# gpgcheck=0
-# gpgkey=https://yum.fury.io/nushell/gpg.key"
-# echo $config_text | sudo tee /etc/yum.repos.d/fury-nushell.repo
+config_text="[gemfury-nushell]
+name=Gemfury Nushell Repo
+baseurl=https://yum.fury.io/nushell/
+enabled=1
+gpgcheck=0
+gpgkey=https://yum.fury.io/nushell/gpg.key"
+echo "$config_text" | sudo tee /etc/yum.repos.d/fury-nushell.repo
 
 echo "==> Enabling COPR packages..."
 for pkg in ${PKG_COPR[@]}; do

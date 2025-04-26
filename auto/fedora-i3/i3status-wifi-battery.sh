@@ -4,12 +4,6 @@ i3status | while :
 do
     read line || break
 
-    # Get Wi-Fi info
-    ssid=$(nmcli -t -f active,ssid dev wifi | grep '^yes' | cut -d':' -f2)
-    signal=$(nmcli -t -f active,signal dev wifi | grep '^yes' | cut -d':' -f2)
-    wifi_status="${ssid:-Disconnected}"
-    [ -n "$signal" ] && wifi_status+=" (${signal}%)"
-
     # Get battery 0 info (using upower)
     battery0=$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 2>/dev/null)
     battery0_percentage=$(echo "$battery0" | grep -E "percentage" | awk '{print $2}')
@@ -37,5 +31,5 @@ do
     battery1_status="$battery1_icon $battery1_percentage"
     
     # Output: Wi-Fi | Battery0 | Battery1 | i3status
-    echo "$wifi_status | $battery0_status | $battery1_status | $line"
+    echo "$battery0_status | $battery1_status | $line"
 done
