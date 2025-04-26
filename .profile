@@ -34,7 +34,7 @@ data_dirs_add() {
 }
 
 # export common environment variables
-data_dirs_add "/var/lib/flatpak/exports/share" "$HOME/.local/share/flatpak/exports/share" "$HOME/.local/bin"
+data_dirs_add "/var/lib/flatpak/exports/share" "$HOME/.local/share/flatpak/exports/share" "$HOME/.local/bin" "/usr/local/share" "/usr/share"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
@@ -42,3 +42,10 @@ export XDG_CACHE_HOME="$HOME/.cache"
 # initialise common tools if they exist
 [[ -f "$HOME/.cargo/env" ]] && . "$HOME/.cargo/env"
 [[ -f "$HOME/.local/bin/env" ]] && . "$HOME/.local/bin/env"
+
+# source rc files in case this is a login shell
+if [[ -n "$BASH_VERSION" ]]; then
+    [[ -r "$HOME/.bashrc" ]] && . "$HOME/.bashrc"
+elif [[ -n "$ZSH_VERSION" ]]; then
+    [[ -r "$HOME/.zshrc" ]] && . "$HOME/.zshrc"
+fi
