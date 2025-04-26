@@ -31,7 +31,7 @@ exec --no-startup-id setxkbmap -option caps:escape
 # Order is important. Set screens, set background, run picom
 exec --no-startup-id ~/.config/display/switch-display.sh
 exec --no-startup-id xrandr --output eDP-1 --auto --primary --output HDMI-2 --auto --right-of eDP-1
-exec --no-startup-id feh --bg-scale ~/Downloads/touhou_anime.jpg
+exec --no-startup-id feh --bg-scale ~/.dotfiles/backgrounds/touhou_anime.jpg
 exec --no-startup-id /usr/bin/picom --config ~/.config/picom/picom.conf
 
 # Use pactl to adjust volume in PulseAudio.
