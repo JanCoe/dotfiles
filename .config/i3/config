@@ -22,13 +22,17 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork -c 3b4252
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
+# No longer using it because I am putting status inside i3status bar.
 exec --no-startup-id nm-applet
 
 # Bind CapsLock to Esc
 exec --no-startup-id setxkbmap -option caps:escape  
 
-# Set background image
-exec --no-startup-id feh --bg-scale ~/.dotfiles/background/dark-anime.jpg
+# Order is important. Set screens, set background, run picom
+exec --no-startup-id ~/.config/display/switch-display.sh
+exec --no-startup-id xrandr --output eDP-1 --auto --primary --output HDMI-2 --auto --right-of eDP-1
+exec --no-startup-id feh --bg-scale ~/Downloads/touhou_anime.jpg
+exec --no-startup-id /usr/bin/picom --config ~/.config/picom/picom.conf
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -48,6 +52,9 @@ bindsym $mod+Shift+w kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec --no-startup-id "dmenu_run -nb '#2e3440' -nf '#d8dee9' -sb '#4c566a' -sf '#88c0d0' -fn 'JetBrains Mono-14'"
+
+# switch monitors
+bindsym $mod+Shift+m exec --no-startup-id ~/.config/display/switch-display.sh
 
 # screen lock
 bindsym $mod+x exec --no-startup-id i3lock-fancy
@@ -119,14 +126,13 @@ set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
-set $ws10 "10"
+set $ws10 "10: Background"
 
-# go back to the first workspace
-exec --no-startup-id i3-msg "workspace $ws1"
 # start apps on their respective workspaces. i3-msg sends a command to i3
 exec --no-startup-id i3-msg "workspace $ws1; exec wezterm"
 exec --no-startup-id i3-msg "workspace $ws2; exec firefox"
 exec --no-startup-id i3-msg "workspace $ws3; exec thunderbird"
+exec --no-startup-id i3-msg "workspace $ws10; exec protonmail-bridge"
 
 # go back to the first workspace
 exec --no-startup-id i3-msg "workspace $ws1"
@@ -197,7 +203,7 @@ client.urgent           #bf616a #bf616a #eceff4 #bf616a #bf616a
 
 # Start i3bar to display a workspace bar (plus the system information i3status finds out, if available)
 bar {
-    status_command i3status
+    status_command ~/.dotfiles/auto/fedora-i3/i3status-wifi-battery.sh   
     font pango: JetBrains Mono 12
 
     colors {

@@ -30,10 +30,11 @@ PKG_DNF=(
     neomutt,
     thunderbird,
     vlc,
+    toolbox,
 )
 PKG_CARGO=(
     starship
-    cargo-instal
+    cargo-install
 )
 FLATPAKS=(
     ch.protonmail.protonmail-bridge

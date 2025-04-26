@@ -3,17 +3,10 @@ general {
     interval = 5
 }
 
-order += "cpu_usage"
 order += "memory"
 order += "disk /"
+order += "cpu_usage"
 order += "time"
-
-cpu_usage {
-    format = "CPU: %usage"
-    color_good = "#a3be8c"      # Green-ish (nord green)
-    color_bad = "#bf616a"       # Red-ish (nord red)
-    color_degraded = "#ebcb8b"  # Yellow-ish (nord yellow)
-}
 
 memory {
     format = "Mem: %used / %total"
@@ -22,9 +15,22 @@ memory {
     color_degraded = "#ebcb8b"  # Yellow-ish (nord yellow)
 }
 
+# Modify disk / to show used space
 disk / {
-    format = "/: %avail"
+    format = "/: %used / %total"     # Shows used space and total space
+    color_good = "#a3be8c"           # Green-ish (nord green)
+    color_bad = "#bf616a"            # Red-ish (nord red)
+    color_degraded = "#ebcb8b"       # Yellow-ish (nord yellow)
+}
+
+cpu_usage {
+    format = "CPU: %usage"
     color_good = "#a3be8c"      # Green-ish (nord green)
     color_bad = "#bf616a"       # Red-ish (nord red)
     color_degraded = "#ebcb8b"  # Yellow-ish (nord yellow)
+}
+
+# Time format
+time {
+    format = "%Y-%m-%d %H:%M:%S"
 }

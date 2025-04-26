@@ -21,4 +21,5 @@ alias ......="cd ../../../../.."
 
 # applications
 alias wezterm="flatpak run org.wezfurlong.wezterm"
+alias steam="flatpak run com.valvesoftware.Steam"
 alias vim="nvim"

@@ -30,3 +30,27 @@ def run_commands(command: str, packages: list[str], pwd: str | None = None) -> N
     for pkg in packages:
         run_command(f"{command} {pkg}", pwd)
 
+
+def create_symlinks(links: dict[str, str]) -> None:
+    """Create symlinks for a dictionary of links.
+
+    :param links: dictionary of the name of the symlink and the path relative to $HOME.
+    :return None
+    """
+    for k, v in links.items():
+        link = Path(k)
+        path = Path(v)
+        home = Path.home()
+        dotfiles = Path(".dotfiles")
+
+        dotfile = home / dotfiles / path / link
+        symlink = home / path / link
+
+        if symlink.exists():
+            symlink.unlink()
+
+        if not (symlink_path := home / path).exists():
+            run_shell_command(f"mkdir {symlink_path}")
+
+        run_shell_command(f"ln -s {dotfile} {symlink}")
+

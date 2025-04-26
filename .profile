@@ -38,8 +38,7 @@ data_dirs_add "/var/lib/flatpak/exports/share" "$HOME/.local/share/flatpak/expor
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
-export MANPAGER='nvim +Man!'
 
 # initialise common tools if they exist
-[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
-[ -f "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"
+[[ -f "$HOME/.cargo/env" ]] && . "$HOME/.cargo/env"
+[[ -f "$HOME/.local/bin/env" ]] && . "$HOME/.local/bin/env"

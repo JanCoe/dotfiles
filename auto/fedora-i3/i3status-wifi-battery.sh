@@ -1,0 +1,41 @@
+#!/bin/bash
+
+i3status | while :
+do
+    read line || break
+
+    # Get Wi-Fi info
+    ssid=$(nmcli -t -f active,ssid dev wifi | grep '^yes' | cut -d':' -f2)
+    signal=$(nmcli -t -f active,signal dev wifi | grep '^yes' | cut -d':' -f2)
+    wifi_status="${ssid:-Disconnected}"
+    [ -n "$signal" ] && wifi_status+=" (${signal}%)"
+
+    # Get battery 0 info (using upower)
+    battery0=$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 2>/dev/null)
+    battery0_percentage=$(echo "$battery0" | grep -E "percentage" | awk '{print $2}')
+    battery0_state=$(echo "$battery0" | grep -E "state" | awk '{print $2}')
+    battery0_icon="🔋"
+
+    case $battery0_state in
+        charging) battery0_icon="⚡";;
+        fully-charged) battery0_icon="🔌";;
+    esac
+
+    battery0_status="$battery0_icon $battery0_percentage"
+
+    # Get battery 1 info
+    battery1=$(upower -i /org/freedesktop/UPower/devices/battery_BAT1 2>/dev/null)
+    battery1_percentage=$(echo "$battery1" | grep -E "percentage" | awk '{print $2}')
+    battery1_state=$(echo "$battery1" | grep -E "state" | awk '{print $2}')
+    battery1_icon="🔋"
+
+    case $battery1_state in
+        charging) battery1_icon="⚡";;
+        fully-charged) battery1_icon="🔌";;
+    esac
+
+    battery1_status="$battery1_icon $battery1_percentage"
+    
+    # Output: Wi-Fi | Battery0 | Battery1 | i3status
+    echo "$wifi_status | $battery0_status | $battery1_status | $line"
+done

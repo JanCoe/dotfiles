@@ -4,21 +4,23 @@
 [[ -f ~/.shell_aliases ]] && . $HOME/.shell_aliases
 
 # User specific aliases and functions
-if [ -d ~/.bashrc.d ]; then
+if [[ -d ~/.bashrc.d ]]; then
     for rc in ~/.bashrc.d/*; do
-        [ -f "$rc" ] && . "$rc"
+        [[ -f "$rc" ]] && . "$rc"
     done
 fi
 unset rc
 
 # Settings that depend on operating system
-if [ "$OSTYPE" == "darwin22" ]  # MacOS
+if [[ "$OSTYPE" == "darwin22" ]]  # MacOS
 then
    export BASH_SILENCE_DEPRECATION_WARNING=1
 fi
 
 # Use VIM motions in the command line
 set -o vi
+
+PS1="\u@\h:\w\$ "
 
 # Initialise apps
 eval "$(starship init bash)"
