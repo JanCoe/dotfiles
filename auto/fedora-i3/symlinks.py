@@ -2,14 +2,13 @@
 
 from pathlib import Path
 
-from .utils import utils
+from utils import utils
 
 # symlink: path from $HOME
 links: dict[str, str] = {
     ".bashrc": "",
     ".gitconfig": "",
     ".gitignore_global": "",
-    ".i3status-nmcli.sh": "",
     ".ideavimrc": "",
     ".inputrc": "",
     ".profile": "",
