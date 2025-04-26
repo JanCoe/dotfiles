@@ -1,6 +1,5 @@
 # Source definitions
 [[ -f /etc/bashrc ]] && . /etc/bashrc
-[[ -f ~/.profile ]] && . $HOME/.profile
 [[ -f ~/.shell_aliases ]] && . $HOME/.shell_aliases
 
 # User specific aliases and functions
