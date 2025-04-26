@@ -1,5 +1,4 @@
-# Source .profile manually (if not a login shell)
-[[ -f $HOME/.profile ]] && . $HOME/.profile
+# Source aliases
 [[ -f $HOME/.shell_aliases ]] && . $HOME/.shell_aliases
 
 # File extensions to run in neovim 
