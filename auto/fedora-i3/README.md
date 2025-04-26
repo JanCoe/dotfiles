@@ -9,17 +9,15 @@ skip_unavailable=True
 2. Update system
 sudo dnf upgrade --refresh
 
-
 3. Go to rpmfusion.org/Configuration:
     a. enable access to free and nonfree
-    b. install Appstream metadata ('sudo dnf update @core') - I think only for GNOME software so not needed.
-    c. install additional codecs
+    b. install additional codecs
 
 4. Run clone.sh: this clones the .dotfiles repo. 
 
 5. Run install.sh: this installs all the packages.
 
-6. From auto, run 'python -m fedora.symlinks': this creates symlinks of the dotfiles.
+6. From auto, run 'python -m fedora-i3.symlinks': this creates symlinks of the dotfiles.
 
 7. Create symlink to 'update.sh' script in your path
 sudo ln -s ~/.dotfiles/auto/fedora/update.sh /usr/local/bin/update
@@ -31,7 +29,7 @@ chmod +x /usr/local/bin/update
 
 9. Enable a Nord theme
     a. firefox: Nord Polar Night Theme by christos
-    b. thunderbird: nord-hardt (download and install)
+    b. thunderbird: Nord Hardt by azcst(?) (download and install)
 
 10. Setup and sync OneDrive
 
