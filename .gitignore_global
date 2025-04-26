@@ -13,6 +13,7 @@
 **/*.o
 **/*.so
 **/target/
+**/__pycache__/
 
 # Packages
 **/*.7z
