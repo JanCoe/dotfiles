@@ -83,7 +83,7 @@ echo "==> Add flathub to repo..."
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 echo "==> Installing Flathub packages..."
-for pkg in {$FLATPAKS[@]}; do
+for pkg in ${FLATPAKS[@]}; do
     echo "Installing: $pkg"
     flatpak install flathub "$pkg"
 done

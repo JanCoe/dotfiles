@@ -20,6 +20,11 @@ path_add() {
 
 # export environment variables
 path_add "$HOME/bin" "$HOME/.local/bin"
+# local flatpaks
+path_add "$HOME/.local/share/flatpak/exports/bin"
+# system-wide flatpaks
+path_add "/var/lib/flatpak/exports/bin"
+
 export EDITOR="nvim"
 export MANPAGER="nvim +Man!"
 
