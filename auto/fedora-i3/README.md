@@ -17,6 +17,8 @@ sudo dnf upgrade --refresh
 
 5. Run install.sh: this installs all the packages.
 
+5a. Set up little scripts with 'flatpak run <name>' in /usr/local/bin and chmod +x them.
+
 6. From auto, run 'python -m fedora-i3.symlinks': this creates symlinks of the dotfiles.
 
 7. Create symlink to 'update.sh' script in your path
@@ -31,11 +33,12 @@ chmod +x /usr/local/bin/update
     a. firefox: Nord Polar Night Theme by christos
     b. thunderbird: Nord Hardt by artrz (download and install)
 
-10. Setup and sync OneDrive.
+10. Setup and sync OneDrive by running 'onedrive --sync'.
 
 11. Setup Proton Bridge, Thunderbird and neomutt.
 
 12. Add 1password extension to Firefox.
+12.a Install 1password following instructions on their website.
 
 13. Sync with Obsidian vault. The following steps appear to be automatic:
     a. Create vault in Documents.
@@ -45,4 +48,4 @@ chmod +x /usr/local/bin/update
 
 14. In future, to update system (between Fedora versions) run 'update'.
 
-15. To clean up extra kernels, run 'remove_kernels.sh'.
+15. To clean up extra kernels, run 'sudo ./remove_kernels.sh'.
