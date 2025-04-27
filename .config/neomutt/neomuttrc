@@ -1,0 +1,27 @@
+# IMAP settings for Gmail
+#set imap_user = "jancoe75@gmail.com"
+#set imap_pass = "your-app-password"
+
+set folder = "imaps://imap.gmail.com/"
+set spoolfile = "+INBOX"
+
+# SMTP settings using msmtp
+set sendmail = "/usr/bin/msmtp"
+set use_from = yes
+set realname = "Your Real Name"
+set from = "jancoe75@gmail.com"
+set envelope_from = yes
+
+# Mailboxes
+mailboxes = "+INBOX" "+[Gmail]/Sent Mail" "+[Gmail]/Drafts" "+[Gmail]/All Mail" "+[Gmail]/Trash" "+[Gmail]/Spam"
+
+# Some nice UI settings
+set header_cache=~/.mutt/cache/headers
+set message_cachedir=~/.mutt/cache/bodies
+set certificate_file=~/.mutt/certificates
+set move = no
+set imap_keepalive = 900
+
+# Colors (optional)
+color status white blue
+color indicator brightyellow black
