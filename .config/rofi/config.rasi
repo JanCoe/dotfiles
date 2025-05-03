@@ -1,58 +1,9 @@
-* {
-  font: "Fira Code 12";
-  background:     #2e3440;
-  background-alt: #3b4252;
-  foreground:     #d8dee9;
-  selected:       #434c5e;
-  active:         #81a1c1;
-  urgent:         #bf616a;
-  border-color:   #4c566a;
-  border:         1px;
-  padding:        10px;
-  margin:         5px;
-  spacing:        5px;
-}
+@theme "nord"
 
-window {
-  transparency: "real";
-  location: center;
-  anchor: north;
-  fullscreen: false;
-}
-
-mainbox {
-  border: 1px solid @border-color;
-  padding: 10px;
-  background-color: @background;
-}
-
-listview {
-  fixed-height: false;
-  lines: 10;
-  spacing: 2px;
-  background-color: @background;
-  padding: 5px;
-}
-
-element {
-  padding: 5px;
-  border: 0;
-  background-color: @background;
-  text-color: @foreground;
-}
-
-element selected {
-  background-color: @selected;
-  text-color: @foreground;
-}
-
-inputbar {
-  background-color: @background;
-  text-color: @foreground;
-  border: 1px solid @border-color;
-}
-
-textbox-prompt-colon {
-  expand: false;
-  str: "➤";
+configuration {
+    modes: "window,drun,run";
+    font: "Jetbrains Mono 16";
+	show-icons: true;
+	terminal: "/home/JanCoe/.local/bin/wezterm";
+	sort: true;
 }

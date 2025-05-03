@@ -37,8 +37,7 @@ chmod +x /usr/local/bin/update
 
 11. Setup Proton Bridge, Thunderbird and neomutt.
 
-12. Add 1password extension to Firefox.
-12.a Install 1password following instructions on their website.
+12. Add 1password extension to Firefox. Install 1password following instructions on their website.
 
 13. Sync with Obsidian vault. The following steps appear to be automatic:
     a. Create vault in Documents.
@@ -46,6 +45,8 @@ chmod +x /usr/local/bin/update
     c. Inside that directory run 'git clone git@github.com:EndlessReform/obsidian-nord-muted'
     d. Select theme under Appearance/Themes.
 
-14. In future, to update system (between Fedora versions) run 'update'.
+14. Install Jetbrains Toolbox App from their website. Use that to install Pycharm and RustRover.
 
-15. To clean up extra kernels, run 'sudo ./remove_kernels.sh'.
+15. In future, to update system (between Fedora versions) run 'update'.
+
+16. To clean up extra kernels, run 'sudo ./remove_kernels.sh'.

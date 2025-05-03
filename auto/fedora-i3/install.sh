@@ -8,6 +8,7 @@ PKG_DNF=(
     @development-tools
     openssl
     cmake
+    fuse-libs  # needed for Jetbrains 
     jetbrains-mono-fonts
     papirus-icon-theme
     picom

@@ -21,8 +21,7 @@ alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
 
 # applications
-alias wezterm="flatpak run org.wezfurlong.wezterm"
 alias steam="flatpak run com.valvesoftware.Steam"
-alias obsidian="flatpak run md.obsidian.Obsidian"
-alias zen="flatpak run app.zen_browser.zen"
+# alias obsidian="flatpak run md.obsidian.Obsidian"
+# alias zen="flatpak run app.zen_browser.zen"
 alias vim="nvim"
