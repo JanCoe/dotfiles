@@ -2,28 +2,29 @@
 
 from pathlib import Path
 
-from .utils import utils
+from utils import utils
 
-# symlink: path from $HOME
-links: dict[str, str] = {
-    ".gitconfig": "",
-    ".gitignore_global": "",
-    ".ideavimrc": "",
-    ".inputrc": "",
-    ".profile": "",
-    ".shell_aliases": "",
-    ".tmux.conf": "",
-    ".vimrc": "",
-    ".wezterm.lua": "",
-    ".zoxide.nu": "",
-    ".zshrc": "",
-    "config.yml": ".config/gh",
-    "config.nu": ".config/nushell",
-    "env.nu": ".config/nushell",
-    "nvim/": ".config",  # symlink to the directory
-    "rustfmt.toml": ".config/rustfmt",
-    "starship.toml": ".config",
-}
+# (path from $HOME, symlink)
+links: list[tuple[str, str]] = [
+    ("", ".bashrc"),
+    ("", ".gitconfig"),
+    ("", ".gitignore_global"),
+    ("", ".ideavimrc"),
+    ("", ".inputrc"),
+    ("", ".profile"),
+    ("", ".shell_aliases"),
+    ("", ".tmux.conf"),
+    ("", ".vimrc"),
+    ("", ".zoxide.nu"),
+    ("", ".zshrc"),
+    (".config", "starship.toml"),
+    (".config/gh", "config.yml"),
+    (".config/nushell", "config.nu"),
+    (".config/nushell", "env.nu"),
+    (".config", "nvim/"),  # symlink to the directory
+    (".config/rustfmt", "rustfmt.toml"),
+    (".config/wezterm", "wezterm.lua"), 
+]
 
 
 if __name__ == "__main__":
