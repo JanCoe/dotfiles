@@ -3,7 +3,8 @@
 **/.DS_Store?
 
 # IDE generated
-/.idea
+**/.idea/
+**/.vscode/
 
 # Compiled source
 **/*.com

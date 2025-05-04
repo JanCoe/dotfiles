@@ -32,6 +32,7 @@ chmod +x /usr/local/bin/update
 9. Enable a Nord theme
     a. firefox: Nord Polar Night Theme by christos
     b. thunderbird: Nord Hardt by artrz (download and install)
+    c. rofi: Nord theme from github 
 
 10. Setup and sync OneDrive by running 'onedrive --sync'.
 

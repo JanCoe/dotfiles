@@ -31,15 +31,15 @@ def run_commands(command: str, packages: list[str], pwd: str | None = None) -> N
         run_command(f"{command} {pkg}", pwd)
 
 
-def create_symlinks(links: dict[str, str]) -> None:
+def create_symlinks(links: list[tuple[str, str]]) -> None:
     """Create symlinks for a dictionary of links.
 
-    :param links: dictionary of the name of the symlink and the path relative to $HOME.
+    :param links: tuple of the path relative to $HOME and the name of the symlink.
     :return None
     """
-    for k, v in links.items():
-        link = Path(k)
-        path = Path(v)
+    for item in links:
+        path = Path(item[0])
+        link = Path(item[1])
         home = Path.home()
         dotfiles = Path(".dotfiles")
 

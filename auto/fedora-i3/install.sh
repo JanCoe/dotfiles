@@ -1,7 +1,6 @@
 #!/bin/bash
 
 PKG_COPR=(
-  wezfurlong/wezterm-nightly
   rubemlrm/nordzy-icon # for nordic theme
 )
 PKG_DNF=(
@@ -25,7 +24,6 @@ PKG_DNF=(
     uv
     ruff
     neovim
-    wezterm
     nushell
     neomutt
     thunderbird

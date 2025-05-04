@@ -4,32 +4,34 @@ from pathlib import Path
 
 from utils import utils
 
-# symlink: path from $HOME
-links: dict[str, str] = {
-    ".bashrc": "",
-    ".gitconfig": "",
-    ".gitignore_global": "",
-    ".ideavimrc": "",
-    ".inputrc": "",
-    ".profile": "",
-    ".shell_aliases": "",
-    ".tmux.conf": "",
-    ".vimrc": "",
-    ".wezterm.lua": "",
-    ".zoxide.nu": "",
-    ".zshrc": "",
-    "config.yml": ".config/gh",
-    "config": ".config/i3",
-    "config": ".config/i3status",
-    "picom.conf": ".config/picom",
-    "settings.ini": ".config/gtk-3.0",  # for gtk themed apps
-    "settings.ini": ".config/gtk-4.0",  # for gtk themed apps
-    "config.nu": ".config/nushell",
-    "env.nu": ".config/nushell",
-    "nvim/": ".config",  # symlink to the directory
-    "rustfmt.toml": ".config/rustfmt",
-    "starship.toml": ".config",
-}
+# (path from $HOME, file or directory)
+links: list[tuple[str, str]] = [
+    ("", ".bashrc"),
+    ("", ".gitconfig"),
+    ("", ".gitignore_global"),
+    ("", ".ideavimrc"),
+    ("", ".inputrc"),
+    ("", ".profile"),
+    ("", ".shell_aliases"),
+    ("", ".tmux.conf"),
+    ("", ".vimrc"),
+    ("", ".Xresources"),
+    ("", ".zoxide.nu"),
+    ("", ".zshrc"),
+    (".config/i3", "config",),
+    (".config/i3status", "config"),
+    (".config/rofi", "config.rasi"),
+    (".config/gh", "config.yml"),
+    (".config/picom", "picom.conf"),
+    (".config/gtk-3.0", "settings.ini"),  # for gtk themed app
+    (".config/gtk-4.0", "settings.ini"),  # for gtk themed apps
+    (".config/nushell", "config.nu"),
+    (".config/nushell", "env.nu"),
+    (".config/wezterm", "wezterm.lua"), 
+    (".config", "nvim/"),  # symlink to the directory
+    (".config/rustfmt", "rustfmt.toml"),
+    (".config", "starship.toml"),
+]
 
 
 if __name__ == "__main__":
