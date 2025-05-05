@@ -25,6 +25,11 @@ sudo dnf upgrade --refresh
 sudo ln -s ~/.dotfiles/auto/fedora-i3/update.sh /usr/local/bin/update
 chmod +x /usr/local/bin/update
 
+8. Create symlink to 'switch-display.sh' script in your path
+ln -s ~/.dotfiles/auto/fedora-i3/switch-display.sh ~/.local/bin/switch-display.sh
+
+chmod +x ~/.dotfiles/auto/fedora-i3/switch-display.sh
+
 8. To show background on login screen:
     a. copy background to /usr/share/backgrounds
     b. edit /etc/lightdm/lightdm-gtk-greeter.conf in greeter section to use background file as background
@@ -48,6 +53,8 @@ chmod +x /usr/local/bin/update
 
 14. Install Jetbrains Toolbox App from their website. Use that to install Pycharm and RustRover.
 
-15. In future, to update system (between Fedora versions) run 'update'.
+15. Install HyperBackupExplorer from Synology website for exploring backups.
 
-16. To clean up extra kernels, run 'sudo ./remove_kernels.sh'.
+16. In future, to update system (between Fedora versions) run 'update'.
+
+17. To clean up extra kernels, run 'sudo ./remove_kernels.sh'.

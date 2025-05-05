@@ -8,6 +8,7 @@ PKG_DNF=(
     openssl
     cmake
     fuse-libs  # needed for Jetbrains 
+    libxcrypt-compat  # needed for Synology HyperBackupExplorer 
     jetbrains-mono-fonts
     papirus-icon-theme
     picom
@@ -37,8 +38,8 @@ PKG_CARGO=(
 )
 FLATPAKS=(
     ch.protonmail.protonmail-bridge
-    app.zen_browser.zen
     md.obsidian.Obsidian
+    com.vivaldi.Vivaldi
 )
 
 read -s -p "Enter your sudo password: " pwd

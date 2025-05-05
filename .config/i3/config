@@ -13,20 +13,18 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
+# Bind CapsLock to Esc
+exec --no-startup-id setxkbmap -option caps:escape
+
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork -c 3b4252
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork -c 3b4252
 
 # NetworkManager system tray GUI
 exec --no-startup-id nm-applet
 
-# Bind CapsLock to Esc
-exec --no-startup-id setxkbmap -option caps:escape
-
 # Order is important. Set screens, set background, run picom
-exec --no-startup-id ~/.config/display/switch-display.sh
-# Assume external display is connected to HDMI-2
-exec --no-startup-id xrandr --output eDP-1 --auto --primary --output HDMI-2 --auto --right-of eDP-1
+exec --no-startup-id switch-display
 exec --no-startup-id feh --bg-scale ~/.dotfiles/backgrounds/touhou_anime.jpg
 exec --no-startup-id picom --config ~/.config/picom/picom.conf
 
@@ -38,11 +36,11 @@ assign [class="obsidian"] $ws4
 assign [class="Proton Mail Bridge"] $ws10
 
 # Start some apps
-exec --no-startup-id exec wezterm
-exec --no-startup-id exec vivaldi
-exec --no-startup-id exec thunderbird
-exec --no-startup-id exec obsidian
-exec --no-startup-id exec protonmail-bridge
+exec --no-startup-id wezterm
+exec --no-startup-id vivaldi
+exec --no-startup-id thunderbird
+exec --no-startup-id obsidian
+exec --no-startup-id protonmail-bridge
 
 # Select the first workspace
 exec --no-startup-id i3-msg "workspace $ws1"
@@ -63,10 +61,10 @@ bindsym $mod+Return exec wezterm
 # Kill focused window
 bindsym $mod+Shift+w kill
 
-bindsym $mod+d exec "rofi -show combi -modes combi -combi-modes 'window,drun,run'"
+bindsym $mod+d exec --no-startup-id rofi_run
 
 # Switch monitors
-bindsym $mod+Shift+m exec --no-startup-id ~/.config/display/switch-display.sh
+bindsym $mod+Shift+m exec --no-startup-id switch-display
 
 # Screen lock
 bindsym $mod+x exec --no-startup-id i3lock-fancy
@@ -106,7 +104,7 @@ bindsym $mod+space focus mode_toggle
 # Focus the parent container
 bindsym $mod+a focus parent
 
-# Cocus the child container
+# Focus the child container
 # bindsym $mod+d focus child
 
 # Switch to workspace
@@ -135,8 +133,10 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # Configuration file reload
 bindsym $mod+Shift+c reload
+
 # Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
+
 # Exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
