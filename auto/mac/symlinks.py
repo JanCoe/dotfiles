@@ -1,8 +1,6 @@
 """Create symlinks for config files in dotfiles."""
 
-from pathlib import Path
-
-from utils import utils
+from auto.utils import utils
 
 # (path from $HOME, symlink)
 links: list[tuple[str, str]] = [
