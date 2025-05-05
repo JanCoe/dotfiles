@@ -7,7 +7,7 @@ alias -s config=nvim
 alias -s cfg=nvim
 alias -s yaml=nvim
 alias -s rs=nvim
-#
+
 # Use vim motions in command line 
 bindkey -v
 
