@@ -23,13 +23,14 @@ links: list[tuple[str, str]] = [
     (".config/rofi", "config.rasi"),
     (".config/gh", "config.yml"),
     (".config/picom", "picom.conf"),
-    (".config/gtk-3.0", "settings.ini"),  # for gtk themed app
+    (".config/gtk-3.0", "settings.ini"),  # for gtk themed apps
     (".config/gtk-4.0", "settings.ini"),  # for gtk themed apps
     (".config/nushell", "config.nu"),
     (".config/nushell", "env.nu"),
     (".config/wezterm", "wezterm.lua"), 
-    (".config", "nvim/"),  # symlink to the directory
     (".config/rustfmt", "rustfmt.toml"),
+    (".config/yazi", "yazi.toml"),
+    (".config", "nvim/"),  # symlink to the directory
     (".config", "starship.toml"),
 ]
 

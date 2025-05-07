@@ -2,6 +2,7 @@
 
 PKG_COPR=(
   rubemlrm/nordzy-icon # for nordic theme
+  lihaohong/yazi
 )
 PKG_DNF=(
     @development-tools
@@ -17,6 +18,7 @@ PKG_DNF=(
     tldr
     htop
     fzf
+    yazi 
     git-lfs
     gh
     zoxide

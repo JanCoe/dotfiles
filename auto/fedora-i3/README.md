@@ -5,6 +5,8 @@ fastestmirror=True
 keepcache=True
 defaultyes=True
 skip_unavailable=True
+max_parallel_downloads=10
+install_weak_deps=False
 
 2. Update system
 sudo dnf upgrade --refresh

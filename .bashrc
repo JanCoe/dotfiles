@@ -25,3 +25,5 @@ PS1="\u@\h:\w\$ "
 eval "$(starship init bash)"
 eval "$(zoxide init bash)"
 alias cd="z" # set this after initialising zoxide
+
+eval "fastfetch"
