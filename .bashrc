@@ -11,8 +11,7 @@ fi
 unset rc
 
 # Settings that depend on operating system
-if [[ "$OSTYPE" == "darwin22" ]]  # MacOS
-then
+if [[ "$OSTYPE" == "darwin22" ]]; then # MacOS
    export BASH_SILENCE_DEPRECATION_WARNING=1
 fi
 

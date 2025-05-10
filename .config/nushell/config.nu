@@ -52,16 +52,24 @@ $env.PAGER = "nvim"
 $env.config.edit_mode = "vi"
 $env.config.buffer_editor = "nvim"
 
+# General aliases
+alias ll = ls -la
+alias g = git
+alias v = nvim
+alias y = yazi
+alias f = fzf
+
+# cd up levels
+alias .. = cd ..
+alias ... = cd ../..
+alias .... = cd ../../..
+alias ..... = cd ../../../..
+alias ...... = cd ../../../../..
+
 # Activate starship
 mkdir ($nu.data-dir | path join "vendor/autoload")
 starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
 
 # Source zoxide
 source ~/.zoxide.nu
-
-alias ll = ls -la
-alias vim = nvim
-alias .. = cd ..
-alias ... = cd ../..
-alias .... = cd ../../..
 alias cd = z
