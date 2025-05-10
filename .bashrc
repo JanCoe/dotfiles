@@ -16,8 +16,8 @@ then
    export BASH_SILENCE_DEPRECATION_WARNING=1
 fi
 
-# Use VIM motions in the command line
 set -o vi
+set -o history
 
 PS1="\u@\h:\w\$ "
 
@@ -25,5 +25,3 @@ PS1="\u@\h:\w\$ "
 eval "$(starship init bash)"
 eval "$(zoxide init bash)"
 alias cd="z" # set this after initialising zoxide
-
-eval "fastfetch"

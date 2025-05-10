@@ -3,7 +3,6 @@ vim.wo.number = true
 
 vim.opt.scrolloff = 999
 vim.opt.colorcolumn = "108"
-
 vim.opt.wrap = false
 
 vim.opt.smartindent = true
@@ -30,3 +29,10 @@ vim.opt.splitright = true
 
 vim.opt.termguicolors = true
 vim.opt.ttyfast = true
+
+-- Set up diagnostics
+vim.diagnostic.config({
+  virtual_text = true,
+  virtual_lines = false,
+})
+

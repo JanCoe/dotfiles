@@ -8,10 +8,12 @@ fi
 
 # Commands 
 alias ll="ls -la"
-alias fzn="fzf | xargs nvim" # 'fzf neovim': pipe fzf output into neovim
-alias fzp="fzf --preview 'cat {}' | xargs nvim" # 'fzf preview': get a preview of the fzf output and pipe it into neovim
+alias v="nvim"
+alias y="yazi"
+alias f="fzf"
+alias fv="fzf | xargs nvim" # 'fzf vim': pipe fzf output into neovim
+alias fp="fzf --preview 'cat {}' | xargs nvim" # 'fzf preview': get a preview of the fzf output and pipe it into neovim
 alias lines="git ls-files | grep .py | xargs cat | wc -l"
-alias fastfetch="fastfetch --load-config /usr/share/fastfetch/presets/examples/7.jsonc"
 
 # cd'ing up levels
 alias ..="cd .."
@@ -19,6 +21,3 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
-
-# applications
-alias vim="nvim"

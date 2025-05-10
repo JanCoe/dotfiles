@@ -21,6 +21,14 @@ config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = true
 config.tab_max_width = 32
 
+-- Run fastfetch only when WezTerm starts. 
+wezterm.on("gui-startup", function(cmd)
+  local mux = wezterm.mux
+  local tab, pane, window = mux.spawn_window({
+    args = {"/bin/bash", "-l", "-c", "fastfetch; exec bash -l"}
+  })
+end)
+
 -- Keybinding helper function
 local function key_binding(key_table)
   local result = {}

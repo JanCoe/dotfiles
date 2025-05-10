@@ -1,12 +1,19 @@
 return {
-  "williamboman/mason-lspconfig.nvim",
-  dependencies = { "mason.nvim" },
+  "mason-org/mason-lspconfig.nvim",
+  dependencies = { "mason-org/mason.nvim" },
   config = function()
-    require("mason-lspconfig").setup()
-    require("mason-lspconfig").setup_handlers({
-      function(server_name)
-        require("lspconfig")[server_name].setup({})
-      end,
+    require("mason-lspconfig").setup({
+      ensure_installed = {
+        "bashls",
+        "clangd",
+        "lua_ls",
+        "mutt_ls",
+        "pyright",
+        "ruff",
+        "rust_analyzer",
+        "yamlls"
+      },
+      automatic_installation = true,
     })
   end,
 }

@@ -24,4 +24,4 @@ set imap_keepalive = 900
 
 # Colors (optional)
 color status white blue
-color indicator brightyellow black
+color indicator yellow black

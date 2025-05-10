@@ -1,8 +1,8 @@
 return {
   "neovim/nvim-lspconfig",
-  lazy = true,
+  event = { "BufReadPre", "BufNewFile" },  -- lazy loaded on file open
   dependencies = {
-    "mason-lspconfig.nvim",
+    "mason-org/mason-lspconfig.nvim",
     {
       "folke/lazydev.nvim",
       ft = "lua", -- only load on lua files
@@ -13,5 +13,4 @@ return {
       },
     },
   },
-  event = { "BufReadPre", "BufNewFile" },
 }
