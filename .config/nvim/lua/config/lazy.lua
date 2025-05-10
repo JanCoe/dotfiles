@@ -21,9 +21,12 @@ require("lazy").setup({
     require("plugins.treesitter"),
     require("plugins.mason"),
     require("plugins.masonconfig"),
-    require("plugins.lspconfig"),
+    require("plugins.lazydev"),
     require("plugins.zoxide"),
+    require("plugins.rustfmt").setup(),
   },
   install = { colorscheme = { "nord" } },
   checker = { enabled = true },
 })
+
+

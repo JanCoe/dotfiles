@@ -13,7 +13,7 @@ config.max_fps = 120
 config.animation_fps = 1
 config.line_height = 1.05
 config.warn_about_missing_glyphs = false
-config.enable_scroll_bar = true 
+config.enable_scroll_bar = true
 
 config.hide_tab_bar_if_only_one_tab = true
 config.enable_tab_bar = true
@@ -21,12 +21,8 @@ config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = true
 config.tab_max_width = 32
 
--- Run fastfetch only when WezTerm starts. 
-wezterm.on("gui-startup", function(cmd)
-  local mux = wezterm.mux
-  local tab, pane, window = mux.spawn_window({
-    args = {"/bin/bash", "-l", "-c", "fastfetch; exec bash -l"}
-  })
+wezterm.on("gui-startup", function()
+  wezterm.mux.spawn_window({ args = {"/bin/bash", "-l", "-c", "fastfetch; exec bash -l"}})
 end)
 
 -- Keybinding helper function
