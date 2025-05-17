@@ -2,7 +2,7 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
 config.font = wezterm.font { family = "JetBrains Mono", scale = 1 }
-config.font_size = 15
+config.font_size = 18
 config.color_scheme = "nord"
 config.colors = {
   tab_bar = { inactive_tab_edge = '#ECEFF4', active_tab = { fg_color = '#D8DEE9', bg_color = '#4c566A' },
@@ -25,15 +25,6 @@ wezterm.on("gui-startup", function()
   wezterm.mux.spawn_window({ args = {"/bin/bash", "-l", "-c", "fastfetch; exec bash -l"}})
 end)
 
--- Keybinding helper function
-local function key_binding(key_table)
-  local result = {}
-  for _, val in ipairs(key_table) do
-    table.insert(result, {mods=val[1], key=val[2], action=val[3]})
-  end
-  return result
-end
-
 local function prompt_input()
   return wezterm.action.PromptInputLine {
     description = 'Enter new name for tab',
@@ -45,6 +36,15 @@ local function prompt_input()
       end
     ),
   }
+end
+
+-- Keybinding helper function
+local function key_binding(key_table)
+  local result = {}
+  for _, val in ipairs(key_table) do
+    table.insert(result, {mods=val[1], key=val[2], action=val[3]})
+  end
+  return result
 end
 
 local a = wezterm.action

@@ -58,6 +58,7 @@ alias g = git
 alias v = nvim
 alias y = yazi
 alias f = fzf
+alias pic = wezterm imgcat
 
 # cd up levels
 alias .. = cd ..

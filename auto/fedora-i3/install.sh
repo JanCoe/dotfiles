@@ -10,9 +10,12 @@ PKG_DNF=(
     cmake
     fuse-libs  # needed for Jetbrains 
     libxcrypt-compat  # needed for Synology HyperBackupExplorer 
+    ibm-plex-serif-fonts 
+    ibm-plex-sans-fonts
     jetbrains-mono-fonts
     papirus-icon-theme
-    picom
+    picom  # compositor
+    cheese  # for webcam
     flatpak
     fastfetch
     tldr
@@ -42,6 +45,7 @@ FLATPAKS=(
     ch.protonmail.protonmail-bridge
     md.obsidian.Obsidian
     com.vivaldi.Vivaldi
+    us.zoom.Zoom
 )
 
 read -s -p "Enter your sudo password: " pwd
@@ -71,7 +75,7 @@ for pkg in ${PKG_DNF[@]}; do
     echo $pwd | sudo -S dnf install -y "$pkg"
 done
 
-echo "==> Installing Rust and updating to latest."
+echo "==> Installing Rust and updating to latest..."
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 rustup 
 

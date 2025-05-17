@@ -19,44 +19,52 @@ sudo dnf upgrade --refresh
 
 5. Run install.sh: this installs all the packages.
 
-5a. Set up little scripts with 'flatpak run <name>' in /usr/local/bin and chmod +x them.
+6. Set up little scripts with 'flatpak run <name>' in /usr/local/bin and chmod +x them.
 
-6. From auto, run 'python -m fedora-i3.symlinks': this creates symlinks of the dotfiles.
+7. From auto, run 'python -m fedora-i3.symlinks': this creates symlinks of the dotfiles.
 
-7. Create symlink to 'update.sh' script in your path
+8. Install i3lock-fancy:
+cd ~/Downloads
+git clone https://github.com/meskarune/i3lock-fancy.git
+cd i3lock-fancy
+sudo make install
+cd ..
+rm -rf i3lock-fancy
+
+9. Create symlink to 'update.sh' script in your path
 sudo ln -s ~/.dotfiles/auto/fedora-i3/update.sh /usr/local/bin/update
 chmod +x /usr/local/bin/update
 
-8. Create symlink to 'switch-display.sh' script in your path
+10. Create symlink to 'switch-display.sh' script in your path
 ln -s ~/.dotfiles/auto/fedora-i3/switch-display.sh ~/.local/bin/switch-display.sh
 
 chmod +x ~/.dotfiles/auto/fedora-i3/switch-display.sh
 
-8. To show background on login screen:
+11. To show background on login screen:
     a. copy background to /usr/share/backgrounds
     b. edit /etc/lightdm/lightdm-gtk-greeter.conf in greeter section to use background file as background
 
-9. Enable a Nord theme
+12. Enable a Nord theme
     a. firefox: Nord Polar Night Theme by christos
     b. thunderbird: Nord Hardt by artrz (download and install)
     c. rofi: Nord theme from github 
 
-10. Setup and sync OneDrive by running 'onedrive --sync'.
+13. Setup and sync OneDrive by running 'onedrive --sync'.
 
-11. Setup Proton Bridge, Thunderbird and neomutt.
+14. Setup Proton Bridge, Thunderbird and neomutt.
 
-12. Add 1password extension to Firefox. Install 1password following instructions on their website.
+15. Add 1password extension to Firefox. Install 1password following instructions on their website.
 
-13. Sync with Obsidian vault. The following steps appear to be automatic:
+16. Sync with Obsidian vault. The following steps appear to be automatic:
     a. Create vault in Documents.
     b. Create a VAULT/.obsidian/themes directory
     c. Inside that directory run 'git clone git@github.com:EndlessReform/obsidian-nord-muted'
     d. Select theme under Appearance/Themes.
 
-14. Install Jetbrains Toolbox App from their website. Use that to install Pycharm and RustRover.
+17. Install Jetbrains Toolbox App from their website. Use that to install Pycharm and RustRover.
 
-15. Install HyperBackupExplorer from Synology website for exploring backups.
+18. Install HyperBackupExplorer from Synology website for exploring backups.
 
-16. In future, to update system (between Fedora versions) run 'update'.
+19. In future, to update system (between Fedora versions) run 'update'.
 
-17. To clean up extra kernels, run 'sudo ./remove_kernels.sh'.
+20. To clean up extra kernels, run 'sudo ./remove_kernels.sh'.

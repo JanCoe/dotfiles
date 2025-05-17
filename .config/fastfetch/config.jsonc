@@ -22,7 +22,7 @@
         },
         {
             "type": "os",
-            "key": "├ ",
+            "key": "├",
             "keyColor": "yellow"
         },
         {
@@ -132,7 +132,7 @@
             "keyColor": "cyan"
         },
 
-        "break",
-        "colors"
+        //"break",
+        //"colors"
     ]
 }

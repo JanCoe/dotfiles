@@ -1,5 +1,5 @@
 set $mod Mod1
-font pango: JetBrains Mono 12
+font pango: IBM Plex Sans 12
 
 # Define names for default workspaces for which we configure key bindings later on.
 set $ws1 "1: Term"
@@ -15,10 +15,6 @@ set $ws10 "10"
 
 # Bind CapsLock to Esc
 exec --no-startup-id setxkbmap -option caps:escape
-
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# screen before suspend. Use loginctl lock-session to lock your screen.
-# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork -c 3b4252
 
 # NetworkManager system tray GUI
 exec --no-startup-id nm-applet
@@ -56,36 +52,17 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # Start a terminal
-bindsym $mod+Return exec wezterm 
-
-# Kill focused window
-bindsym $mod+Shift+w kill
-
+bindsym $mod+Return exec wezterm
 bindsym $mod+d exec --no-startup-id rofi_run
+
+# Kill focussed window
+bindsym $mod+Shift+w kill
 
 # Switch monitors
 bindsym $mod+Shift+m exec --no-startup-id switch-display
 
 # Screen lock
 bindsym $mod+x exec --no-startup-id i3lock-fancy
-
-# Change focus
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
-
-# Move focused window
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
-
-# Split in horizontal orientation
-bindsym $mod+- split h
-
-# Split in vertical orientation
-bindsym $mod+= split v
 
 # Enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -106,6 +83,24 @@ bindsym $mod+a focus parent
 
 # Focus the child container
 # bindsym $mod+d focus child
+
+# Split in horizontal orientation
+bindsym $mod+minus split h
+
+# Split in vertical orientation
+bindsym $mod+equal split v
+
+# Change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# Move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # Switch to workspace
 bindsym $mod+1 workspace number $ws1
