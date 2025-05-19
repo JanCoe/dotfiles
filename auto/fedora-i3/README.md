@@ -23,6 +23,11 @@ sudo dnf upgrade --refresh
 
 7. From auto, run 'python -m fedora-i3.symlinks': this creates symlinks of the dotfiles.
 
+8. Switch from lightdm to sddm:
+sudo systemctl disable lightdm
+sudo systemctl enable sddm
+Check that /usr/share/wayland-session/hyprland.desktop and /usr/share/xsessions/i3.desktop exist.
+
 8. Install i3lock-fancy:
 cd ~/Downloads
 git clone https://github.com/meskarune/i3lock-fancy.git

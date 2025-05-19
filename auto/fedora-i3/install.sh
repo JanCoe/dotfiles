@@ -14,7 +14,7 @@ PKG_DNF=(
     ibm-plex-sans-fonts
     jetbrains-mono-fonts
     papirus-icon-theme
-    picom  # compositor
+    picom  # compositor for i3
     cheese  # for webcam
     flatpak
     fastfetch
