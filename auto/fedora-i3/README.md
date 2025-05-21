@@ -63,6 +63,6 @@ chmod +x ~/.dotfiles/auto/fedora-i3/switch-display.sh
 
 18. Install HyperBackupExplorer from Synology website for exploring backups.
 
-19. In future, to update system (between Fedora versions) run 'update'.
+19. In future, to update system (between Fedora versions) run 'update-fedora'.
 
-20. To clean up extra kernels, run 'sudo ./remove_kernels.sh'.
+20. To clean up extra kernels, run 'remove-kernels'.

@@ -1,3 +1,6 @@
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
 # Source definitions
 [[ -f /etc/bashrc ]] && . /etc/bashrc
 [[ -f ~/.shell_aliases ]] && . $HOME/.shell_aliases
@@ -18,7 +21,11 @@ fi
 set -o vi
 set -o history
 
-PS1="\u@\h:\w\$ "
+HISTSIZE=10000 # number of commands to remember in memory
+HISTFILESIZE=20000 # number of commands to szve to ~/.bash_history
+shopt -s histappend # append tot he history file, don't overwrite it
+export HISTCONTROL=ignoredups:ignorespace # don't sotre duplicate lines or commands starting with a space
+export HISTIGNORE="ls:ll:cd:* --help" # ignore specific commands from history
 
 # Initialise apps
 eval "$(starship init bash)"
