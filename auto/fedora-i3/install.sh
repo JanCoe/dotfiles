@@ -12,6 +12,7 @@ PKG_DNF=(
     libxcrypt-compat  # needed for Synology HyperBackupExplorer 
     ibm-plex-serif-fonts 
     ibm-plex-sans-fonts
+    rsms-inter-fonts
     jetbrains-mono-fonts
     papirus-icon-theme
     picom  # compositor for i3

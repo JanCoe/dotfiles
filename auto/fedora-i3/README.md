@@ -19,14 +19,7 @@ sudo dnf upgrade --refresh
 
 5. Run install.sh: this installs all the packages.
 
-6. Set up little scripts with 'flatpak run <name>' in /usr/local/bin and chmod +x them.
-
-7. From auto, run 'python -m fedora-i3.symlinks': this creates symlinks of the dotfiles.
-
-8. Switch from lightdm to sddm:
-sudo systemctl disable lightdm
-sudo systemctl enable sddm
-Check that /usr/share/wayland-session/hyprland.desktop and /usr/share/xsessions/i3.desktop exist.
+6. From auto, run 'python -m fedora-i3.symlink-configs': this creates symlinks of the dotfiles.
 
 8. Install i3lock-fancy:
 cd ~/Downloads

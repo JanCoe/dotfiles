@@ -1,3 +1,4 @@
+
 """Create symlinks for config files in dotfiles."""
 from utils import utils
 
@@ -38,4 +39,3 @@ links: list[tuple[str, str]] = [
 
 if __name__ == "__main__":
     utils.create_symlinks(links)
-
