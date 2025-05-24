@@ -1,0 +1,14 @@
+font=Inter 12
+background-color=#2E3440
+text-color=#D8DEE9
+border-color=#4C566A
+border-size=2
+border-radius=6
+padding=10
+default-timeout=5000
+max-visible=5
+width=400
+height=100
+margin=10
+anchor=top-right
+icons=true

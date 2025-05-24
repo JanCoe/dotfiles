@@ -65,7 +65,6 @@ alias .. = cd ..
 alias ... = cd ../..
 alias .... = cd ../../..
 alias ..... = cd ../../../..
-alias ...... = cd ../../../../..
 
 # Activate starship
 mkdir ($nu.data-dir | path join "vendor/autoload")

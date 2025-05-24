@@ -28,6 +28,7 @@ path_add "/var/lib/flatpak/exports/bin"
 export EDITOR="nvim"
 export MANPAGER="nvim +Man!"
 export COLORTERM=truecolor
+export STARSHIP_CONFIG=~/.config/starship/starship.toml
 
 data_dirs_add() {
     for dir in "$@"; do

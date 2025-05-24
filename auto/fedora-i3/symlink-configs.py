@@ -31,6 +31,7 @@ links: list[tuple[str, str]] = [
     (".config/picom", "picom.conf"),
     (".config/rofi", "config.rasi"),
     (".config/rustfmt", "rustfmt.toml"),
+    (".config/starship", "starship.toml"),
     (".config/waybar", "config.jsonc"), 
     (".config/waybar", "style.css"), 
     (".config/wezterm", "wezterm.lua"), 

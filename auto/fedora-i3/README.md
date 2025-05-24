@@ -38,6 +38,15 @@ ln -s ~/.dotfiles/auto/fedora-i3/switch-display.sh ~/.local/bin/switch-display.s
 
 chmod +x ~/.dotfiles/auto/fedora-i3/switch-display.sh
 
+9a. Set it up so that dunst runs under i3 and mako under wayland:
+systemctl --user daemon-reexec
+systemctl --user daemon-reload
+systemctl --user enable --now mako.service
+systemctl --user enable --now dunst.service
+
+9b. Add the following line to /etc/pam.d/lightdm (to ensure LighDM is launching the session via PAM with systemd support).
+session optional pam_systemd.so
+
 10. To show background on login screen:
     a. copy background to /usr/share/backgrounds
     b. edit /etc/lightdm/lightdm-gtk-greeter.conf in greeter section to use background file as background
