@@ -19,6 +19,8 @@ PKG_DNF=(
     cheese  # for webcam
     flatpak
     fastfetch
+    bat
+    fd
     tldr
     htop
     fzf
@@ -39,13 +41,17 @@ PKG_DNF=(
     onedrive
 )
 PKG_CARGO=(
-    starship
     cargo-update
+    dua 
+    du-dust
+    hyperfine
+    starship
+    tokei
 )
 FLATPAKS=(
     ch.protonmail.protonmail-bridge
-    md.obsidian.Obsidian
     com.vivaldi.Vivaldi
+    md.obsidian.Obsidian
     us.zoom.Zoom
 )
 

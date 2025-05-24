@@ -5,20 +5,27 @@ else # Mac or Linux
     alias pva="source .venv/bin/activate" # Python Venv Activate
 fi
 
+# Define a function to alias coreutils commands to their Rust equivalents
+alias_rust_coreutils() {
+  local cmds=("$@")
+  for cmd in "${cmds[@]}"; do
+    alias "$cmd"="uutils-coreutils $cmd"
+  done
+}
+alias_rust_coreutils cat cp date dd df dir echo ln mkdir mv printf pwd rm \
+                     sleep sort split sum tail tee, touch, uniq, unlink, wc, yes
+
 # Commands 
 alias ll="ls -la"
 alias v="nvim"
 alias y="yazi"
 alias g="git"
-alias f="fzf"
 alias fv="fzf | xargs nvim" # 'fzf vim': pipe fzf output into neovim
 alias fp="fzf --preview 'cat {}' | xargs nvim" # 'fzf preview': get a preview of the fzf output and pipe it into neovim
 alias pic="wezterm imgcat"
-alias lines="git ls-files | grep '*.py' | xargs cat | wc -l"
 
 # cd'ing up levels
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
-alias ......="cd ../../../../.."

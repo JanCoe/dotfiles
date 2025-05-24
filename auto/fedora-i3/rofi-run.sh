@@ -1,2 +1,2 @@
 #!/bin/bash
-rofi -show combi -modes combi -combi-modes "window,drun,run"
+rofi -show combi -modes combi -combi-modes "window,drun"

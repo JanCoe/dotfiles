@@ -21,7 +21,7 @@ sudo dnf upgrade --refresh
 
 6. From auto, run 'python -m fedora-i3.symlink-configs': this creates symlinks of the dotfiles.
 
-8. Install i3lock-fancy:
+7. Install i3lock-fancy:
 cd ~/Downloads
 git clone https://github.com/meskarune/i3lock-fancy.git
 cd i3lock-fancy
@@ -29,40 +29,40 @@ sudo make install
 cd ..
 rm -rf i3lock-fancy
 
-9. Create symlink to 'update.sh' script in your path
+8. Create symlink to 'update.sh' script in your path
 sudo ln -s ~/.dotfiles/auto/fedora-i3/update.sh /usr/local/bin/update
 chmod +x /usr/local/bin/update
 
-10. Create symlink to 'switch-display.sh' script in your path
+9. Create symlink to 'switch-display.sh' script in your path
 ln -s ~/.dotfiles/auto/fedora-i3/switch-display.sh ~/.local/bin/switch-display.sh
 
 chmod +x ~/.dotfiles/auto/fedora-i3/switch-display.sh
 
-11. To show background on login screen:
+10. To show background on login screen:
     a. copy background to /usr/share/backgrounds
     b. edit /etc/lightdm/lightdm-gtk-greeter.conf in greeter section to use background file as background
 
-12. Enable a Nord theme
+11. Enable a Nord theme
     a. firefox: Nord Polar Night Theme by christos
     b. thunderbird: Nord Hardt by artrz (download and install)
     c. rofi: Nord theme from github 
 
-13. Setup and sync OneDrive by running 'onedrive --sync'.
+12. Setup and sync OneDrive by running 'onedrive --sync'.
 
-14. Setup Proton Bridge, Thunderbird and neomutt.
+13. Setup Proton Bridge, Thunderbird and neomutt.
 
-15. Add 1password extension to Firefox. Install 1password following instructions on their website.
+14. Add 1password extension to Firefox. Install 1password following instructions on their website.
 
-16. Sync with Obsidian vault. The following steps appear to be automatic:
+15. Sync with Obsidian vault. The following steps appear to be automatic:
     a. Create vault in Documents.
     b. Create a VAULT/.obsidian/themes directory
     c. Inside that directory run 'git clone git@github.com:EndlessReform/obsidian-nord-muted'
     d. Select theme under Appearance/Themes.
 
-17. Install Jetbrains Toolbox App from their website. Use that to install Pycharm and RustRover.
+16. Install Jetbrains Toolbox App from their website. Use that to install Pycharm and RustRover.
 
-18. Install HyperBackupExplorer from Synology website for exploring backups.
+17. Install HyperBackupExplorer from Synology website for exploring backups.
 
-19. In future, to update system (between Fedora versions) run 'update-fedora'.
+18. In future, to update system (between Fedora versions) run 'update-fedora'.
 
-20. To clean up extra kernels, run 'remove-kernels'.
+19. To clean up extra kernels, run 'remove-kernels'.

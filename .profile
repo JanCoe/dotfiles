@@ -27,6 +27,7 @@ path_add "/var/lib/flatpak/exports/bin"
 
 export EDITOR="nvim"
 export MANPAGER="nvim +Man!"
+export COLORTERM=truecolor
 
 data_dirs_add() {
     for dir in "$@"; do
