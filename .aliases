@@ -12,8 +12,8 @@ alias_rust_coreutils() {
     alias "$cmd"="uutils-coreutils $cmd"
   done
 }
-alias_rust_coreutils cat cp date dd df dir echo ln mkdir mv printf pwd rm \
-                     sleep sort split sum tail tee, touch, uniq, unlink, wc, yes
+# alias_rust_coreutils cat cp date dd df dir echo ln mkdir mv printf pwd rm \
+#                     sleep sort split sum tail tee, touch, uniq, unlink, wc, yes
 
 # Commands 
 alias ll="ls -la"

@@ -19,6 +19,7 @@ PKG_DNF=(
     picom  # compositor for i3
     cheese  # for webcam
     flatpak
+    uutils-coreutils
     fastfetch
     bat
     fd

@@ -26,7 +26,7 @@ def main() -> None:
         ".config/fastfetch/",  # symlink to the directory
         ".config/nvim/",  # symlink to the directory
     ]
-    utils.create_symlinks(path_to_symlink, path_to_file, names)
+    utils.create_symlinks(path_to_symlink, names, path_to_file, names)
 
 
 if __name__ == "__main__":
