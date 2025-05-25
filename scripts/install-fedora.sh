@@ -15,6 +15,7 @@ PKG_DNF=(
     rsms-inter-fonts
     jetbrains-mono-fonts
     papirus-icon-theme
+    nordzy-icon
     picom  # compositor for i3
     cheese  # for webcam
     flatpak

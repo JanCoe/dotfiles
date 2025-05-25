@@ -31,26 +31,24 @@ def run_commands(command: str, packages: list[str], pwd: str | None = None) -> N
         run_command(f"{command} {pkg}", pwd)
 
 
-def create_symlinks(links: list[tuple[str, str]]) -> None:
-    """Create symlinks for a dictionary of links.
+def create_symlinks(path_symlink: Path, names_symlink: list[str], path_file: Path, names_file: list[str]) -> None:
+    """Create symlinks for a list of file or directory names.
 
-    :param links: tuple of the path relative to $HOME and the name of the symlink.
+    :param path_symlink: path of where the symlink would be created 
+    :parm names_symlink: list of names of the symlinks
+    :param path_file: path of the file or directory to which a symlink will be created
+    :parm names_file: list of names of the file or directory to which a symlink will be created
     :return None
     """
-    for item in links:
-        path = Path(item[0])
-        link = Path(item[1])
-        home = Path.home()
-        dotfiles = Path(".dotfiles")
+    if not path_symlink.exists():
+        run_shell_command(f"mkdir -p {path_symlink}")
 
-        dotfile = home / dotfiles / path / link
-        symlink = home / path / link
+    for name_symlink, name_file in zip(names_symlink, names_file):
+        symlink = path_symlink / Path(name_symlink)
+        file = path_file / Path(name_file)
 
         if symlink.exists():
-            symlink.unlink()
-
-        if not (symlink_path := home / path).exists():
-            run_shell_command(f"mkdir {symlink_path}")
-
-        run_shell_command(f"ln -s {dotfile} {symlink}")
+            run_shell_command(f"ln -s --force {symlink} {file}")
+        else:
+            run_shell_command(f"ln -s {symlink} {file}")
 

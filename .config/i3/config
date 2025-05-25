@@ -25,8 +25,8 @@ exec --no-startup-id setxkbmap -option caps:escape
 exec --no-startup-id nm-applet
 # Order is important. Set screens, set background, run picom
 exec --no-startup-id switch-display
-exec --no-startup-id feh --bg-scale ~/.dotfiles/backgrounds/touhou_anime.jpg
-exec --no-startup-id picom --config ~/.config/picom/picom.conf
+exec --no-startup-id feh-background
+exec --no-startup-id picom
 
 # Start some apps
 exec --no-startup-id wezterm

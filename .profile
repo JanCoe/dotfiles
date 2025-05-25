@@ -27,6 +27,7 @@ path_add "/var/lib/flatpak/exports/bin"
 
 export EDITOR="nvim"
 export MANPAGER="nvim +Man!"
+export BAT_PAGER=less
 export COLORTERM=truecolor
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
 

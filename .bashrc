@@ -3,7 +3,7 @@
 
 # Source definitions
 [[ -f /etc/bashrc ]] && . /etc/bashrc
-[[ -f ~/.shell_aliases ]] && . $HOME/.shell_aliases
+[[ -f ~/.aliases ]] && . $HOME/.aliases
 
 # User specific aliases and functions
 if [[ -d ~/.bashrc.d ]]; then
