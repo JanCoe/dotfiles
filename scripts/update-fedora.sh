@@ -26,3 +26,7 @@ cargo install-update --all
 
 echo
 echo "==> All updates and cleanup complete!"
+
+echo
+echo "==> Checking if reboot is required..."
+needs-restarting -r

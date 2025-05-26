@@ -1,0 +1,137 @@
+= System Installation Guide
+
+To install a new system:
+
+. Upgrade all packages and reboot.
++
+[source,shell]
+----
+sudo dnf upgrade --refresh
+reboot
+----
+
+. Edit `/etc/dnf/dnf.conf` to include the following:
++
+[source,ini]
+----
+[main]
+fastestmirror=True
+keepcache=True
+defaultyes=True
+skip_unavailable=True
+max_parallel_downloads=10
+install_weak_deps=False
+----
+
+. Go to https://rpmfusion.org/Configuration:
+.. Enable access to free and nonfree
+.. Install additional codecs
+
+. Set up git permissions.
++
+[source,shell]
+----
+sudo dnf install gh -y
+gh auth login
+----
+
+. Clone the dotfiles repo.
++
+[source,shell]
+----
+mkdir ~/.dotfiles
+git clone git@github.com:JanCoe/dotfiles.git ~/.dotfiles
+----
+
+. Install all the packages.
++
+[source,shell]
+----
+./install-fedora.sh
+----
+
+. Create symlinks of the dotfiles and of the re-usable scripts.
++
+[source,shell]
+----
+python -m configs-fedora
+pythom -m scripts-fedora
+----
+
+. Install the kew music player.
++
+[source,shell]
+----
+./install-kew.sh
+----
+
+. Install i3lock-fancy.
++
+[source,shell]
+----
+mkdir -p ~/Apps/i3lock-fancy
+git clone https://github.com/meskarune/i3lock-fancy.git ~/Apps/i3lock-fancy
+cd ~/Apps/i3lock-fancy
+sudo make install
+make clean
+----
+
+. Set it up so that `dunst` runs under i3 and `mako` under Wayland:
++
+[source,shell]
+----
+systemctl --user daemon-reexec
+systemctl --user daemon-reload
+systemctl --user enable --now mako.service
+systemctl --user enable --now dunst.service
+----
+
+. Add the following line to `/etc/pam.d/lightdm` to ensure LightDM uses PAM with systemd support:
++
+[source]
+----
+session optional pam_systemd.so
+----
+
+. To show background on login screen:
+.. Copy background to `/usr/share/backgrounds`
+.. Edit `/etc/lightdm/lightdm-gtk-greeter.conf` in `[greeter]` section to use background file as background
+
+. Enable a Nord theme:
+.. Firefox: *Nord Polar Night Theme* by christos
+.. Thunderbird: *Nord Hardt* by artrz (download and install)
+.. Rofi: *Nord* theme from GitHub
+
+. Setup and sync OneDrive by running:
++
+[source,shell]
+----
+onedrive --sync
+----
+
+. Setup Proton Bridge, Thunderbird and neomutt.
+
+. Add 1Password extension to Vivaldi. Install 1Password following instructions on their website.
+
+. Sync with Obsidian vault:
+.. Create vault in `Documents`
+.. Create a `VAULT/.obsidian/themes` directory
+.. Inside that directory run:
++
+[source,shell]
+----
+git clone git@github.com:EndlessReform/obsidian-nord-muted
+----
+.. Select theme under *Appearance → Themes*
+
+. Install JetBrains Toolbox App from their website. Use that to install PyCharm and RustRover.
+
+. Install HyperBackupExplorer from Synology website for exploring backups.
+
+. In future, to keep system updated:
++
+[source,shell]
+----
+update-fedora
+remove-kernels
+----

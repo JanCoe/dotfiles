@@ -9,7 +9,18 @@ PKG_DNF=(
     openssl
     cmake
     fuse-libs  # needed for Jetbrains 
-    libxcrypt-compat  # needed for Synology HyperBackupExplorer 
+    libxcrypt-compat  # needed for Synology HyperBackupExplorer
+    # for kew 
+    fftw-devel
+    libogg-devel
+    libvorbis-devel
+    opus-devel
+    opusfile-devel
+    taglib-devel
+    chafa-devel
+    libatomic
+    faad2-devel
+    #
     ibm-plex-serif-fonts 
     ibm-plex-sans-fonts
     rsms-inter-fonts
@@ -35,6 +46,7 @@ PKG_DNF=(
     uv
     ruff
     neovim
+    asciidoctor
     nushell
     neomutt
     thunderbird

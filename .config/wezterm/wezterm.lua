@@ -21,9 +21,9 @@ config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = true
 config.tab_max_width = 32
 
-wezterm.on("gui-startup", function()
-  wezterm.mux.spawn_window({ args = {"/bin/bash", "-l", "-c", "fastfetch; exec bash -l"}})
-end)
+-- wezterm.on("gui-startup", function()
+--  wezterm.mux.spawn_window({ args = {"/bin/bash", "-l", "-c", "fastfetch; exec bash -l"}})
+-- end)
 
 local function prompt_input()
   return wezterm.action.PromptInputLine {

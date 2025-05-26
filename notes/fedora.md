@@ -21,6 +21,8 @@ sudo dnf upgrade --refresh
 
 6. From auto, run 'python -m fedora-i3.symlink-configs': this creates symlinks of the dotfiles.
 
+7. Run install-kew.sh to install kew music player.
+
 7. Install i3lock-fancy:
 cd ~/Downloads
 git clone https://github.com/meskarune/i3lock-fancy.git

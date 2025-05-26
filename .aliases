@@ -7,13 +7,17 @@ fi
 
 # Define a function to alias coreutils commands to their Rust equivalents
 alias_rust_coreutils() {
-  local cmds=("$@")
-  for cmd in "${cmds[@]}"; do
-    alias "$cmd"="uutils-coreutils $cmd"
-  done
+    local cmds=("$@")
+    for cmd in "${cmds[@]}"; do
+        alias "$cmd"="uutils-coreutils $cmd"
+    done
 }
-# alias_rust_coreutils cat cp date dd df dir echo ln mkdir mv printf pwd rm \
-#                     sleep sort split sum tail tee, touch, uniq, unlink, wc, yes
+
+# Set coreutils aliases if it is installed
+if command -v uutils-coreutils > /dev/null 2>&1; then
+    alias_rust_coreutils cat cp date dd df dir echo ln mkdir mv printf pwd rm \
+                         sleep sort split sum tail tee, touch, uniq, unlink, wc, yes
+fi
 
 # Commands 
 alias ll="ls -la"
@@ -28,4 +32,3 @@ alias pic="wezterm imgcat"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
-alias .....="cd ../../../.."
