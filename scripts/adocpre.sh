@@ -1,0 +1,17 @@
+#!/bin/bash
+# Convert AsciiDoc file to HTML and open it in a browser
+
+if ! command -v asciidoctor > /dev/null 2>&1; then
+    echo "Error: asciidoctor not found" >&2
+    exit 1
+fi
+
+if [ -z "$1" ]; then
+    echo "Usage: $0 <filename.adoc>" >&2
+    exit 1
+fi
+
+input="$1"
+output="${input%.*}.html"
+
+asciidoctor "$input" && xdg-open "$output"

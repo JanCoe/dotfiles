@@ -1,6 +1,7 @@
-= System Installation Guide
+= Fedora Installation Guide
 
-To install a new system:
+These installation instructions are for using the Fedora i3 spin and overlaying hyprland on it.
+I want to experiment building it from the sway spin instead.
 
 . Upgrade all packages and reboot.
 +
