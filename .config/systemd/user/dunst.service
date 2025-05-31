@@ -1,0 +1,12 @@
+[Unit]
+Description=Dunst Notification Daemon (X11/i3)
+ConditionEnvironment=Display
+ConditionEnvironment=!HYPRLAND_INSTANCE_SIGNATURE
+After=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/dunst
+Restart=on-failure
+
+[Install]
+WantedBy=graphical-session.target
