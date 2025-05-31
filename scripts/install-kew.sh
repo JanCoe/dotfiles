@@ -4,7 +4,7 @@
 
 mkdir -p ~/Apps/kew
 git clone https://github.com/ravachol/kew.git ~/Apps/kew
-cd ~/Apps/kew
+cd ~/Apps/kew || exit
 make -j4
 sudo make install
 make clean

@@ -85,35 +85,23 @@ gpgkey=https://yum.fury.io/nushell/gpg.key"
 echo "$config_text" | sudo tee /etc/yum.repos.d/fury-nushell.repo
 
 echo "==> Enabling COPR packages..."
-for pkg in ${PKG_COPR[@]}; do
-    echo "Enabling: $pkg"
-    echo $pwd | sudo -S dnf copr enable "$pkg"
-done
+echo $pwd | sudo -S dnf copr enable "${PKG_COPR[@]}"
 
 echo "==> Installing DNF packages..."
-for pkg in ${PKG_DNF[@]}; do
-    echo "Installing: $pkg"
-    echo $pwd | sudo -S dnf install -y "$pkg"
-done
+echo $pwd | sudo -S dnf install -y "${PKG_DNF[@]}"
 
 echo "==> Installing Rust and updating to latest..."
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 rustup 
 
 echo "==> Installing cargo packages..."
-for pkg in ${PKG_CARGO[@]}; do
-    echo "Installing: $pkg"
-    cargo install "$pkg"
-done
+cargo install "${PKG_CARGO[@]}"
 
 echo "==> Add flathub to repo..."
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 echo "==> Installing Flathub packages..."
-for pkg in ${FLATPAKS[@]}; do
-    echo "Installing: $pkg"
-    flatpak install flathub "$pkg"
-done
+flatpak install flathub "${FLATPAKS[@]}"
 
 echo "==> Installing lockscreen..."
 cd ~/Downloads
