@@ -7,11 +7,10 @@ PKG_COPR=(
 )
 PKG_DNF=(
     @development-tools
-    # openssl  # came as dependency
-    # cmake  # came as dependency? 
+    cmake
     # fuse-libs  # needed explicitly? needed for Jetbrains 
     # libxcrypt-compat  # needed for Synology HyperBackupExplorer, not done yet
-    # for kew 
+    # for kew: not done yet 
     fftw-devel
     libogg-devel
     libvorbis-devel

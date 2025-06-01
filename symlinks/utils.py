@@ -13,8 +13,7 @@ def run_shell_command(command: str) -> None:
 def run_sudo_command(command: str, pwd: str) -> None:
     try:
         print(f"Running: {command}")
-        # run_shell_command(f"echo {pwd} | sudo -S {command}")
-        print(f"echo {pwd} | sudo -S {command}")
+        run_shell_command(f"echo {pwd} | sudo -S {command}")
         print(f"Successfully ran: {command}")
     except subprocess.CalledProcessError:
         print(f"Failed to run command: {command}")
