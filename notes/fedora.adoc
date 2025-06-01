@@ -59,14 +59,10 @@ python -m configs-fedora
 pythom -m scripts-fedora
 ----
 
-. Install the kew music player.
-+
-[source,shell]
-----
-./install-kew.sh
-----
+. Install the kew music player, following the instructions on https://github.com/ravachol/kew, and using
+the install-kew.sh script.
 
-. Install i3lock-fancy.
+. Install i3lock-fancy (X11 only).
 +
 [source,shell]
 ----
@@ -115,17 +111,13 @@ onedrive --sync
 . Add 1Password extension to Vivaldi. Install 1Password following instructions on their website.
 
 . Sync with Obsidian vault:
-.. Create vault in `Documents`
-.. Create a `VAULT/.obsidian/themes` directory
-.. Inside that directory run:
+.. Select theme under *Appearance → Themes*
+.. (Installed before from github into VAULT/.obsidian/themes)
 +
 [source,shell]
 ----
 git clone git@github.com:EndlessReform/obsidian-nord-muted
-git repo clone EnlessReform/obsidian-nord-muted
 ----
-.. Select theme under *Appearance → Themes*
-
 . Install JetBrains Toolbox App from their website. Use that to install PyCharm and RustRover.
 
 . Install HyperBackupExplorer from Synology website for exploring backups.

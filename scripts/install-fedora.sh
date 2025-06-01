@@ -8,18 +8,9 @@ PKG_COPR=(
 PKG_DNF=(
     @development-tools
     cmake
-    # fuse-libs  # needed explicitly? needed for Jetbrains 
+    openssl-devel  # needed for cargo-update
+    # fuse-libs  # needed explicitly? needed for Jetbrains, not done yet 
     # libxcrypt-compat  # needed for Synology HyperBackupExplorer, not done yet
-    # for kew: not done yet 
-    fftw-devel
-    libogg-devel
-    libvorbis-devel
-    opus-devel
-    opusfile-devel
-    taglib-devel
-    chafa-devel
-    libatomic
-    faad2-devel
     # fonts and themes
     ibm-plex-serif-fonts 
     ibm-plex-sans-fonts
@@ -53,7 +44,7 @@ PKG_DNF=(
     asciidoctor
     nushell
     # applications 
-    cheese  # for webcam
+    cheese
     neomutt
     thunderbird
     vlc
@@ -81,7 +72,8 @@ echo
 echo "==> Refreshing Fedora..."
 echo $pwd | sudo -S dnf upgrade --refresh -y
 
-echo "==> Adding nushell to repo..."  # do this step manually
+# Do this step manually.
+echo "==> Adding nushell to repo..."
 config_text="[gemfury-nushell]
 name=Gemfury Nushell Repo
 baseurl=https://yum.fury.io/nushell/
@@ -96,7 +88,7 @@ echo $pwd | sudo -S dnf copr enable "${PKG_COPR[@]}"
 echo "==> Installing DNF packages..."
 echo $pwd | sudo -S dnf install -y "${PKG_DNF[@]}"
 
-echo "==> Installing Rust and updating to latest..."
+echo "==> Installing Rust..."
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 . $HOME/.cargo/env
 
@@ -109,11 +101,13 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 echo "==> Installing Flathub packages..."
 flatpak install flathub "${FLATPAKS[@]}"
 
-echo "==> Installing lockscreen..." # i3 only
+# i3 only
+echo "==> Installing lockscreen..." 
 cd ~/Downloads
 git clone https://github.com/meskarune/i3lock-fancy.git
 cd i3lock-fancy
 sudo make install
 
-echo "==> Setting background..."  # only for i3?
+# i3 only
+echo "==> Setting background..."
 feh --bg-scale ~/.dotfiles/backgrounds/touhou_anime.jpg

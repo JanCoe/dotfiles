@@ -23,6 +23,7 @@ assign [class="Proton Mail Bridge"] $ws10
 # Bind CapsLock to Esc
 exec --no-startup-id setxkbmap -option caps:escape
 exec --no-startup-id nm-applet
+exec --no-startup-id waybar
 # Order is important. Set screens, set background, run picom
 # exec --no-startup-id switch-display
 # exec --no-startup-id feh-background
