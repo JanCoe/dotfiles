@@ -1,15 +1,16 @@
 #!/bin/bash
 
 PKG_COPR=(
+  wezfurlong/wezterm-nightly 
   rubemlrm/nordzy-icon # for nordic theme
   lihaohong/yazi
 )
 PKG_DNF=(
     @development-tools
-    openssl
-    cmake
-    fuse-libs  # needed for Jetbrains 
-    libxcrypt-compat  # needed for Synology HyperBackupExplorer
+    # openssl  # came as dependency
+    # cmake  # came as dependency? 
+    # fuse-libs  # needed explicitly? needed for Jetbrains 
+    # libxcrypt-compat  # needed for Synology HyperBackupExplorer, not done yet
     # for kew 
     fftw-devel
     libogg-devel
@@ -20,16 +21,19 @@ PKG_DNF=(
     chafa-devel
     libatomic
     faad2-devel
-    #
+    # fonts and themes
     ibm-plex-serif-fonts 
     ibm-plex-sans-fonts
     rsms-inter-fonts
     jetbrains-mono-fonts
     papirus-icon-theme
     nordzy-icon
+    # i3 only 
     picom  # compositor for i3
-    cheese  # for webcam
+    # rest 
     flatpak
+    # CLI utils 
+    wezterm
     uutils-coreutils
     fastfetch
     bat
@@ -43,11 +47,14 @@ PKG_DNF=(
     zoxide
     tmux
     zsh
+    # development utils
     uv
     ruff
     neovim
     asciidoctor
     nushell
+    # applications 
+    cheese  # for webcam
     neomutt
     thunderbird
     vlc
@@ -92,7 +99,7 @@ echo $pwd | sudo -S dnf install -y "${PKG_DNF[@]}"
 
 echo "==> Installing Rust and updating to latest..."
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-rustup 
+. $HOME/.cargo/env
 
 echo "==> Installing cargo packages..."
 cargo install "${PKG_CARGO[@]}"
@@ -103,11 +110,11 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 echo "==> Installing Flathub packages..."
 flatpak install flathub "${FLATPAKS[@]}"
 
-echo "==> Installing lockscreen..."
+echo "==> Installing lockscreen..." # i3 only
 cd ~/Downloads
 git clone https://github.com/meskarune/i3lock-fancy.git
 cd i3lock-fancy
 sudo make install
 
-echo "==> Setting background..."
+echo "==> Setting background..."  # only for i3?
 feh --bg-scale ~/.dotfiles/backgrounds/touhou_anime.jpg

@@ -11,7 +11,7 @@ sudo dnf upgrade --refresh
 reboot
 ----
 
-. Edit `/etc/dnf/dnf.conf` to include the following:
+. Run `sudo vi /etc/dnf/dnf.conf` and edit to include the following:
 +
 [source,ini]
 ----
@@ -25,8 +25,8 @@ install_weak_deps=False
 ----
 
 . Go to https://rpmfusion.org/Configuration:
-.. Enable access to free and nonfree
-.. Install additional codecs
+.. Enable access to free and nonfree under Configuration
+.. Install additional codecs under Howto/Multimedia
 
 . Set up git permissions.
 +

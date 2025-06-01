@@ -40,7 +40,7 @@ floating_modifier $mod
 
 # Start a terminal
 bindsym $mod+Return exec wezterm
-# bindsym $mod+d exec --no-startup-id rofi-run-x11
+bindsym $mod+d exec --no-startup-id rofi-run-wayland
 
 # Kill focussed window
 bindsym $mod+Shift+w kill
