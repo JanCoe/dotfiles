@@ -3,7 +3,7 @@
 These installation instructions are for using the Fedora i3 spin and overlaying hyprland on it.
 I want to experiment building it from the sway spin instead.
 
-. Upgrade all packages and reboot.
+. Reboot system, upgrade all packages and reboot again.
 +
 [source,shell]
 ----
@@ -41,7 +41,7 @@ gh auth login
 [source,shell]
 ----
 mkdir ~/.dotfiles
-git clone git@github.com:JanCoe/dotfiles.git ~/.dotfiles
+gh repo clone JanCoe/dotfiles ~/.dotfiles
 ----
 
 . Install all the packages.
@@ -51,7 +51,7 @@ git clone git@github.com:JanCoe/dotfiles.git ~/.dotfiles
 ./install-fedora.sh
 ----
 
-. Create symlinks of the dotfiles and of the re-usable scripts.
+. Create necessary directories and then create symlinks of the dotfiles and of the re-usable scripts.
 +
 [source,shell]
 ----
@@ -122,6 +122,7 @@ onedrive --sync
 [source,shell]
 ----
 git clone git@github.com:EndlessReform/obsidian-nord-muted
+git repo clone EnlessReform/obsidian-nord-muted
 ----
 .. Select theme under *Appearance → Themes*
 
