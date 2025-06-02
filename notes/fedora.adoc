@@ -27,6 +27,9 @@ install_weak_deps=False
 . Go to https://rpmfusion.org/Configuration:
 .. Enable access to free and nonfree under Configuration
 .. Install additional codecs under Howto/Multimedia
+.. Run 'sudo dnf update @core'. This installs the core packages that are conditional on rmpfusion being enabled.
+.. sudo dnf group install multimedia
+.. Activate OpenH264 with 'sudo dnf config-manager setopt fedora-cisco-openh264.enabled=1'
 
 . Set up git permissions.
 +

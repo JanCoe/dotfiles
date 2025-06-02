@@ -9,7 +9,7 @@ PKG_DNF=(
     @development-tools
     cmake
     openssl-devel  # needed for cargo-update
-    # fuse-libs  # needed explicitly? needed for Jetbrains, not done yet 
+    fuse-libs  # needed to run AppImages (Jetbrains toolbox is an AppImage)
     # libxcrypt-compat  # needed for Synology HyperBackupExplorer, not done yet
     # fonts and themes
     ibm-plex-serif-fonts 
@@ -22,8 +22,9 @@ PKG_DNF=(
     picom  # compositor for i3
     # rest 
     flatpak
+    multimedia
     # CLI utils 
-    wezterm
+    dnf-utils 
     uutils-coreutils
     fastfetch
     bat
@@ -38,6 +39,7 @@ PKG_DNF=(
     tmux
     zsh
     # development utils
+    wezterm
     uv
     ruff
     neovim
@@ -47,7 +49,7 @@ PKG_DNF=(
     cheese
     neomutt
     thunderbird
-    vlc
+    @vlc  # install extra plugins too
     toolbox
     onedrive
 )
