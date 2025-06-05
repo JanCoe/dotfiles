@@ -1,7 +1,7 @@
 """Create symlinks for config files in dotfiles."""
 from pathlib import Path
 
-from . import utils
+import utils
 
 def main() -> None:
     path_to_file = Path.home() / Path(".dotfiles")
@@ -21,7 +21,7 @@ def main() -> None:
         ".config/fastfetch/",  # symlink to the directory
         ".config/nvim/",  # symlink to the directory
     ]
-    utils.create_symlinks(path_to_symlink, names, path_to_file, names)
+    utils.create_symlinks(path_to_file, names, path_to_symlink, names)
 
 
 if __name__ == "__main__":
