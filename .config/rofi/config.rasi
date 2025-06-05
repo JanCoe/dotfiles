@@ -4,7 +4,7 @@ configuration {
     modes: "window,drun,run";
     font: "Jetbrains Mono 16";
 	show-icons: true;
-	terminal: "/home/JanCoe/.local/bin/wezterm";
+	terminal: "/usr/bin/wezterm";
 	sort: true;
     kb-remove-to-eol: "";
     kb-remove-char-back: "BackSpace";

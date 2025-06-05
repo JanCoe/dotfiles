@@ -19,7 +19,7 @@ path_add() {
 }
 
 # export environment variables
-path_add "$HOME/bin" "$HOME/.local/bin"
+path_add "$HOME/bin" "$HOME/.local/bin" "$HOME/.dotfiles/scripts"
 # local flatpaks
 path_add "$HOME/.local/share/flatpak/exports/bin"
 # system-wide flatpaks

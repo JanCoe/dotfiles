@@ -1,62 +1,62 @@
 #!/bin/bash
 
 PKG_COPR=(
-  wezfurlong/wezterm-nightly 
-  rubemlrm/nordzy-icon # for nordic theme
   lihaohong/yazi
+  rubemlrm/nordzy-icon # for nordic theme
+  wezfurlong/wezterm-nightly 
 )
 PKG_DNF=(
     @development-tools
     cmake
-    openssl-devel  # needed for cargo-update
     fuse-libs  # needed to run AppImages (Jetbrains toolbox is an AppImage)
+    openssl-devel  # needed for cargo-update
     # libxcrypt-compat  # needed for Synology HyperBackupExplorer, not done yet
     # fonts and themes
-    ibm-plex-serif-fonts 
     ibm-plex-sans-fonts
-    rsms-inter-fonts
+    ibm-plex-serif-fonts 
     jetbrains-mono-fonts
-    papirus-icon-theme
     nordzy-icon
+    papirus-icon-theme
+    rsms-inter-fonts
     # i3 only 
-    picom  # compositor for i3
+    picom
     # rest 
     flatpak
     multimedia
     # CLI utils 
-    dnf-utils 
-    uutils-coreutils
-    fastfetch
     bat
+    dnf-utils 
+    fastfetch
     fd
-    tldr
-    htop
     fzf
-    yazi 
-    git-lfs
     gh
-    zoxide
+    git-lfs
+    htop
+    tldr
     tmux
+    uutils-coreutils
+    yazi 
+    zoxide
     zsh
     # development utils
-    wezterm
-    uv
     ruff
-    neovim
-    asciidoctor
-    nushell
+    toolbox
+    uv
     # applications 
+    @vlc  # install extra plugins too
+    asciidoctor
     cheese
     neomutt
-    thunderbird
-    @vlc  # install extra plugins too
-    toolbox
+    neovim
+    nushell
     onedrive
+    thunderbird
+    wezterm
 )
 PKG_CARGO=(
     cargo-update
-    dua 
     du-dust
+    dua 
     hyperfine
     starship
     tokei

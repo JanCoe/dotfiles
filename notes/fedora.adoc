@@ -54,16 +54,15 @@ gh repo clone JanCoe/dotfiles ~/.dotfiles
 ./install-fedora.sh
 ----
 
-. Create necessary directories and then create symlinks of the dotfiles and of the re-usable scripts.
+. Create necessary directories and then create symlinks of the dotfiles.
 +
 [source,shell]
 ----
 python -m configs-fedora
-pythom -m scripts-fedora
 ----
 
 . Install the kew music player, following the instructions on https://github.com/ravachol/kew, and using
-the install-kew.sh script.
+the 'install-kew' script.
 
 . Install i3lock-fancy (X11 only).
 +
@@ -76,7 +75,7 @@ sudo make install
 make clean
 ----
 
-. Set it up so that `dunst` runs under i3 and `mako` under Wayland:
+. Set it up so that `dunst` runs under X11 and `mako` under Wayland if both are installed:
 +
 [source,shell]
 ----
@@ -86,14 +85,14 @@ systemctl --user enable --now mako.service
 systemctl --user enable --now dunst.service
 ----
 
-. Add the following line to `/etc/pam.d/lightdm` to ensure LightDM uses PAM with systemd support:
+. Add the following line to `/etc/pam.d/lightdm` to ensure LightDM uses PAM with systemd support (only for X11):
 +
 [source]
 ----
 session optional pam_systemd.so
 ----
 
-. To show background on login screen:
+. To show background on login screen if using lightdm:
 .. Copy background to `/usr/share/backgrounds`
 .. Edit `/etc/lightdm/lightdm-gtk-greeter.conf` in `[greeter]` section to use background file as background
 
