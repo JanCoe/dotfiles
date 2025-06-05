@@ -36,6 +36,7 @@ def main() -> None:
         ".config/nushell/config.nu",
         ".config/nushell/env.nu",
         ".config/rofi/config.rasi",
+        ".config/rofi/nord.rasi",
         ".config/rustfmt/rustfmt.toml",
         ".config/starship/starship.toml",
         ".config/wezterm/wezterm.lua", 

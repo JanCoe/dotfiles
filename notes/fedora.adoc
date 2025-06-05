@@ -51,7 +51,7 @@ gh repo clone JanCoe/dotfiles ~/.dotfiles
 +
 [source,shell]
 ----
-./install-fedora.sh
+./install-fedora
 ----
 
 . Create necessary directories and then create symlinks of the dotfiles.
