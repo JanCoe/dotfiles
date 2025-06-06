@@ -1,0 +1,18 @@
+= Mac Installation Guide
+
+. Create Brewfile on the old machine to have a record of packages installed that can be used to install them again.
++
+[source,shell]
+---
+brew bundle dump
+---
+
+. Run install-mac script to install packages.
++
+[source,shell]
+---
+install-mac
+---
+
+. To do
+* Integrate other cloud services into your Dotfiles process (Dropbox, OneDrive, etc.).

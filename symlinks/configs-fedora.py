@@ -29,20 +29,20 @@ def main() -> None:
         ".zoxide.nu",
         ".zshrc",
         ".config/bat/config",
+        ".config/fastfetch",  # symlink to the directory
         ".config/gh/config.yml",
         ".config/gtk-3.0/settings.ini",  # for gtk themed apps
         ".config/gtk-4.0/settings.ini",  # for gtk themed apps
         ".config/kew/kewrc",
         ".config/nushell/config.nu",
         ".config/nushell/env.nu",
+        ".config/nvim",  # symlink to the directory
         ".config/rofi/config.rasi",
         ".config/rofi/nord.rasi",
         ".config/rustfmt/rustfmt.toml",
         ".config/starship/starship.toml",
         ".config/wezterm/wezterm.lua", 
         ".config/yazi/yazi.toml",
-        ".config/fastfetch/",  # symlink to the directory
-        ".config/nvim/",  # symlink to the directory
     ]
     utils.create_symlinks(path_to_file, names, path_to_symlink, names)
 

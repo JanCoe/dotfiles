@@ -8,6 +8,10 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
+if [[ "$OSTYPE" == "darwin22" ]]; then # MacOS
+   export BASH_SILENCE_DEPRECATION_WARNING=1
+fi
+
 path_add() {
     for dir in "$@"; do
         case ":$PATH:" in
@@ -20,6 +24,8 @@ path_add() {
 
 # export environment variables
 path_add "$HOME/bin" "$HOME/.local/bin" "$HOME/.dotfiles/scripts"
+
+# Only for Linux: if [[ "$OSTYPE" == xxx ]]; then ... fi
 # local flatpaks
 path_add "$HOME/.local/share/flatpak/exports/bin"
 # system-wide flatpaks
@@ -42,11 +48,17 @@ data_dirs_add() {
 }
 
 # export common environment variables
-data_dirs_add "/var/lib/flatpak/exports/share" "$HOME/.local/share/flatpak/exports/share" "$HOME/.local/bin" "/usr/local/share" "/usr/share"
+# if [[ "$OSTYPE" == xx ]]; then ... fi
+data_dirs_add "/var/lib/flatpak/exports/share" "$HOME/.local/share/flatpak/exports/share"
+
+data_dirs_add  "$HOME/.local/bin" "/usr/local/share" "/usr/share"
+
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
-export TERMINAL="$HOME/.local/bin/wezterm"
+if command -v wezterm >/dev/null 2>&1; then
+    export TERMINAL="$(command -v wezterm)"
+fi
 
 # initialise common tools if they exist
 [[ -f "$HOME/.cargo/env" ]] && . "$HOME/.cargo/env"
