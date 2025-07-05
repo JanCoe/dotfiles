@@ -12,6 +12,10 @@ alias -s rs=nvim
 bindkey -v
 
 # Start applications
-eval "$(starship init zsh)"
-eval "$(zoxide init zsh)"
-alias cd="z"
+if command -v starship > /dev/null 2 >&1; then
+    eval "$(starship init zsh)"
+fi
+
+if command -v zoxide > /dev/null 2>&1; then
+    eval "$(zoxide init --cmd cd zsh)"
+fi

@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
 
 read -s -p "Enter Nas password: " pwd
 echo
@@ -8,9 +9,9 @@ read -p "Read-only (r) or read-write (w)?: " mode
 
 # This assumes that NAS IP has been mapped to 'nas' in /etc/hosts
 if [[ $mode == "r" ]] then
-    sudo mount -t cifs //nas/music ~/Music/Nas -o username=highgate,password=$pwd,vers=3.0
+    sudo mount -t cifs //nas/music ~/Media/Music -o username=highgate,password=$pwd,vers=3.0
 elif [[ $mode == "w" ]] then
-    sudo mount -t cifs //nas/music ~/Music/Nas -o username=highgate,password=$pwd,vers=3.0,uid=$(id -u),gid=$(id -g),rw
+    sudo mount -t cifs //nas/music ~/Media/Music-o username=highgate,password=$pwd,vers=3.0,uid=$(id -u),gid=$(id -g),rw
 else
     echo "Option not recognised."
 fi

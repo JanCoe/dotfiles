@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
 
 # Get HDMI status
 HDMI_STATUS1=$(xrandr | grep "HDMI-1 connected")

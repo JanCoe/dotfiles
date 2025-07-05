@@ -13,6 +13,13 @@ if [[ -d ~/.bashrc.d ]]; then
 fi
 unset rc
 
+# Enable bash programmable completion features in interactive shells
+if [[ -f /usr/share/bash_completion/bash_completion ]]; then
+    . /usr/share/bash-completion/bash_completion
+elif [[ -f /etc/bash_completion ]]; then
+    . /etc/bash_completion
+fi
+
 # Settings that depend on operating system
 if [[ "$OSTYPE" == "darwin22" ]]; then # MacOS
    export BASH_SILENCE_DEPRECATION_WARNING=1
@@ -21,10 +28,11 @@ fi
 set -o vi
 set -o history
 
-HISTSIZE=10000 # number of commands to remember in memory
-HISTFILESIZE=20000 # number of commands to szve to ~/.bash_history
-shopt -s histappend # append tot he history file, don't overwrite it
-export HISTCONTROL=ignoredups:ignorespace # don't sotre duplicate lines or commands starting with a space
+export HISTFILESIZE=10000 # number of commands to save to ~/.bash_history
+export HISTSIZE=500 # number of commands to remember in memory
+export HISTTIMEFORMAT="%F %T "
+shopt -s histappend # append to the history file, don't overwrite it
+export HISTCONTROL=erasedups:ignoredups:ignorespace 
 export HISTIGNORE="ls:ll:cd:* --help" # ignore specific commands from history
 
 # Initialise apps if they are available
@@ -33,6 +41,5 @@ if command -v starship > /dev/null 2>&1; then
 fi
 
 if command -v zoxide > /dev/null 2>&1; then
-    eval "$(zoxide init bash)"
-    alias cd="z" # set this after initialising zoxide
+    eval "$(zoxide init --cmd cd bash)"
 fi

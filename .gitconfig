@@ -6,4 +6,6 @@
 [core]
     autocrlf = input
     excludesfile = ~/.gitignore_global
-	editor = vim
+    editor = vim
+[credential "https://github.com"]
+    helper = !/usr/bin/gh auth git-credential

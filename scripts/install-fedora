@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
 
 PKG_COPR=(
   lihaohong/yazi
@@ -34,6 +35,7 @@ PKG_DNF=(
     htop
     tldr
     tmux
+    trash
     uutils-coreutils
     yazi 
     zoxide

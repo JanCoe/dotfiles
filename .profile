@@ -13,48 +13,49 @@ if [[ "$OSTYPE" == "darwin22" ]]; then # MacOS
 fi
 
 path_add() {
+    # First variable is the 'path' variable to add to.
+    # Remaining variables are the paths to add.
+    local input_path=$1 
+    shift
+    local dir 
     for dir in "$@"; do
-        case ":$PATH:" in
-            *":$dir:"*) ;;  # Already in PATH — do nothing
-            *) PATH="${PATH:+$PATH:}$dir" ;;
+        case ":$input_path:" in
+            *":$dir:"*) ;;  # Already present 
+            *) input_path="${input_path:+$input_path:}$dir" ;;
         esac
     done
-    export PATH
+    echo "$input_path" 
 }
 
 # export environment variables
-path_add "$HOME/bin" "$HOME/.local/bin" "$HOME/.dotfiles/scripts"
+PATH=$(path_add "$PATH" "$HOME/bin" "$HOME/.local/bin" "$HOME/.dotfiles/scripts")
 
-# Only for Linux: if [[ "$OSTYPE" == xxx ]]; then ... fi
-# local flatpaks
-path_add "$HOME/.local/share/flatpak/exports/bin"
-# system-wide flatpaks
-path_add "/var/lib/flatpak/exports/bin"
+if [[ "$OSTYPE" == linux-gnu ]]; then
+    # local flatpaks and system-wide flatpaks
+    PATH=$(path_add "$PATH" "$HOME/.local/share/flatpak/exports/bin" "/var/lib/flatpak/exports/bin")
+fi
 
+export PATH
 export EDITOR="nvim"
+export VISUAL="nvim"
+export BROWSER="vivaldi"
 export MANPAGER="nvim +Man!"
 export BAT_PAGER=less
+export PAGER=less
 export COLORTERM=truecolor
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
 
-data_dirs_add() {
-    for dir in "$@"; do
-        case ":$XDG_DATA_DIRS:" in
-            *":$dir:"*) ;;  # Already in PATH — do nothing
-            *) XDG_DATA_DIRS="${XDG_DATA_DIRS:+$XDG_DATA_DIRS:}$dir" ;;
-        esac
-    done
-    export XDG_DATA_DIRS
-}
-
+XDG_DATA_DIRS=$(path_add "$XDG_DATA_DIRS" "$HOME/.local/bin" "/usr/local/share" "/usr/share")
+#
 # export common environment variables
-# if [[ "$OSTYPE" == xx ]]; then ... fi
-data_dirs_add "/var/lib/flatpak/exports/share" "$HOME/.local/share/flatpak/exports/share"
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+    XDG_DATA_DIRS=$(path_add "$XDG_DATA_DIRS" "/var/lib/flatpak/exports/share" "$HOME/.local/share/flatpak/exports/share")
+fi
 
-data_dirs_add  "$HOME/.local/bin" "/usr/local/share" "/usr/share"
-
+export XDG_DATA_DIRS
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_CACHE_HOME="$HOME/.cache"
 if command -v wezterm >/dev/null 2>&1; then
     export TERMINAL="$(command -v wezterm)"

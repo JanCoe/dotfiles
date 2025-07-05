@@ -15,8 +15,12 @@ alias_rust_coreutils() {
 
 # Set coreutils aliases if it is installed
 if command -v uutils-coreutils > /dev/null 2>&1; then
-    alias_rust_coreutils cat cp date dd df dir echo ln mkdir mv printf pwd rm \
+    alias_rust_coreutils cat cp date dd df dir echo ln mkdir printf pwd rm \
                          sleep sort split sum tail tee, touch, uniq, unlink, wc, yes
+fi
+
+if command -v rg &> /dev/null; then
+    alias grep="rg"
 fi
 
 # Commands 
@@ -30,5 +34,3 @@ alias pic="wezterm imgcat"
 
 # cd'ing up levels
 alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
