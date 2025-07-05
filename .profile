@@ -57,7 +57,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_CACHE_HOME="$HOME/.cache"
-if command -v wezterm >/dev/null 2>&1; then
+if command -v wezterm > /dev/null 2>&1; then
     export TERMINAL="$(command -v wezterm)"
 fi
 
