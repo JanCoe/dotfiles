@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
-set -euo pipefail
 
 # Convert AsciiDoc file to HTML and open it in a browser
 
-if ! command -v asciidoctor > /dev/null 2>&1; then
+if ! command -v asciidoctor &> /dev/null; then
     echo "Error: asciidoctor not found" >&2
     exit 1
 fi

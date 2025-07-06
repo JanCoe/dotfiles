@@ -9,4 +9,4 @@ cd ~/Apps/kew || exit
 make -j4
 sudo make install
 make clean
-kew path ~/Music/Nas/Vault # Replace with the path of your music.
+kew path ~/Media/Music/Vault  # Replace with the path of your music.

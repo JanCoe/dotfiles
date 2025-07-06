@@ -1,17 +1,36 @@
 #!/usr/bin/env bash
 set -euo pipefail
-        
-read -s -p "Enter your sudo password: " pwd
-echo
-echo
+
+set -x # to echo everything into logs when run with systemd
+       
+ASK_SUDO=true  # Set to false to skip password prompt when running as root
+
+# Run commands with sudo password as appropriate
+run_cmd() {
+    if $ASK_SUDO; then
+        echo "$pwd" | sudo -S "$@"
+    else
+        "$@"
+    fi
+}
+
+# Detect if running as root 
+if [[ "$EUID" -eq 0 ]]; then
+    ASK_SUDO=false
+fi
+
+if $ASK_SUDO; then
+    read -s -p "Enter your sudo password: " pwd
+    echo
+fi
 
 echo "==> Updating DNF packages..."
-echo $pwd | sudo -S dnf upgrade --refresh -y
+run_cmd dnf upgrade --refresh -y
 
 echo
 echo "==> Cleaning up DNF..."
-echo $pwd | sudo -S dnf autoremove -y
-echo $pwd | sudo -S dnf clean all
+run_cmd dnf autoremove -y
+run_cmd dnf clean all
 
 echo
 echo "==> Updating Flatpak apps..."

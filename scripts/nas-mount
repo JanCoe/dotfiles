@@ -1,12 +1,22 @@
 #!/usr/bin/env bash
-set -u
+set -eu
 
 # Example use to mount:
 # nas-mount --photo ro --movie ro --music rw
 # nas-mount photo ro movie ro music rw
 #
+# nas-mount all is equivalent to
+# nas-mount --music rw --photo rw --movie rw 
 # To unmount all:
 # nas-mount unmount-all
+
+if [[ $#  -eq 0 ]]; then
+    echo "Usage:"
+    echo "nas-mount --photo ro --movie rw"
+    echo "nas-mount all"
+    echo "nas-mount unmount-all"
+
+fi
 
 valid_shares=("photo" "music" "movie" "priv")
 valid_modes=("ro" "rw")
@@ -30,11 +40,6 @@ unmount_all() {
     done
 }
 
-if [[ "${1:-}" == "unmount-all" ]]; then
-    unmount_all "${valid_shares[@]}"
-    exit 0
-fi
-
 # Function to check if value is valid
 is_valid() {
     local value=$1
@@ -48,9 +53,20 @@ is_valid() {
     return 1
 }
 
+# Special command: unmount all
+if [[ "${1:-}" == "unmount-all" ]]; then
+    unmount_all "${valid_shares[@]}"
+    exit 0
+fi
+
 if [[ ! -f $HOME/.smbcredentials ]]; then
     echo "Requires a ~/.smbcredentials file"
     exit 1
+fi
+
+# Special command: mount all
+if [[ "$#" -eq 1 && "$1" == "all" ]]; then
+    set -- --photo rw --music rw --movie rw
 fi
 
 # Parse input arguments in pairs
