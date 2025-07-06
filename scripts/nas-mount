@@ -1,51 +1,93 @@
 #!/usr/bin/env bash
 set -u
 
-# arg1 is the directory to mount
-# arg2 is read-only (ro) or read-write (rw). Optional, default is ro.
+# Example use to mount:
+# nas-mount --photo ro --movie ro --music rw
+# nas-mount photo ro movie ro music rw
+#
+# To unmount all:
+# nas-mount unmount-all
 
-share=${1:-""}
-mode=${2:-"ro"}
+valid_shares=("photo" "music" "movie" "priv")
+valid_modes=("ro" "rw")
 
-nas_path="//nas/$share"  # assumes that NAS IP has been mapped to 'nas' in /etc/hosts
-mount_point="$HOME/Media/${share^}"
+set_mount_point() {
+    local share=$1 
+    echo "$HOME/Media/${share^}"
+}
 
-# Check share validity
-case "$share" in
-    photo|music|movie|priv)
-        ;;
-    *)
-        echo "Error: Share must be one of: photo, music, movie"
+unmount_all() {
+    local array=("$@")
+
+    for share in "${array[@]}"; do
+        local mount_point
+        mount_point=$(set_mount_point $share)
+
+        if mountpoint -q "$mount_point"; then
+            echo "Unmounting $mount_point"
+            sudo umount "$mount_point"
+        fi 
+    done
+}
+
+if [[ "${1:-}" == "unmount-all" ]]; then
+    unmount_all "${valid_shares[@]}"
+    exit 0
+fi
+
+# Function to check if value is valid
+is_valid() {
+    local value=$1
+    shift
+
+    local array=("$@")
+    for item in "${array[@]}"; do
+        [[ "$item" == "$value" ]] && return 0
+    done
+
+    return 1
+}
+
+if [[ ! -f $HOME/.smbcredentials ]]; then
+    echo "Requires a ~/.smbcredentials file"
+    exit 1
+fi
+
+# Parse input arguments in pairs
+while [[ $# -gt 0 ]]; do
+    share="${1#--}"  # remove leading -- if present
+    mode="$2"
+    
+    # Validate share
+    if ! is_valid "$share" "${valid_shares[@]}"; then
+        echo "Invalid share: '$share'"
         exit 1
-        ;;
-esac
+    fi
 
-# Map mode to mount options
-case "$mode" in
-    ro)
-        options="ro"
-        ;;
-    rw)
-        options="rw"
-        ;;
-    *)
-        echo "Error: Mode must be 'ro' (read-only) or 'rw' (read-write)"
+    # Validate mode 
+    if ! is_valid "$mode" "${valid_modes[@]}"; then
+        echo "Invalid mode '$mode' for share '$share'"
         exit 1
-        ;;
-esac
+    fi
 
-# Ensure mount point exists
-mkdir -p "$mount_point"
+    nas_path="//nas/$share"  # assumes that NAS IP has been mapped to 'nas' in /etc/hosts
+    mount_point=$(set_mount_point $share)
 
-read -s -p "Enter Nas password: " pwd
-echo
-echo
+    # Ensure mount point exists
+    mkdir -p "$mount_point"
 
-echo "Mounting $nas_path to $mount_point with mode $options"
+    echo "Mounting $nas_path to $mount_point with mode $mode"
 
-case "$options" in
-    ro)
-        sudo mount -t cifs "$nas_path" "$mount_point" -o username=highgate,password=$pwd,vers=3.0 ;;
-    rw)
-        sudo mount -t cifs "$nas_path" "$mount_point" -o username=highgate,password=$pwd,vers=3.0,uid=$(id -u),gid=$(id -g),rw ;;
-esac
+    base_opts="credentials=$HOME/.smbcredentials,vers=3.0"
+    case "$mode" in
+        ro)
+            mount_opts="$base_opts,ro" ;;
+        rw)
+            mount_opts="$base_opts,rw,uid=$(id -u),gid=$(id -g)" ;;
+    esac
+
+    sudo mount -t cifs "$nas_path" "$mount_point" -o "$mount_opts"
+
+    # Move to next pair
+    shift 2
+done
