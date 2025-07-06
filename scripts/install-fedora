@@ -34,6 +34,7 @@ PKG_DNF=(
     git-lfs
     htop
     ripgrep 
+    stow
     tldr
     tmux
     trash

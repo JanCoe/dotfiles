@@ -4,7 +4,7 @@
 
 [miscellaneous]
 
-path=/home/JanCoe/Music/Nas/Vault
+path=$HOME/Media/Music/Vault
 version=3.3.3
 allowNotifications=1
 hideLogo=0
