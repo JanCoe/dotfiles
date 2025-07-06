@@ -18,10 +18,6 @@ gh auth login
 echo "===> Cloning dotfiles repository..."
 gh repo clone JanCoe/dotfiles ~/.dotfiles
 
-echo "===> Creating symlinks to dotfiles..."
-cd ~/.dotfiles/symlinks
-python -m configs-mac
-
 echo "===> Installing rust..."
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 . $HOME/.cargo/env

@@ -1,0 +1,45 @@
+# Comments and blank lines are allowed.
+
+RCS
+.+,v
+
+CVS
+\.\#.+ # CVS conflict files / emacs lock files
+\.cvsignore
+
+\.svn
+_darcs
+\.hg
+
+\.git
+\.gitignore
+\.gitmodules
+
+.+~ # emacs backup files
+\#.*\# # emacs autosave files
+
+^/README.*
+^/LICENSE.*
+^/COPYING
+
+# X11 related
+^\.Xresources$
+^\.config/i3/config$
+^\.config/i3status/config$
+^\.config/picom/picom\.conf$
+
+# Non-config files
+^notes
+^scripts
+^symlinks
+^backgrounds
+
+# Linux related
+# ^\.config/hypr/hyprland\.conf$
+# ^\.config/waybar/config\.jsonc$
+# ^\.config/waybar/style.css$
+# ^\.config/gtk-3\.0/settings\.ini$
+# ^\.config/gtk-4\.0/settings\.ini$
+# ^\.config/kew/kewrc$
+# ^\.config/rofi/config\.rasi
+# ^\.config/rofi/nord\.rasi

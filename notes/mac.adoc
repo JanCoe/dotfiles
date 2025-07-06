@@ -14,5 +14,15 @@ brew bundle dump
 install-mac
 ---
 
+. Create symlinks to config files using stow.
+
+Check that .stow-local-ignore file is correct (has to be done before running stow).
++
+[source,shell]
+---
+cd ~/.dotfiles
+stow .
+---
+
 . To do
 * Integrate other cloud services into your Dotfiles process (Dropbox, OneDrive, etc.).

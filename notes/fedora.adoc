@@ -1,7 +1,6 @@
 = Fedora Installation Guide
 
-These installation instructions are for using the Fedora i3 spin and overlaying hyprland on it.
-I want to experiment building it from the sway spin instead.
+These installation instructions are for using the Fedora sway spin and overlaying hyprland on it.
 
 . Reboot system, upgrade all packages and reboot again.
 +
@@ -54,11 +53,13 @@ gh repo clone JanCoe/dotfiles ~/.dotfiles
 ./install-fedora
 ----
 
-. Create necessary directories and then create symlinks of the dotfiles.
+. Create symlinks of the dotfiles.
+Check that the .stow-local-ignore file is correct (has to be done before running stow).
 +
 [source,shell]
 ----
-python -m configs-fedora
+cd ~/.dotfiles
+stow .
 ----
 
 . Install the kew music player, following the instructions on https://github.com/ravachol/kew, and using
