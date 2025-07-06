@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+set -u
+
+# arg1 is the directory to mount
+# arg2 is read-only (ro) or read-write (rw). Optional, default is ro.
+
+share=${1:-""}
+mode=${2:-"ro"}
+
+nas_path="//nas/$share"  # assumes that NAS IP has been mapped to 'nas' in /etc/hosts
+mount_point="$HOME/Media/${share^}"
+
+# Check share validity
+case "$share" in
+    photo|music|movie|priv)
+        ;;
+    *)
+        echo "Error: Share must be one of: photo, music, movie"
+        exit 1
+        ;;
+esac
+
+# Map mode to mount options
+case "$mode" in
+    ro)
+        options="ro"
+        ;;
+    rw)
+        options="rw"
+        ;;
+    *)
+        echo "Error: Mode must be 'ro' (read-only) or 'rw' (read-write)"
+        exit 1
+        ;;
+esac
+
+# Ensure mount point exists
+mkdir -p "$mount_point"
+
+read -s -p "Enter Nas password: " pwd
+echo
+echo
+
+echo "Mounting $nas_path to $mount_point with mode $options"
+
+case "$options" in
+    ro)
+        sudo mount -t cifs "$nas_path" "$mount_point" -o username=highgate,password=$pwd,vers=3.0 ;;
+    rw)
+        sudo mount -t cifs "$nas_path" "$mount_point" -o username=highgate,password=$pwd,vers=3.0,uid=$(id -u),gid=$(id -g),rw ;;
+esac

@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
-set -euo pipefail
 
 read -s -p "Enter Nas password: " pwd
 echo
 echo
 
-read -p "Read-only (r) or read-write (w)?: " mode
+if [[ -z "$1" ]]; then
+    echo "Defaulting to read-only. Pass argument of 'w' for write mode." 
+fi
+mode="${1:-r}"
 
 # This assumes that NAS IP has been mapped to 'nas' in /etc/hosts
 if [[ $mode == "r" ]] then

@@ -33,6 +33,7 @@ PKG_DNF=(
     gh
     git-lfs
     htop
+    ripgrep 
     tldr
     tmux
     trash
