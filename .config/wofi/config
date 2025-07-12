@@ -1,0 +1,4 @@
+show=drun,run
+prompt=Search
+term=WezTerm
+allow_images=true
