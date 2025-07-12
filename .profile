@@ -44,7 +44,7 @@ export BAT_PAGER=less
 export PAGER=less
 export COLORTERM=truecolor
 export STARSHIP_CONFIG="$HOME"/.config/starship/starship.toml
-export FZF_DEFAULT_OPTS_FILE="$HOME"/.fzfrc
+export FZF_DEFAULT_OPTS_FILE="$HOME"/.config/fzf/.fzfrc
 
 XDG_DATA_DIRS=$(path_add "$XDG_DATA_DIRS" "$HOME/.local/bin" "/usr/local/share" "/usr/share")
 

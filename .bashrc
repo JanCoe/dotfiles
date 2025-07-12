@@ -20,11 +20,6 @@ elif [[ -f /etc/bash_completion ]]; then
     . /etc/bash_completion
 fi
 
-# Settings that depend on operating system
-if [[ "$OSTYPE" == "darwin22" ]]; then # MacOS
-   export BASH_SILENCE_DEPRECATION_WARNING=1
-fi
-
 set -o vi
 set -o history
 

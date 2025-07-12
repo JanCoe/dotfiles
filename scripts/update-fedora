@@ -6,12 +6,13 @@ set -x # to echo everything into logs when run with systemd
 ASK_SUDO=true  # Set to false to skip password prompt when running as root
 
 # Run commands with sudo password as appropriate
-run_cmd() {
+function run_cmd() {
     if $ASK_SUDO; then
         echo "$pwd" | sudo -S "$@"
     else
         "$@"
     fi
+    echo
 }
 
 # Detect if running as root 
@@ -27,26 +28,24 @@ fi
 echo "==> Updating DNF packages..."
 run_cmd dnf upgrade --refresh -y
 
-echo
 echo "==> Cleaning up DNF..."
 run_cmd dnf autoremove -y
 run_cmd dnf clean all
 
-echo
 echo "==> Updating Flatpak apps..."
 flatpak update -y
-
 echo
+
 echo "==> Cleaning up unused Flatpak runtimes..."
 flatpak uninstall --unused -y
-
 echo 
+
 echo "==> Updating Cargo packages..."
 cargo install-update --all
-
 echo
+
 echo "==> All updates and cleanup complete!"
-
 echo
+
 echo "==> Checking if reboot is required..."
 needs-restarting -r
