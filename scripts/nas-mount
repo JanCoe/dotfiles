@@ -31,7 +31,7 @@ unmount_all() {
 
     for share in "${array[@]}"; do
         local mount_point
-        mount_point=$(set_mount_point $share)
+        mount_point=$(set_mount_point "$share")
 
         if mountpoint -q "$mount_point"; then
             echo "Unmounting $mount_point"
@@ -87,7 +87,7 @@ while [[ $# -gt 0 ]]; do
     fi
 
     nas_path="//nas/$share"  # assumes that NAS IP has been mapped to 'nas' in /etc/hosts
-    mount_point=$(set_mount_point $share)
+    mount_point=$(set_mount_point "$share")
 
     # Ensure mount point exists
     mkdir -p "$mount_point"

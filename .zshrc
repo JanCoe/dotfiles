@@ -1,5 +1,5 @@
 # Source aliases
-[[ -f $HOME/.aliases ]] && . $HOME/.aliases
+[[ -f "$HOME/.aliases" ]] && . "$HOME/.aliases"
 
 # File extensions to run in neovim 
 alias -s py=nvim

@@ -6,7 +6,7 @@ else # Mac or Linux
 fi
 
 # Define a function to alias coreutils commands to their Rust equivalents
-alias_rust_coreutils() {
+function alias_rust_coreutils() {
     local cmds=("$@")
     for cmd in "${cmds[@]}"; do
         alias "$cmd"="uutils-coreutils $cmd"
@@ -14,23 +14,17 @@ alias_rust_coreutils() {
 }
 
 # Set coreutils aliases if it is installed
-if command -v uutils-coreutils > /dev/null 2>&1; then
+if command -v uutils-coreutils &> /dev/null; then
     alias_rust_coreutils cat cp date dd df dir echo ln mkdir printf pwd rm \
-                         sleep sort split sum tail tee, touch, uniq, unlink, wc, yes
-fi
-
-if command -v rg &> /dev/null; then
-    alias grep="rg"
+                         sleep sort split sum tail tee touch uniq unlink wc yes
 fi
 
 # Commands 
-alias ll="ls -Fla"
+alias ..="cd .."
+alias f="fzf"
+alias fe='fzf --bind "enter:become(nvim {+})"'  # fzf, then edit
+alias grep="rg"
+alias ll="ls -Fla"  # ls with detail
+alias pic="wezterm imgcat"  # wezterm picture
 alias v="nvim"
 alias y="yazi"
-alias g="git"
-alias fv="fzf | xargs nvim" # 'fzf vim': pipe fzf output into neovim
-alias fp="fzf --preview 'cat {}' | xargs nvim" # 'fzf preview': get a preview of the fzf output and pipe it into neovim
-alias pic="wezterm imgcat"
-
-# cd'ing up levels
-alias ..="cd .."

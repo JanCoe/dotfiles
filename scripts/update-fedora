@@ -20,7 +20,7 @@ if [[ "$EUID" -eq 0 ]]; then
 fi
 
 if $ASK_SUDO; then
-    read -s -p "Enter your sudo password: " pwd
+    read -r -s -p "Enter your sudo password: " pwd
     echo
 fi
 

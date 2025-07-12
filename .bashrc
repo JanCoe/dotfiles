@@ -3,7 +3,7 @@
 
 # Source definitions
 [[ -f /etc/bashrc ]] && . /etc/bashrc
-[[ -f ~/.aliases ]] && . $HOME/.aliases
+[[ -f "$HOME/.aliases" ]] && . "$HOME/.aliases"
 
 # User specific aliases and functions
 if [[ -d ~/.bashrc.d ]]; then
@@ -36,10 +36,14 @@ export HISTCONTROL=erasedups:ignoredups:ignorespace
 export HISTIGNORE="ls:ll:cd:* --help" # ignore specific commands from history
 
 # Initialise apps if they are available
-if command -v starship > /dev/null 2>&1; then
+if command -v starship &> /dev/null; then
     eval "$(starship init bash)"
 fi
 
-if command -v zoxide > /dev/null 2>&1; then
+if command -v fzf &> /dev/null; then
+    eval "$(fzf --bash)"
+fi
+
+if command -v zoxide &> /dev/null; then
     eval "$(zoxide init --cmd cd bash)"
 fi

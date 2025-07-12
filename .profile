@@ -8,11 +8,7 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-if [[ "$OSTYPE" == "darwin22" ]]; then # MacOS
-   export BASH_SILENCE_DEPRECATION_WARNING=1
-fi
-
-path_add() {
+function path_add() {
     # First variable is the 'path' variable to add to.
     # Remaining variables are the paths to add.
     local input_path=$1 
@@ -35,6 +31,10 @@ if [[ "$OSTYPE" == linux-gnu ]]; then
     PATH=$(path_add "$PATH" "$HOME/.local/share/flatpak/exports/bin" "/var/lib/flatpak/exports/bin")
 fi
 
+if [[ "$OSTYPE" == "darwin22" ]]; then # MacOS
+   export BASH_SILENCE_DEPRECATION_WARNING=1
+fi
+
 export PATH
 export EDITOR="nvim"
 export VISUAL="nvim"
@@ -43,10 +43,11 @@ export MANPAGER="nvim +Man!"
 export BAT_PAGER=less
 export PAGER=less
 export COLORTERM=truecolor
-export STARSHIP_CONFIG=~/.config/starship/starship.toml
+export STARSHIP_CONFIG="$HOME"/.config/starship/starship.toml
+export FZF_DEFAULT_OPTS_FILE="$HOME"/.fzfrc
 
 XDG_DATA_DIRS=$(path_add "$XDG_DATA_DIRS" "$HOME/.local/bin" "/usr/local/share" "/usr/share")
-#
+
 # export common environment variables
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
     XDG_DATA_DIRS=$(path_add "$XDG_DATA_DIRS" "/var/lib/flatpak/exports/share" "$HOME/.local/share/flatpak/exports/share")
@@ -57,7 +58,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_CACHE_HOME="$HOME/.cache"
-if command -v wezterm > /dev/null 2>&1; then
+if command -v wezterm &> /dev/null; then
     export TERMINAL="$(command -v wezterm)"
 fi
 

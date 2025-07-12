@@ -34,6 +34,7 @@ PKG_DNF=(
     git-lfs
     htop
     ripgrep 
+    ShellCheck
     stow
     tldr
     tmux
@@ -72,11 +73,11 @@ FLATPAKS=(
     us.zoom.Zoom
 )
 
-read -s -p "Enter your sudo password: " pwd
+read -s -p -r "Enter your sudo password: " pwd
 echo
 
 echo "==> Refreshing Fedora..."
-echo $pwd | sudo -S dnf upgrade --refresh -y
+echo "$pwd" | sudo -S dnf upgrade --refresh -y
 
 # Do this step manually.
 echo "==> Adding nushell to repo..."
@@ -89,14 +90,14 @@ gpgkey=https://yum.fury.io/nushell/gpg.key"
 echo "$config_text" | sudo tee /etc/yum.repos.d/fury-nushell.repo
 
 echo "==> Enabling COPR packages..."
-echo $pwd | sudo -S dnf copr enable "${PKG_COPR[@]}"
+echo "$pwd" | sudo -S dnf copr enable "${PKG_COPR[@]}"
 
 echo "==> Installing DNF packages..."
-echo $pwd | sudo -S dnf install -y "${PKG_DNF[@]}"
+echo "$pwd" | sudo -S dnf install -y "${PKG_DNF[@]}"
 
 echo "==> Installing Rust..."
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-. $HOME/.cargo/env
+[[ -f "$HOME"/.cargo/env ]] && source "$HOME"/.cargo/env
 
 echo "==> Installing cargo packages..."
 cargo install "${PKG_CARGO[@]}"
