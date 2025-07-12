@@ -7,7 +7,7 @@ echo "===> Installing pre-requisites for Git and Homebrew"
 xcode-select --install
 
 echo "===> Installing Homebrew..."
-/bin/bash -c "$(curl fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+env bash -c "$(curl fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 echo "===> Installing brews..."
 brew bundle --file ~/.dotfiles/notes/Brewfile
