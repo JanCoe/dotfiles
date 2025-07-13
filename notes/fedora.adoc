@@ -10,7 +10,8 @@ sudo dnf upgrade --refresh
 reboot
 ----
 
-. Run `sudo vi /etc/dnf/dnf.conf` and edit to include the following:
+. Run `sudo vi /etc/dnf/dnf.conf` (or `sudoedit /etc/dnf/dnf.conf` if EDITOR environment variable is set)
+and edit to include the following:
 +
 [source,ini]
 ----
@@ -130,5 +131,5 @@ git clone git@github.com:EndlessReform/obsidian-nord-muted
 [source,shell]
 ----
 update-fedora
-remove-kernels
+sudo ./remove-kernels  # from the .dotfiles/scripts directory
 ----
