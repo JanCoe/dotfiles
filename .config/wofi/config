@@ -1,4 +1,7 @@
 show=drun,run
 prompt=Search
-term=WezTerm
+term=wezterm
+matching=multi-contains
 allow_images=true
+image_size=24
+columns=3
