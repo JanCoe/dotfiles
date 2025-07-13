@@ -35,8 +35,8 @@ if command -v starship &> /dev/null; then
     eval "$(starship init bash)"
 fi
 
-eval "$(fzf --bash)"
-
 if command -v zoxide &> /dev/null; then
     eval "$(zoxide init --cmd cd bash)"
 fi
+
+# eval "$(fzf --bash)"
