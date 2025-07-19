@@ -11,10 +11,10 @@ set -eu
 # nas-mount unmount-all
 
 if [[ $#  -eq 0 ]]; then
-    echo "Usage:"
-    echo "nas-mount --photo ro --movie rw"
-    echo "nas-mount all"
-    echo "nas-mount unmount-all"
+    printf "%s\n" "Usage:"
+    printf "%s\n" "nas-mount --photo ro --movie rw"
+    printf "%s\n" "nas-mount all"
+    printf "%s\n" "nas-mount unmount-all"
 
 fi
 
@@ -23,7 +23,7 @@ valid_modes=("ro" "rw")
 
 set_mount_point() {
     local share=$1 
-    echo "$HOME/Media/${share^}"
+    printf "%s\n" "$HOME/Media/${share^}"
 }
 
 unmount_all() {
@@ -34,7 +34,7 @@ unmount_all() {
         mount_point=$(set_mount_point "$share")
 
         if mountpoint -q "$mount_point"; then
-            echo "Unmounting $mount_point"
+            printf "%s\n" "Unmounting $mount_point"
             sudo umount "$mount_point"
         fi 
     done
@@ -60,7 +60,7 @@ if [[ "${1:-}" == "unmount-all" ]]; then
 fi
 
 if [[ ! -f $HOME/.smbcredentials ]]; then
-    echo "Requires a ~/.smbcredentials file"
+    printf "%s\n" "Requires a ~/.smbcredentials file"
     exit 1
 fi
 
@@ -76,13 +76,13 @@ while [[ $# -gt 0 ]]; do
     
     # Validate share
     if ! is_valid "$share" "${valid_shares[@]}"; then
-        echo "Invalid share: '$share'"
+        printf "%s\n" "Invalid share: '$share'"
         exit 1
     fi
 
     # Validate mode 
     if ! is_valid "$mode" "${valid_modes[@]}"; then
-        echo "Invalid mode '$mode' for share '$share'"
+        printf "%s\n" "Invalid mode '$mode' for share '$share'"
         exit 1
     fi
 
@@ -92,7 +92,7 @@ while [[ $# -gt 0 ]]; do
     # Ensure mount point exists
     mkdir -p "$mount_point"
 
-    echo "Mounting $nas_path to $mount_point with mode $mode"
+    printf "%s\n" "Mounting $nas_path to $mount_point with mode $mode"
 
     base_opts="credentials=$HOME/.smbcredentials,vers=3.0"
     case "$mode" in

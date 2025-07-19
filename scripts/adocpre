@@ -7,7 +7,7 @@ if ! command -v asciidoctor &> /dev/null; then
     exit 1
 fi
 
-if [ -z "$1" ]; then
+if [[ -z "$1" ]]; then
     echo "Usage: $0 <filename.adoc>" >&2
     exit 1
 fi

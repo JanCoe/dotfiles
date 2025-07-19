@@ -15,24 +15,20 @@ _darcs
 \.gitignore
 \.gitmodules
 
-.+~ # emacs backup files
-\#.*\# # emacs autosave files
-
 ^/README.*
 ^/LICENSE.*
 ^/COPYING
+
+# Non-config files
+^notes
+^scripts
+^backgrounds
 
 # X11 related
 ^\.Xresources$
 ^\.config/i3/config$
 ^\.config/i3status/config$
 ^\.config/picom/picom\.conf$
-
-# Non-config files
-^notes
-^scripts
-^symlinks
-^backgrounds
 
 # Linux related
 # ^\.config/hypr/hyprland\.conf$
@@ -43,3 +39,4 @@ _darcs
 # ^\.config/kew/kewrc$
 # ^\.config/rofi/config\.rasi
 # ^\.config/rofi/nord\.rasi
+# ^\.config/wofi
