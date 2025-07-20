@@ -8,7 +8,7 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-function path_add() {
+path_add() {
     # First variable is the 'path' variable to add to.
     # Remaining variables are the paths to add.
     local input_path=$1 
@@ -31,9 +31,7 @@ if [[ "$OSTYPE" == linux-gnu ]]; then
     PATH=$(path_add "$PATH" "$HOME/.local/share/flatpak/exports/bin" "/var/lib/flatpak/exports/bin")
 fi
 
-if [[ "$OSTYPE" == "darwin22" ]]; then # MacOS
-   export BASH_SILENCE_DEPRECATION_WARNING=1
-fi
+[[ "$OSTYPE" == "darwin22" ]] && export BASH_SILENCE_DEPRECATION_WARNING=1
 
 export PATH
 export EDITOR="nvim"

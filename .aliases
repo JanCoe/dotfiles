@@ -1,12 +1,9 @@
-# Settings that depend on operating system 
-if [[ "$OSTYPE" == "msys" ]]; then # Windows 
-    alias pva="source .venv/scripts/activate" # Python Venv Activate
-else # Mac or Linux
-    alias pva="source .venv/bin/activate" # Python Venv Activate
-fi
+# Settings that depend on operating system. Python Venv Activate 
+[[ "$OSTYPE" == "msys" ]] && alias pva="source .venv/scripts/activate"
+[[ "$OSTYPE" != "msys" ]] && alias pva="source .venv/bin/activate"
 
 # Define a function to alias coreutils commands to their Rust equivalents
-function alias_rust_coreutils() {
+alias_rust_coreutils() {
     local cmds=("$@")
     for cmd in "${cmds[@]}"; do
         alias "$cmd"="uutils-coreutils $cmd"
