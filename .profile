@@ -41,6 +41,10 @@ export MANPAGER="nvim +Man!"
 export BAT_PAGER=less
 export PAGER=less
 export COLORTERM=truecolor
+export GTK_THEME=Nordic
+export GTK_ICON_THEME=Nordzy
+export GTK2_RC_FILES=$HOME/.gtkrc-2.0
+export XCURSOR_THEME=Nordzy-cursors
 export STARSHIP_CONFIG="$HOME"/.config/starship/starship.toml
 export FZF_DEFAULT_OPTS_FILE="$HOME"/.config/fzf/.fzfrc
 

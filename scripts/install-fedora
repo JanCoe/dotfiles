@@ -18,6 +18,9 @@ PKG_DNF=(
     jetbrains-mono-fonts
     nordzy-icon
     papirus-icon-theme
+    gtk2
+    gtk-murrine-engine  # for GTK themes to render correctly
+    lxappearance  # to set GTK appearance 
     rsms-inter-fonts
     # i3 only 
     picom
@@ -108,13 +111,6 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 
 echo "==> Installing Flathub packages..."
 flatpak install flathub "${FLATPAKS[@]}"
-
-# i3 only
-echo "==> Installing lockscreen..." 
-cd ~/Downloads
-git clone https://github.com/meskarune/i3lock-fancy.git
-cd i3lock-fancy
-sudo make install
 
 # i3 only
 echo "==> Setting background..."

@@ -63,6 +63,10 @@ cd ~/.dotfiles
 stow .
 ----
 
+. Install Nordic gtk theme.
+
+gh repo clone EliverLara/Nordic ~/.themes/Nordic
+
 . Install the kew music player, following the instructions on https://github.com/ravachol/kew, and using
 the 'install-kew' script.
 
@@ -71,7 +75,7 @@ the 'install-kew' script.
 [source,shell]
 ----
 mkdir -p ~/Apps/i3lock-fancy
-git clone https://github.com/meskarune/i3lock-fancy.git ~/Apps/i3lock-fancy
+gh repo clone meskarune/i3lock-fancy ~/Apps/i3lock-fancy
 cd ~/Apps/i3lock-fancy
 sudo make install
 make clean
