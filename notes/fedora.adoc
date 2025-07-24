@@ -130,6 +130,16 @@ git clone git@github.com:EndlessReform/obsidian-nord-muted
 
 . Install HyperBackupExplorer from Synology website for exploring backups.
 
+. Set up Vivaldi as default browser
+
++
+[source,shell]
+----
+xdg-settings set default-web-browser com.vivaldi.Vivaldi.desktop
+xdg-mime default com.vivaldi.Vivaldi.desktop x-scheme-handler/http
+xdg-mime default com.vivaldi.Vivaldi.desktop x-scheme-handler/https
+----
+
 . In future, to keep system updated:
 +
 [source,shell]

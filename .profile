@@ -23,6 +23,16 @@ path_add() {
     echo "$input_path" 
 }
 
+export XDG_DATA_HOME=$HOME/.local/share
+XDG_DATA_DIRS=$(path_add "$XDG_DATA_DIRS" "/usr/local/share" "/usr/share")
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+    XDG_DATA_DIRS=$(path_add "$XDG_DATA_DIRS" "/var/lib/flatpak/exports/share" "$HOME/.local/share/flatpak/exports/share")
+fi
+export XDG_DATA_DIRS
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_STATE_HOME=$HOME/.local/state
+export XDG_CACHE_HOME=$HOME/.cache
+
 # export environment variables
 PATH=$(path_add "$PATH" "$HOME/bin" "$HOME/.local/bin" "$HOME/.dotfiles/scripts")
 
@@ -31,37 +41,26 @@ if [[ "$OSTYPE" == linux-gnu ]]; then
     PATH=$(path_add "$PATH" "$HOME/.local/share/flatpak/exports/bin" "/var/lib/flatpak/exports/bin")
 fi
 
-[[ "$OSTYPE" == "darwin22" ]] && export BASH_SILENCE_DEPRECATION_WARNING=1
+[[ "$OSTYPE" == darwin22 ]] && export BASH_SILENCE_DEPRECATION_WARNING=1
 
 export PATH
-export EDITOR="nvim"
-export VISUAL="nvim"
-export BROWSER="vivaldi"
+export EDITOR=nvim
+export VISUAL=nvim
+export BROWSER="flatpak run com.vivaldi.Vivaldi"
 export MANPAGER="nvim +Man!"
 export BAT_PAGER=less
 export PAGER=less
 export COLORTERM=truecolor
 export GTK_THEME=Nordic
 export GTK_ICON_THEME=Nordzy
-export GTK2_RC_FILES=$HOME/.gtkrc-2.0
+export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 export XCURSOR_THEME=Nordzy-cursors
-export STARSHIP_CONFIG="$HOME"/.config/starship/starship.toml
-export FZF_DEFAULT_OPTS_FILE="$HOME"/.config/fzf/.fzfrc
+export STARSHIP_CONFIG="$XDG_CONFIG_HOME"/starship/starship.toml
+export FZF_DEFAULT_OPTS_FILE="$XDG_CONFIG_HOME"/fzf/.fzfrc
 
-XDG_DATA_DIRS=$(path_add "$XDG_DATA_DIRS" "$HOME/.local/bin" "/usr/local/share" "/usr/share")
-
-# export common environment variables
-if [[ "$OSTYPE" == "linux-gnu" ]]; then
-    XDG_DATA_DIRS=$(path_add "$XDG_DATA_DIRS" "/var/lib/flatpak/exports/share" "$HOME/.local/share/flatpak/exports/share")
-fi
-
-export XDG_DATA_DIRS
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_DATA_HOME="$HOME/.local/share"
-export XDG_STATE_HOME="$HOME/.local/state"
-export XDG_CACHE_HOME="$HOME/.cache"
-if command -v wezterm &> /dev/null; then
-    export TERMINAL="$(command -v wezterm)"
+if command -v wezterm &>/dev/null; then
+    term="$(command -v wezterm)" 
+    export TERMINAL=$term
 fi
 
 # initialise common tools if they exist
