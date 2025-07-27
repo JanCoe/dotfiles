@@ -31,7 +31,7 @@ set showmatch=true
 set matchtime=2
 
 set virtualedit="block"
-set clipboard+=unnamedplus
+set clipboard+=unnamed,unnamedplus
 
 set highlightedyank
 set nerdtree

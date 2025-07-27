@@ -22,7 +22,7 @@ vim.opt.showmatch = true
 vim.opt.matchtime = 2
 
 vim.opt.virtualedit = "block"
-vim.opt.clipboard = "unnamedplus"
+vim.opt.clipboard:append({ "unnamed", "unnamedplus" })
 
 vim.opt.splitbelow = true
 vim.opt.splitright = true

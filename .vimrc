@@ -17,7 +17,7 @@ set incsearch
 set matchtime=2
 
 set virtualedit="block"
-set clipboard+=unnamedplus
+set clipboard+=unnamed,unnamedplus
 
 inoremap jk <Esc>
 map H ^
