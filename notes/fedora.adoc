@@ -140,6 +140,15 @@ xdg-mime default com.vivaldi.Vivaldi.desktop x-scheme-handler/http
 xdg-mime default com.vivaldi.Vivaldi.desktop x-scheme-handler/https
 ----
 
+. Set IP addresses of machines on local network
+Edit /etc/hosts as follows:
+.. 127.0.0.1 localhost
+.. ::1       localhost
+.. 127.0.1.1 name_of_this_machine # obtained through hostname
+.. ip_address name
+... where ip_address is from 'hostname -I' and name is from 'hostname' on Linux systems
+... where ip_address is from 'ipconfig getifaddr en0' and name is from 'hostname' on Macs 
+
 . In future, to keep system updated:
 +
 [source,shell]
