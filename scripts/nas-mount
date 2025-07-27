@@ -18,7 +18,7 @@ if [[ $#  -eq 0 ]]; then
 
 fi
 
-valid_shares=("photo" "music" "movie" "priv")
+valid_shares=("photo" "music" "movie" "photo_priv")
 valid_modes=("ro" "rw")
 
 set_mount_point() {

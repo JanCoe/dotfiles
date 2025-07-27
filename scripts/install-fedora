@@ -57,9 +57,10 @@ PKG_DNF=(
     cheese
     neomutt
     neovim
-    nushell
+    nushell  # need to have added the repo
     onedrive
     thunderbird
+    vivaldi-stable  # need to have added the repo
     wezterm
 )
 PKG_CARGO=(
@@ -72,8 +73,8 @@ PKG_CARGO=(
 )
 FLATPAKS=(
     ch.protonmail.protonmail-bridge
-    com.vivaldi.Vivaldi
     md.obsidian.Obsidian
+    com.gihub.tchx84.Flatseal
     us.zoom.Zoom
 )
 
@@ -83,15 +84,11 @@ echo
 echo "==> Refreshing Fedora..."
 echo "$pwd" | sudo -S dnf upgrade --refresh -y
 
-# Do this step manually.
-echo "==> Adding nushell to repo..."
-config_text="[gemfury-nushell]
-name=Gemfury Nushell Repo
-baseurl=https://yum.fury.io/nushell/
-enabled=1
-gpgcheck=0
-gpgkey=https://yum.fury.io/nushell/gpg.key"
-echo "$config_text" | sudo tee /etc/yum.repos.d/fury-nushell.repo
+echo "==> Adding nushell to repo and installing..."
+install-nushell
+
+echo "==> Adding Vivaldi to repo and installing..."
+install-vivaldi
 
 echo "==> Enabling COPR packages..."
 echo "$pwd" | sudo -S dnf copr enable "${PKG_COPR[@]}"

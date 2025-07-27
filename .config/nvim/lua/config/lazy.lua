@@ -24,9 +24,9 @@ require("lazy").setup({
     require("plugins.lazydev"),
     require("plugins.zoxide"),
     require("plugins.rustfmt").setup(),
+--- require("plugins.minipick"),
   },
   install = { colorscheme = { "nord" } },
   checker = { enabled = true },
 })
-
 
