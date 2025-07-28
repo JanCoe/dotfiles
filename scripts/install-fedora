@@ -4,14 +4,15 @@ set -euo pipefail
 PKG_COPR=(
   lihaohong/yazi
   rubemlrm/nordzy-icon # for nordic theme
-  wezfurlong/wezterm-nightly 
+  wezfurlong/wezterm-nightly
+  solopasha/hyprland
 )
 PKG_DNF=(
     @development-tools
     cmake
     fuse-libs  # needed to run AppImages (Jetbrains toolbox is an AppImage)
     openssl-devel  # needed for cargo-update
-    # libxcrypt-compat  # needed for Synology HyperBackupExplorer, not done yet
+    libxcrypt-compat  # needed for Synology HyperBackupExplorer, not done yet
     # fonts and themes
     ibm-plex-sans-fonts
     ibm-plex-serif-fonts 
@@ -22,11 +23,11 @@ PKG_DNF=(
     gtk-murrine-engine  # for GTK themes to render correctly
     lxappearance  # to set GTK appearance 
     rsms-inter-fonts
-    # i3 only 
-    picom
+    # hyprland
+    hyprland
+    hyprland-qtutils
     # rest 
     flatpak
-    multimedia
     # CLI utils 
     bat
     dnf-utils 
@@ -61,7 +62,7 @@ PKG_DNF=(
     onedrive
     thunderbird
     vivaldi-stable  # need to have added the repo
-    wezterm
+    wezterm  # need to have added the repo
 )
 PKG_CARGO=(
     cargo-update
@@ -74,11 +75,11 @@ PKG_CARGO=(
 FLATPAKS=(
     ch.protonmail.protonmail-bridge
     md.obsidian.Obsidian
-    com.gihub.tchx84.Flatseal
+    com.github.tchx84.Flatseal
     us.zoom.Zoom
 )
 
-read -s -p -r "Enter your sudo password: " pwd
+read -s -r -p "Enter your sudo password: " pwd
 echo
 
 echo "==> Refreshing Fedora..."
@@ -110,5 +111,5 @@ echo "==> Installing Flathub packages..."
 flatpak install flathub "${FLATPAKS[@]}"
 
 # i3 only
-echo "==> Setting background..."
-feh --bg-scale ~/.dotfiles/backgrounds/touhou_anime.jpg
+# echo "==> Setting background..."
+# feh --bg-scale ~/.dotfiles/backgrounds/touhou_anime.jpg

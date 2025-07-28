@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Takes an argument of the application to run
 # If it is running already, kill it.
 # Otherwise launch it with any optional arguments.

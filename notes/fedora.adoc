@@ -2,14 +2,9 @@
 
 These installation instructions are for using the Fedora sway spin and overlaying hyprland on it.
 
-. Reboot system, upgrade all packages and reboot again.
-+
-[source,shell]
-----
-sudo dnf upgrade --refresh
-reboot
-----
-
+. Install from the USB drive
+. Reboot the system and log in under your user account.
+. Activate wifi from the network manager.
 . Run `sudo vi /etc/dnf/dnf.conf` (or `sudoedit /etc/dnf/dnf.conf` if EDITOR environment variable is set)
 and edit to include the following:
 +
@@ -23,14 +18,13 @@ skip_unavailable=True
 max_parallel_downloads=10
 install_weak_deps=False
 ----
-
-. Go to https://rpmfusion.org/Configuration:
-.. Enable access to free and nonfree under Configuration
-.. Install additional codecs under Howto/Multimedia
-.. Run 'sudo dnf update @core'. This installs the core packages that are conditional on rmpfusion being enabled.
-.. sudo dnf group install multimedia
-.. Activate OpenH264 with 'sudo dnf config-manager setopt fedora-cisco-openh264.enabled=1'
-
+. Upgrade all packages and reboot again.
++
+[source,shell]
+----
+sudo dnf upgrade --refresh
+reboot
+----
 . Set up git permissions.
 +
 [source,shell]
@@ -47,6 +41,17 @@ mkdir ~/.dotfiles
 gh repo clone JanCoe/dotfiles ~/.dotfiles
 ----
 
+. Go to https://rpmfusion.org/Configuration:
+.. Enable access to free and nonfree under Configuration
+.. Install additional codecs under Howto/Multimedia
+.. Run 'sudo dnf update @core'. This installs the core packages that are conditional on rpmfusion being enabled.
+.. sudo dnf group install multimedia
+.. Activate OpenH264 with
++
+[source,shell]
+----
+sudo dnf config-manager setopt fedora-cisco-openh264.enabled=1
+----
 . Install all the packages.
 +
 [source,shell]
@@ -62,10 +67,14 @@ Check that the .stow-local-ignore file is correct (has to be done before running
 cd ~/.dotfiles
 stow .
 ----
+Make sure there is no .bash_profile (because .profile would not be read if there is).
 
 . Install Nordic gtk theme.
-
++
+[source,shell]
+----
 gh repo clone EliverLara/Nordic ~/.themes/Nordic
+----
 
 . Install the kew music player, following the instructions on https://github.com/ravachol/kew, and using
 the 'install-kew' script.
@@ -135,9 +144,9 @@ git clone git@github.com:EndlessReform/obsidian-nord-muted
 +
 [source,shell]
 ----
-xdg-settings set default-web-browser com.vivaldi.Vivaldi.desktop
-xdg-mime default com.vivaldi.Vivaldi.desktop x-scheme-handler/http
-xdg-mime default com.vivaldi.Vivaldi.desktop x-scheme-handler/https
+xdg-settings set default-web-browser vivaldi.desktop
+xdg-mime default vivaldi.desktop x-scheme-handler/http
+xdg-mime default vivaldi.desktop x-scheme-handler/https
 ----
 
 . Set IP addresses of machines on local network
