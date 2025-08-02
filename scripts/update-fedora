@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-set -x # to echo everything into logs when run with systemd
-       
 ASK_SUDO=true  # Set to false to skip password prompt when running as root
 
 # Run commands with sudo password as appropriate
@@ -18,6 +16,7 @@ run_cmd() {
 # Detect if running as root 
 if [[ "$EUID" -eq 0 ]]; then
     ASK_SUDO=false
+    set -x # to echo everything into logs when run with systemd
 fi
 
 if $ASK_SUDO; then
