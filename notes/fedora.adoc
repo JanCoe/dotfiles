@@ -11,12 +11,12 @@ and edit to include the following:
 [source,ini]
 ----
 [main]
-fastestmirror=True
-keepcache=True
-defaultyes=True
-skip_unavailable=True
-max_parallel_downloads=10
-install_weak_deps=False
+fastestmirror = True
+keepcache = True
+defaultyes = True
+skip_unavailable = True
+max_parallel_downloads = 10
+install_weak_deps = False
 ----
 . Upgrade all packages and reboot again.
 +
