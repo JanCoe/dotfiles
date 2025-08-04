@@ -34,7 +34,7 @@ export XDG_STATE_HOME=$HOME/.local/state
 export XDG_CACHE_HOME=$HOME/.cache
 
 # export environment variables
-PATH=$(path_add "$PATH" "$HOME/bin" "$HOME/.local/bin" "$HOME/.dotfiles/scripts")
+PATH=$(path_add "$PATH" "$HOME/bin" "$HOME/.local/bin" "$HOME/.dotfiles/scripts" "$HOME/.cargo/bin")
 
 if [[ "$OSTYPE" == linux-gnu ]]; then
     # local flatpaks and system-wide flatpaks
@@ -46,15 +46,10 @@ fi
 export PATH
 export EDITOR=nvim
 export VISUAL=nvim
-export BROWSER="flatpak run com.vivaldi.Vivaldi"
 export MANPAGER="nvim +Man!"
 export BAT_PAGER=less
 export PAGER=less
 export COLORTERM=truecolor
-export GTK_THEME=Nordic
-export GTK_ICON_THEME=Nordzy
-export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
-export XCURSOR_THEME=Nordzy-cursors
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME"/starship/starship.toml
 export FZF_DEFAULT_OPTS_FILE="$XDG_CONFIG_HOME"/fzf/.fzfrc
 
@@ -63,11 +58,10 @@ if command -v wezterm &>/dev/null; then
     export TERMINAL=$term
 fi
 
-# initialise common tools if they exist
+# initialise environments 
 [[ -f "$HOME/.cargo/env" ]] && . "$HOME/.cargo/env"
 [[ -f "$HOME/.local/bin/env" ]] && . "$HOME/.local/bin/env"
 
-# source rc files in case this is a login shell
 if [[ -n "$BASH_VERSION" ]]; then
     [[ -r "$HOME/.bashrc" ]] && . "$HOME/.bashrc"
 elif [[ -n "$ZSH_VERSION" ]]; then
