@@ -1,1 +1,4 @@
 *.html
+
+# tmux plugin manager and plugins
+.config/tmux/plugins/

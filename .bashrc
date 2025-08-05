@@ -20,9 +20,6 @@ elif [[ -f /etc/bash_completion ]]; then
     . /etc/bash_completion
 fi
 
-set -o vi
-set -o history
-
 export HISTFILESIZE=10000 # number of commands to save to ~/.bash_history
 export HISTSIZE=500 # number of commands to remember in memory
 export HISTTIMEFORMAT="%F %T "
@@ -37,6 +34,9 @@ if command -v zoxide &> /dev/null; then
 fi
 
 # Initialise apps if they are available
-# if command -v starship &> /dev/null; then
-eval "$(starship init bash)"
-# fi
+if command -v starship &> /dev/null; then
+    eval "$(starship init bash)"
+fi
+
+set -o vi
+set -o history
