@@ -2,13 +2,13 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
 config.font = wezterm.font { family = "JetBrains Mono", scale = 1 }
-config.font_size = 18
+config.font_size = 16
 config.color_scheme = "nord"
 config.colors = {
   tab_bar = { inactive_tab_edge = '#ECEFF4', active_tab = { fg_color = '#D8DEE9', bg_color = '#4c566A' },
   }
 }
-config.window_background_opacity = 0.95
+config.window_background_opacity = 0.5
 config.max_fps = 120
 config.animation_fps = 1
 config.line_height = 1.05
@@ -56,8 +56,8 @@ config.keys = key_binding({
   { "CTRL|SHIFT", "m", a.PaneSelect },
   -- Vim mode for navigating around and copying text  
   { 'CTRL', 'Enter', a.ActivateCopyMode },
-  -- Rename current tab
-  { 'CTRL', 'r', prompt_input() },
+  -- Name current tab
+  { 'CTRL', 'n', prompt_input() },
   { 'CTRL', 'w', a.CloseCurrentPane { confirm = false } },
   { 'CTRL|SHIFT', 'w', a.CloseCurrentTab { confirm = true } },
   -- Use CTRL + h,j,k,l to move between panes
