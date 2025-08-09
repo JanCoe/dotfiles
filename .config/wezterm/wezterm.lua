@@ -8,7 +8,7 @@ config.colors = {
   tab_bar = { inactive_tab_edge = '#ECEFF4', active_tab = { fg_color = '#D8DEE9', bg_color = '#4c566A' },
   }
 }
-config.window_background_opacity = 0.5
+config.window_background_opacity = 0.85
 config.max_fps = 120
 config.animation_fps = 1
 config.line_height = 1.05

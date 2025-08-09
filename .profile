@@ -34,7 +34,7 @@ export XDG_STATE_HOME=$HOME/.local/state
 export XDG_CACHE_HOME=$HOME/.cache
 
 # export environment variables
-PATH=$(path_add "$PATH" "$HOME/bin" "$HOME/.local/bin" "$HOME/.dotfiles/scripts" "$HOME/.cargo/bin")
+PATH=$(path_add "$PATH" "$HOME/bin" "$HOME/.local/bin" "$HOME/Projects/shell-utils/src" "$HOME/.cargo/bin")
 
 if [[ "$OSTYPE" == linux-gnu ]]; then
     # local flatpaks and system-wide flatpaks
