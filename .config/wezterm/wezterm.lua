@@ -58,8 +58,8 @@ config.keys = key_binding({
   { 'CTRL', 'Enter', a.ActivateCopyMode },
   -- Name current tab
   { 'CTRL', 'n', prompt_input() },
-  { 'CTRL', 'w', a.CloseCurrentPane { confirm = false } },
-  { 'CTRL|SHIFT', 'w', a.CloseCurrentTab { confirm = true } },
+  { 'CTRL', 'q', a.CloseCurrentPane { confirm = false } },
+  { 'CTRL|SHIFT', 'q', a.CloseCurrentTab { confirm = true } },
   -- Use CTRL + h,j,k,l to move between panes
   { "CTRL", "h", a.ActivatePaneDirection('Left') },
   { "CTRL", "j", a.ActivatePaneDirection('Down') },
