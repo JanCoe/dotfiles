@@ -21,8 +21,8 @@ alias ..="cd .."
 alias f="fzf"
 alias fe='fzf --bind "enter:become(nvim {+})"'  # fzf, then edit
 alias grep="rg"
-alias eza="ls"
-alias ll="ls -Fla"  # ls with detail
+alias ls="eza"
+alias ll="eza -la"
 alias pic="wezterm imgcat"  # wezterm picture
-alias v="nvim"
 alias y="yazi"
+v() { if [[ "$#" -eq 0 ]]; then nvim .; else nvim "$@"; fi; }

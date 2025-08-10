@@ -27,8 +27,6 @@ shopt -s histappend # append to the history file, don't overwrite it
 export HISTCONTROL=erasedups:ignoredups:ignorespace 
 export HISTIGNORE="ls:ll:cd:* --help" # ignore specific commands from history
 
-# eval "$(fzf --bash)"
-
 if command -v zoxide &> /dev/null; then
     eval "$(zoxide init --cmd cd bash)"
 fi

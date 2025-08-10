@@ -1,7 +1,6 @@
 * {
-    /* font-family: 'IBM Plex Sans', monospace; */
     font-family: 'Inter';
-    font-size: 16px;
+    font-size: 14px;
 }
 
 window#waybar {
