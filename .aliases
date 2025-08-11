@@ -24,5 +24,5 @@ alias grep="rg"
 alias ls="eza"
 alias ll="eza -la"
 alias pic="wezterm imgcat"  # wezterm picture
+alias v="nvim"
 alias y="yazi"
-v() { if [[ "$#" -eq 0 ]]; then nvim .; else nvim "$@"; fi; }

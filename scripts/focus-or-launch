@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+init_class="${1}"  # The application’s initialClass (from `hyprctl clients`)
+launch_cmd="${2}"  # Command to launch the application
+
+# Find the window address for this class
+addr=$(hyprctl clients -j | jq -r --arg app "$init_class" \
+  '.[] | select(.initialClass == $app) | .address' | head -n 1)
+
+if [[ -n "$addr" ]]; then
+    # Focus the existing window
+    hyprctl dispatch focuswindow address:"$addr"
+else
+    # Launch the application
+    $launch_cmd &
+fi
