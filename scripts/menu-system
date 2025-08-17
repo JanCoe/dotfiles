@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-set -euo pipefail
-commands=("reboot" "shutdown" "poweroff")
-menu=$(printf "%s\n" "${commands[@]}")
-selected=$(echo "$menu" | wofi --dmenu --width 250 --lines 4 --prompt "System")
-if [[ -n "$selected" ]]; then
-    eval "$selected"
-fi

@@ -2,7 +2,7 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
 config.font = wezterm.font { family = "JetBrains Mono", scale = 1 }
-config.font_size = 16
+config.font_size = 20
 config.color_scheme = "nord"
 config.colors = {
   tab_bar = { inactive_tab_edge = '#ECEFF4', active_tab = { fg_color = '#D8DEE9', bg_color = '#4c566A' },

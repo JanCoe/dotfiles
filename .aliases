@@ -20,7 +20,6 @@ fi
 alias ..="cd .."
 alias f="fzf"
 alias fe='fzf --bind "enter:become(nvim {+})"'  # fzf, then edit
-alias grep="rg"
 alias ls="eza"
 alias ll="eza -la"
 alias pic="wezterm imgcat"  # wezterm picture

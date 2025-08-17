@@ -50,8 +50,8 @@ export MANPAGER="nvim +Man!"
 export BAT_PAGER=less
 export PAGER=less
 export COLORTERM=truecolor
-export STARSHIP_CONFIG="$XDG_CONFIG_HOME"/starship/starship.toml
-export FZF_DEFAULT_OPTS_FILE="$XDG_CONFIG_HOME"/fzf/.fzfrc
+export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
+export FZF_DEFAULT_OPTS_FILE="$XDG_CONFIG_HOME/fzf/.fzfrc"
 
 if command -v wezterm &>/dev/null; then
     term="$(command -v wezterm)" 

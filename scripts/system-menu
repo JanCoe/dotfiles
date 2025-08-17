@@ -1,0 +1,70 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+menu() (
+    local menu_items=("$@")
+    local menu_display
+    menu_display=$(printf "%s\n" "${menu_items[@]}" | awk -F: '{print $2 " " $1}')
+    
+    local selected
+    selected=$(echo "$menu_display" | wofi --dmenu --width 200 --lines 20 --location=top_left)
+
+    local label="${selected#* }"
+
+    for item in "${menu_items[@]}"; do
+        IFS=":" read -r item_label _ item_cmd <<< "$item"
+        if [[ "$item_label" == "$label" ]]; then
+            # If the command starts with "menu ", treat the rest as an array name
+            if [[ $item_cmd == menu\ * ]]; then
+                local array_name="${item_cmd#menu }"
+                local -n arr_ref="$array_name"  # nameref to the original array
+                menu "${arr_ref[@]}"
+            else
+                eval "$item_cmd"
+                exit 0
+            fi
+        fi
+    done
+)
+
+start_nvim="$TERMINAL start -- nvim"
+
+configs=(
+    "aliases::$start_nvim $HOME/.aliases"
+    "bash::$start_nvim $HOME/.bashrc"
+    "hyprland::$start_nvim $XDG_CONFIG_HOME/hypr/hyprland.conf"
+    "hyprland-bindings::$start_nvim $XDG_CONFIG_HOME/hypr/bindings.conf"
+    "nvim::$start_nvim $XDG_CONFIG_HOME/nvim/init.lua"
+    "nvim-keymaps::$start_nvim $XDG_CONFIG_HOME/nvim/lua/config/keymaps.lua"
+    "profile::$start_nvim $HOME/.profile"
+    "waybar-config::$start_nvim $XDG_CONFIG_HOME/waybar/config.jsonc"
+    "waybar-style::$start_nvim $XDG_CONFIG_HOME/waybar/style.css"
+    "wezterm::$start_nvim $XDG_CONFIG_HOME/wezterm/wezterm.lua"
+    "edit...:📝:$start_nvim $0"
+    "back...:⬅️:menu main"
+)
+
+connect=(
+    "audio:🔊:pavucontrol"
+    "bluetooth:🅱️:blueman-manager"
+    "wifi:📶:nm-connection-editor"
+    "edit...:📝:$start_nvim $0"
+    "back...:⬅️:menu main"
+)
+
+system=(
+    "reboot::reboot"
+    "poweroff::poweroff"
+    "edit...:📝:$start_nvim $0"
+    "back...:⬅️:menu main"
+)
+
+main=(
+    "configs:⚙️:menu configs"
+    "connect:🛠️:menu connect"
+    "system:⏻:menu system"
+    "edit...:📝:$start_nvim $0"
+)
+
+menu "${main[@]}"
+
