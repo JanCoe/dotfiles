@@ -5,4 +5,4 @@ show_hidden = true
 wrap = "no"
 tab_size = 2
 image = true
-script = "~/.config/yazi/preview.sh"
+script = "$XDG_CONFIG_HOME/yazi/preview.sh"
