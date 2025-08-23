@@ -54,5 +54,7 @@ return {
       nargs = 1,
       complete = 'file',
     })
+    local opts = { buffer = bufnr, desc = "LSP rename" }
+    vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
   end,
 }
