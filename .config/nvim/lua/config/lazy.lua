@@ -21,12 +21,13 @@ require("lazy").setup({
     require("plugins.treesitter"),
     require("plugins.mason"),
     require("plugins.masonconfig"),
---  require("plugins.lazydev"),
+    require("plugins.fzf"),
+    --  require("plugins.lazydev"),
     require("plugins.zoxide"),
+    require("plugins.rufffmt"),
     require("plugins.rustfmt").setup(),
---  require("plugins.minipick"),
+    --  require("plugins.minipick"),
   },
   install = { colorscheme = { "nord" } },
   checker = { enabled = true },
 })
-

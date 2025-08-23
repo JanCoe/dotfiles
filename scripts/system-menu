@@ -32,6 +32,7 @@ start_nvim="$TERMINAL start -- nvim"
 configs=(
     "aliases::$start_nvim $HOME/.aliases"
     "bash::$start_nvim $HOME/.bashrc"
+    "glance::$start_nvim $HOME/Projects/glance/config/home.yml" 
     "hyprland::$start_nvim $XDG_CONFIG_HOME/hypr/hyprland.conf"
     "hyprland-bindings::$start_nvim $XDG_CONFIG_HOME/hypr/bindings.conf"
     "nvim::$start_nvim $XDG_CONFIG_HOME/nvim/init.lua"
