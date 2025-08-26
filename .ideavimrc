@@ -36,7 +36,6 @@ set clipboard+=unnamed,unnamedplus
 set highlightedyank
 set nerdtree
 
-inoremap jk <Esc>
 nnoremap H ^
 nnoremap L $
 vnoremap H ^

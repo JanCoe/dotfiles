@@ -20,7 +20,10 @@ menu() (
                 local -n arr_ref="$array_name"  # nameref to the original array
                 menu "${arr_ref[@]}"
             else
-                eval "$item_cmd"
+                read -r -a cmd <<< "$item_cmd"  # split into array
+                set -x 
+                "${cmd[@]}"  # eval "$item_cmd"
+                set +x
                 exit 0
             fi
         fi
@@ -60,9 +63,17 @@ system=(
     "back...:⬅️:menu main"
 )
 
+utilities=(
+    "screenshot::screenshot"
+    "edit...:📝:$start_nvim $0"
+    "back...:⬅️:menu main"
+)
+
+
 main=(
     "configs:⚙️:menu configs"
     "connect:🛠️:menu connect"
+    "utilities::menu utilities"
     "system:⏻:menu system"
     "edit...:📝:$start_nvim $0"
 )

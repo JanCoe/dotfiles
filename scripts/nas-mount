@@ -6,7 +6,7 @@ set -eu
 # nas-mount photo ro movie ro music rw
 #
 # nas-mount all is equivalent to
-# nas-mount --music rw --photo rw --movie rw 
+# nas-mount --music rw --photo rw --movie rw --photo_priv rw 
 # To unmount all:
 # nas-mount unmount-all
 
@@ -62,7 +62,7 @@ fi
 
 # Special command: mount all
 if [[ "$#" -eq 1 && "$1" == "all" ]]; then
-    set -- --photo rw --music rw --movie rw
+    set -- --photo rw --music rw --movie rw --photo_priv rw
 fi
 
 # Parse input arguments in pairs
