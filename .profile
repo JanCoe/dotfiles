@@ -46,6 +46,7 @@ fi
 export PATH
 export EDITOR=nvim
 export VISUAL=nvim
+export SYSTEMD_EDITOR=nvim
 export MANPAGER="nvim +Man!"
 export BAT_PAGER=less
 export PAGER=less
