@@ -21,9 +21,7 @@ menu() (
                 menu "${arr_ref[@]}"
             else
                 read -r -a cmd <<< "$item_cmd"  # split into array
-                set -x 
-                "${cmd[@]}"  # eval "$item_cmd"
-                set +x
+                "${cmd[@]}"
                 exit 0
             fi
         fi
@@ -33,50 +31,47 @@ menu() (
 start_nvim="$TERMINAL start -- nvim"
 
 configs=(
+    "...back:⬅️:menu main"
+    "...edit:📝:$start_nvim $0"
     "aliases::$start_nvim $HOME/.aliases"
     "bash::$start_nvim $HOME/.bashrc"
-    "glance::$start_nvim $HOME/Projects/glance/config/home.yml" 
-    "hyprland::$start_nvim $XDG_CONFIG_HOME/hypr/hyprland.conf"
     "hyprland-bindings::$start_nvim $XDG_CONFIG_HOME/hypr/bindings.conf"
-    "nvim::$start_nvim $XDG_CONFIG_HOME/nvim/init.lua"
+    "hyprland::$start_nvim $XDG_CONFIG_HOME/hypr/hyprland.conf"
     "nvim-keymaps::$start_nvim $XDG_CONFIG_HOME/nvim/lua/config/keymaps.lua"
+    "nvim::$start_nvim $XDG_CONFIG_HOME/nvim/init.lua"
     "profile::$start_nvim $HOME/.profile"
     "waybar-config::$start_nvim $XDG_CONFIG_HOME/waybar/config.jsonc"
     "waybar-style::$start_nvim $XDG_CONFIG_HOME/waybar/style.css"
     "wezterm::$start_nvim $XDG_CONFIG_HOME/wezterm/wezterm.lua"
-    "edit...:📝:$start_nvim $0"
-    "back...:⬅️:menu main"
 )
 
 connect=(
+    "...back:⬅️:menu main"
+    "...edit:📝:$start_nvim $0"
     "audio:🔊:pavucontrol"
     "bluetooth:🅱️:blueman-manager"
     "wifi:📶:nm-connection-editor"
-    "edit...:📝:$start_nvim $0"
-    "back...:⬅️:menu main"
 )
 
 system=(
-    "reboot::reboot"
-    "poweroff::poweroff"
-    "edit...:📝:$start_nvim $0"
-    "back...:⬅️:menu main"
+    "...back:⬅️:menu main"
+    "...edit:📝:$start_nvim $0"
+    "poweroff:⏹:poweroff"
+    "reboot:🔄:reboot"
 )
 
 utilities=(
+    "...back:⬅️:menu main"
+    "...edit:📝:$start_nvim $0"
     "screenshot::screenshot"
-    "edit...:📝:$start_nvim $0"
-    "back...:⬅️:menu main"
 )
 
-
 main=(
+    "...edit:📝:$start_nvim $0"
     "configs:⚙️:menu configs"
-    "connect:🛠️:menu connect"
-    "utilities::menu utilities"
-    "system:⏻:menu system"
-    "edit...:📝:$start_nvim $0"
+    "connect:🔗:menu connect"
+    "system:⚡:menu system"
+    "utilities:🔧:menu utilities"
 )
 
 menu "${main[@]}"
-
