@@ -31,14 +31,18 @@ printf "%s\n" "==> Cleaning up DNF..."
 run_cmd dnf autoremove -y
 run_cmd dnf clean all
 
-printf "%s\n" "==> Updating Flatpak apps..."
-flatpak update -y
+if command -v flatpak &>/dev/null; then
+    printf "%s\n" "==> Updating Flatpak apps..."
+    flatpak update -y
 
-printf "\n%s\n" "==> Cleaning up unused Flatpak runtimes..."
-flatpak uninstall --unused -y
+    printf "\n%s\n" "==> Cleaning up unused Flatpak runtimes..."
+    flatpak uninstall --unused -y
+fi
 
-printf "\n%s\n" "==> Updating Cargo packages..."
-cargo install-update --all
+if command -v cargo &>/dev/null; then
+    printf "\n%s\n" "==> Updating Cargo packages..."
+    cargo install-update --all
+fi
 
 printf "\n%s\n" "==> All updates and cleanup complete!"
 

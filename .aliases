@@ -24,7 +24,7 @@ alias fe='fzf --bind "enter:become(nvim {+})"'  # fzf, then edit
 if command -v eza &>/dev/null; then
     alias ls="eza"
     alias ll="eza -la"
-else:
+else
     alias ll="ls -la"
 fi
 
