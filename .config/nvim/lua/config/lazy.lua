@@ -14,20 +14,30 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+local hostname = vim.fn.hostname()
+if hostname == "thinkserver" then
+  MODE = "server"
+else
+  MODE = "dev"
+end
+
+local core_plugins = {
+  require("plugins.nord"),
+  require("plugins.fzf"),
+  require("plugins.zoxide"),
+}
+
+local dev_plugins = {
+  require("plugins.treesitter"),
+  require("plugins.mason"),
+  require("plugins.masonconfig"),
+  require("plugins.rufffmt"),
+  require("plugins.rustfmt").setup(),
+}
+
 require("lazy").setup({
   dependencies = { "config.keymaps" },
-  spec = {
-    require("plugins.nord"),
-    require("plugins.treesitter"),
-    require("plugins.mason"),
-    require("plugins.masonconfig"),
-    require("plugins.fzf"),
-    --  require("plugins.lazydev"),
-    require("plugins.zoxide"),
-    require("plugins.rufffmt"),
-    require("plugins.rustfmt").setup(),
-    --  require("plugins.minipick"),
-  },
+  spec = vim.list_extend(core_plugins, MODE == "dev" and dev_plugins or {}),
   install = { colorscheme = { "nord" } },
   checker = { enabled = true },
 })
