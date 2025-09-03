@@ -66,12 +66,19 @@ utilities=(
     "screenshot::screenshot"
 )
 
+media=(
+    "...back:⬅️:menu main"
+    "...edit:📝:$start_nvim $0"
+    "pdf::zathura $HOME/OneDrive/Books/cpumemory.pdf"
+)
+
 main=(
     "...edit:📝:$start_nvim $0"
     "configs:⚙️:menu configs"
     "connect:🔗:menu connect"
     "system:⚡:menu system"
     "utilities:🔧:menu utilities"
+    "media::menu media"
 )
 
 menu "${main[@]}"

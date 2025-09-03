@@ -1,0 +1,10 @@
+# toggle with ctl-r
+set recolor "true"
+#set recolor-darkcolor "#FFFFFF"
+#set recolor-lightcolor "#000000"
+#set recolor-darkcolor "#1e1e1e"
+#set recolor-lightcolor "#c0c0c0"
+set recolor-darkcolor "#002b36"  # solarized
+set recolor-lightcolor "#93a1a1" # solarized
+#set recolor-darkcolor "#2e3440"  # nord-inspired
+#set recolor-lightcolor "#d8dee9" # nord-inspired
