@@ -1,13 +1,17 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+call_wofi() {
+    wofi --dmenu --width 600 --lines 20 --location=top_left
+}
+
 menu() (
     local menu_items=("$@")
     local menu_display
     menu_display=$(printf "%s\n" "${menu_items[@]}" | awk -F: '{print $2 " " $1}')
     
     local selected
-    selected=$(echo "$menu_display" | wofi --dmenu --width 200 --lines 20 --location=top_left)
+    selected=$(echo "$menu_display" | call_wofi)
 
     local label="${selected#* }"
 
@@ -26,6 +30,13 @@ menu() (
             fi
         fi
     done
+)
+
+pdf() (
+    list=$(find ~/OneDrive/Books -type f -name "*.pdf"  2>/dev/null -printf "%f::%p\n")
+    choice=$(echo "$list" | cut -d: -f1 | call_wofi)
+    file=$(echo "$list" | grep -F "$choice::" | head -n1 | cut -d: -f3-) 
+    [ -n "$file" ] && zathura "$file" &
 )
 
 start_nvim="$TERMINAL start -- nvim"
@@ -69,7 +80,7 @@ utilities=(
 media=(
     "...back:⬅️:menu main"
     "...edit:📝:$start_nvim $0"
-    "pdf::zathura $HOME/OneDrive/Books/cpumemory.pdf"
+    "pdf::pdf"
 )
 
 main=(
