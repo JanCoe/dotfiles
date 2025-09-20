@@ -9,8 +9,9 @@ config.font_size = 20
 config.color_scheme = "nord"
 config.colors = {
   tab_bar = { inactive_tab_edge = '#ECEFF4', active_tab = { fg_color = '#D8DEE9', bg_color = '#4c566A' }, },
-  cursor_bg = '#7aa2f7',
-  cursor_border = '#7aa2f7',
+  cursor_bg = '#EBCB8B',
+  cursor_fg = '#2E3440',
+  cursor_border = '#EBCB8B',
 }
 config.window_background_opacity = 0.85
 config.max_fps = 120
