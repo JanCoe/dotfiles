@@ -51,6 +51,7 @@ configs=(
     "nvim-keymaps::$start_nvim $XDG_CONFIG_HOME/nvim/lua/config/keymaps.lua"
     "nvim::$start_nvim $XDG_CONFIG_HOME/nvim/init.lua"
     "profile::$start_nvim $HOME/.profile"
+    "starship::$start_nvim $XDG_CONFIG_HOME/starship/starship.toml"
     "waybar-config::$start_nvim $XDG_CONFIG_HOME/waybar/config.jsonc"
     "waybar-style::$start_nvim $XDG_CONFIG_HOME/waybar/style.css"
     "wezterm::$start_nvim $XDG_CONFIG_HOME/wezterm/wezterm.lua"
