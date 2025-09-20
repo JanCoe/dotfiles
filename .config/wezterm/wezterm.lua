@@ -1,17 +1,14 @@
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
--- wezterm breaks after hyprland 0.51.0. workaround
-config.enable_wayland = false
+config.enable_wayland = true
 
--- config.font = wezterm.font { family = "JetBrains Mono", scale = 1 }
--- config.font = wezterm.font("JetBrains Mono")
 config.font = wezterm.font_with_fallback({
   "JetBrains Mono",
   "Symbols Nerd Font",
   "Noto Color Emoji"
 })
-config.font_size = 20
+config.font_size = 22
 config.color_scheme = "nord"
 config.colors = {
   tab_bar = { inactive_tab_edge = '#ECEFF4', active_tab = { fg_color = '#D8DEE9', bg_color = '#4c566A' }, },
@@ -22,7 +19,7 @@ config.colors = {
 config.window_background_opacity = 0.85
 config.max_fps = 120
 config.animation_fps = 1
-config.line_height = 1.05
+config.line_height = 1.2
 config.warn_about_missing_glyphs = false
 config.enable_scroll_bar = true
 
