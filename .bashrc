@@ -27,10 +27,6 @@ shopt -s histappend # append to the history file, don't overwrite it
 export HISTCONTROL=erasedups:ignoredups:ignorespace 
 export HISTIGNORE="ls:ll:cd:* --help" # ignore specific commands from history
 
-if command -v zoxide &> /dev/null; then
-    eval "$(zoxide init --cmd cd bash)"
-fi
-
 # Initialise apps if they are available
 if command -v starship &> /dev/null; then
     eval "$(starship init bash)"
@@ -38,3 +34,9 @@ fi
 
 set -o vi
 set -o history
+export PATH="/home/JanCoe/.cargo/bin:$PATH"
+
+if command -v zoxide &> /dev/null; then
+    eval "$(zoxide init --cmd cd bash)"
+fi
+
