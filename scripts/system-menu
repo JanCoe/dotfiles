@@ -68,6 +68,7 @@ connect=(
 system=(
     "...back:⬅️:menu main"
     "...edit:📝:$start_nvim $0"
+    "monitor::toggle-monitor"
     "poweroff:⏹:poweroff"
     "reboot:🔄:reboot"
 )
