@@ -46,6 +46,7 @@ configs=(
     "...edit:📝:$start_nvim $0"
     "aliases::$start_nvim $HOME/.aliases"
     "bash::$start_nvim $HOME/.bashrc"
+    "foot::$start_nvim $XDG_CONFIG_HOME/foot/foot.ini"
     "hyprland-bindings::$start_nvim $XDG_CONFIG_HOME/hypr/bindings.conf"
     "hyprland::$start_nvim $XDG_CONFIG_HOME/hypr/hyprland.conf"
     "nvim-keymaps::$start_nvim $XDG_CONFIG_HOME/nvim/lua/config/keymaps.lua"
