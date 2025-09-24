@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-call_wofi() {
-    wofi --dmenu --width 600 --lines 20 --location=top_left
+display_menu() {
+    fuzzel --dmenu --width 20 --lines 10 --anchor top-left --layer overlay
 }
 
 menu() (
@@ -11,7 +11,7 @@ menu() (
     menu_display=$(printf "%s\n" "${menu_items[@]}" | awk -F: '{print $2 " " $1}')
     
     local selected
-    selected=$(echo "$menu_display" | call_wofi)
+    selected=$(echo "$menu_display" | display_menu)
 
     local label="${selected#* }"
 
@@ -34,7 +34,7 @@ menu() (
 
 pdf() (
     list=$(find ~/OneDrive/Books -type f -name "*.pdf"  2>/dev/null -printf "%f::%p\n")
-    choice=$(echo "$list" | cut -d: -f1 | call_wofi)
+    choice=$(echo "$list" | cut -d: -f1 | fuzzel --dmenu --width 45 --lines 30 --anchor top-left --layer overlay)
     file=$(echo "$list" | grep -F "$choice::" | head -n1 | cut -d: -f3-) 
     [ -n "$file" ] && zathura "$file" &
 )
@@ -67,7 +67,7 @@ connect=(
 )
 
 system=(
-    "...back:⬅️:menu main"
+    "...back::menu main"
     "...edit:📝:$start_nvim $0"
     "monitor::toggle-monitor"
     "poweroff:⏹:poweroff"
@@ -80,19 +80,13 @@ utilities=(
     "screenshot::screenshot"
 )
 
-media=(
-    "...back:⬅️:menu main"
-    "...edit:📝:$start_nvim $0"
-    "pdf::pdf"
-)
-
 main=(
     "...edit:📝:$start_nvim $0"
+    "books:📖:pdf"
     "configs:⚙️:menu configs"
     "connect:🔗:menu connect"
     "system:⚡:menu system"
     "utilities:🔧:menu utilities"
-    "media::menu media"
 )
 
 menu "${main[@]}"

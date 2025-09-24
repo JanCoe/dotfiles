@@ -1,6 +1,6 @@
 {
   "conform.nvim": { "branch": "master", "commit": "b4aab989db276993ea5dcb78872be494ce546521" },
-  "fzf": { "branch": "master", "commit": "148b0a94cdb88bc6e0ff36af1ab2b7bccd24e555" },
+  "fzf": { "branch": "master", "commit": "3401c2e0c7c441c2a13c11e958f6b99efc50bd29" },
   "fzf.vim": { "branch": "master", "commit": "879db51d0965515cdaef9b7f6bdeb91c65d2829e" },
   "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },
   "mason-lspconfig.nvim": { "branch": "main", "commit": "a1067cf84b4ff81b66d2bf4d01f4cbdb5de40bd0" },
