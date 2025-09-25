@@ -1,6 +1,6 @@
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
-config.keys = require("keybindings")
+config.keys = require("bindings")
 
 config.font = wezterm.font_with_fallback({ "JetBrains Mono", "Symbols Nerd Font", })
 config.font_size = 22
