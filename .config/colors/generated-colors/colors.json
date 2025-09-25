@@ -1,0 +1,12 @@
+{
+  "background": "#2E3440",
+  "background_alt": "#3B4252",
+  "comment": "#4C566A",
+  "foreground": "#D8DEE9",
+  "foreground_alt": "#E5E9F0",
+  "highlight": "#88C0D0",
+  "accent": "#81A1C1",
+  "error": "#BF616A",
+  "warning": "#EBCB8B",
+  "succes": "#A3BE8C"
+}

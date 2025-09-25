@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# nord_colors_grid_ordered.sh
 # Display Nord colors in a foreground/background grid ordered by Nord number
 
 # Ordered Nord palette
