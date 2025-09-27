@@ -33,6 +33,7 @@ local dev_plugins = {
   require("plugins.masonconfig"),
   require("plugins.rufffmt"),
   require("plugins.rustfmt").setup(),
+  require("plugins.comment"),
 }
 
 require("lazy").setup({

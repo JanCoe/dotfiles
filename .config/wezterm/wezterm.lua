@@ -2,7 +2,7 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 config.keys = require("bindings")
 
-config.font = wezterm.font_with_fallback({ "JetBrains Mono", "Symbols Nerd Font", })
+config.font = wezterm.font_with_fallback({ "JetBrains Mono", "Symbols Nerd Font" })
 config.font_size = 22
 config.color_scheme = "nord"
 config.window_background_opacity = 0.85
