@@ -13,13 +13,6 @@ if [[ -d ~/.bashrc.d ]]; then
 fi
 unset rc
 
-# Enable bash programmable completion features in interactive shells
-if [[ -f /usr/share/bash_completion/bash_completion ]]; then
-    . /usr/share/bash-completion/bash_completion
-elif [[ -f /etc/bash_completion ]]; then
-    . /etc/bash_completion
-fi
-
 export HISTFILESIZE=10000 # number of commands to save to ~/.bash_history
 export HISTSIZE=500 # number of commands to remember in memory
 export HISTTIMEFORMAT="%F %T "
@@ -34,7 +27,6 @@ fi
 
 set -o vi
 set -o history
-export PATH="/home/JanCoe/.cargo/bin:$PATH"
 
 if command -v zoxide &> /dev/null; then
     eval "$(zoxide init --cmd cd bash)"

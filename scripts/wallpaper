@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+monitor="DP-1"
+path="$HOME/OneDrive/Pictures/Wallpaper/33214.jpg"
+# monitor_and_path="${monitor},${path}"
+
+hyprctl hyprpaper preload "$path"
+hyprctl hyrpaper wallpaper "$monitor,$path"
