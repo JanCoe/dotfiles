@@ -28,6 +28,8 @@ fi
 set -o vi
 set -o history
 
+source <(op completion bash)
+
 if command -v zoxide &> /dev/null; then
     eval "$(zoxide init --cmd cd bash)"
 fi
