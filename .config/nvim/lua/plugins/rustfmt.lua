@@ -1,13 +1,10 @@
--- Function to format Rust files on save
-local function setup()
-  vim.api.nvim_create_autocmd("BufWritePost", {
-    pattern = "*.rs", -- Only for Rust files
-    callback = function()
-      vim.cmd("!cargo fmt")
-    end,
-  })
-end
-
 return {
-  setup = setup
+  setup = function()
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      pattern = "*.rs",
+      callback = function()
+        vim.lsp.buf.format({ async = false })
+      end,
+    })
+  end,
 }

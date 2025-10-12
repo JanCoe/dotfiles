@@ -1,7 +1,9 @@
 return {
   "numToStr/Comment.nvim",
   config = function()
-    require("Comment").setup()
+    require("Comment").setup({
+      sticky = false
+    })
 
     -- Keymaps
     vim.keymap.set("n", "<C-/>", function()

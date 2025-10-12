@@ -1,8 +1,11 @@
 vim.g.mapleader = " "
 
-local opts = { noremap = false, silent = true }
--- Use SHIFT + h,l for larger movements
-vim.keymap.set({ 'n', 'v' }, 'H', '^', opts)
-vim.keymap.set({ 'n', 'v' }, 'L', '$', opts)
-vim.keymap.set('n', '<leader>w', ':update<CR>') -- write only if file has changed
-vim.keymap.set('n', '<leader>q', ':quit<CR>')
+local function map(mode, lhs, rhs, opts)
+  vim.keymap.set(mode, lhs, rhs, opts)
+end
+
+map({ 'n', 'v' }, 'H', '^', { noremap = false, silent = true, desc = "Jump to first character in line" })
+map({ 'n', 'v' }, 'L', '$', { noremap = false, silent = true, desc = "Jump to end of line" })
+map('n', '<leader>w', ':write<CR>', { noremap = false, silent = true, desc = "Write file" })
+map('n', '<leader>q', ':quit<CR>', { desc = "Quit file" })
+map('n', '<leader>rn', vim.lsp.buf.rename, { desc = "Rename symbol" })
