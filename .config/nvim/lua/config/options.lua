@@ -32,6 +32,7 @@ vim.opt.termguicolors = true
 vim.opt.ttyfast = true
 vim.opt.winborder = "rounded"
 
+vim.opt.path:append({ ".", "**" }) --current directory and sub-dirs for searching
 vim.opt.swapfile = false
 
 -- Set up diagnostics

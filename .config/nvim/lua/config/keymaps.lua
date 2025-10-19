@@ -9,3 +9,5 @@ map({ 'n', 'v' }, 'L', '$', { noremap = false, silent = true, desc = "Jump to en
 map('n', '<leader>w', ':write<CR>', { noremap = false, silent = true, desc = "Write file" })
 map('n', '<leader>q', ':quit<CR>', { desc = "Quit file" })
 map('n', '<leader>rn', vim.lsp.buf.rename, { desc = "Rename symbol" })
+map('n', '<leader><Tab>', ':bnext<CR>', { desc = "Next buffer" })
+map('n', '<M-Tab>', ':bnext<CR>', { desc = "Next buffer" })
