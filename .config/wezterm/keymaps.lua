@@ -14,7 +14,7 @@ local function prompt_input()
 end
 
 -- Keybinding helper function
-local function key_binding(key_table)
+local function binding(key_table)
   local result = {}
   for _, val in ipairs(key_table) do
     table.insert(result, { mods = val[1], key = val[2], action = val[3] })
@@ -24,7 +24,7 @@ end
 
 local a = wezterm.action
 -- Define shortcut keys using CTRL throughout.
-return key_binding({
+return binding({
   -- Splitting
   { "CTRL",       '=',     a.SplitVertical { domain = 'CurrentPaneDomain' } },
   { "CTRL",       '-',     a.SplitHorizontal { domain = 'CurrentPaneDomain' } },
