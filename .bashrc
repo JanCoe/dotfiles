@@ -33,5 +33,3 @@ if command -v zoxide &> /dev/null; then
 fi
 
 . "$HOME/.cargo/env"
-export PATH="/home/JanCoe/.cargo/bin:$PATH"
-export PATH="/home/JanCoe/.cargo/bin:$PATH"
