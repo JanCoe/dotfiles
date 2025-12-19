@@ -18,6 +18,8 @@ fi
 
 # Commands 
 alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
 alias f="fzf"
 alias fe='fzf --bind "enter:become(nvim {+})"'  # fzf, then edit
 
