@@ -54,6 +54,7 @@ export COLORTERM=truecolor
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 export WEZTERM_CONFIG_FILE="$XDG_CONFIG_HOME/wezterm/wezterm.lua"
 export FZF_DEFAULT_OPTS_FILE="$XDG_CONFIG_HOME/fzf/.fzfrc"
+export RUST_BACKTRACE=1
 
 if command -v wezterm &>/dev/null; then
     term="$(command -v wezterm)" 

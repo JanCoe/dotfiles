@@ -1,6 +1,10 @@
 [user]
-	name = JanCoe
+	name = Jan Coetzee
 	email = jan@jancoe.io
+[ui "color"]
+    ui = always
+[color]
+    ui = true
 [init]
 	defaultBranch = main
 [core]
@@ -13,4 +17,6 @@
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
-	required = true
+    required = true
+[github]
+    user = JanCoe
