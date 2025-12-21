@@ -24,6 +24,7 @@ end
 local core_plugins = {
   require("plugins.nord"),
   require("plugins.fzf"),
+  require("plugins.telescope"),
   require("plugins.zoxide"),
 }
 
