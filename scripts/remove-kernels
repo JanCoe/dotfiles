@@ -4,8 +4,8 @@ set -euo pipefail
 # Get the currently running kernel version
 current_kernel=$(uname -r)
 
-# Just retain the latest kernel.
-old_kernels=($(dnf repoquery --installonly --latest-limit=-1 -q))
+# Get old kernels except the 2 most recent
+mapfile -t old_kernels < <(dnf repoquery --installonly --latest-limit=-2 -q)
 
 # Filter out the currently running kernel from the list
 safe_to_remove=()
@@ -21,6 +21,9 @@ if [[ "${#safe_to_remove[@]}" -eq 0 ]]; then
     printf "%s\n" "No old kernels found that are safe to remove"
     exit 0
 fi
+
+printf "Kernels to remove:\n"
+printf " %s\n" "${safe_to_remove[@]}"
 
 if ! dnf remove "${safe_to_remove[@]}"; then
     printf "%s\n" "Failed to remove old kernels"

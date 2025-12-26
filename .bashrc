@@ -18,7 +18,7 @@ export HISTSIZE=500 # number of commands to remember in memory
 export HISTTIMEFORMAT="%F %T "
 shopt -s histappend # append to the history file, don't overwrite it
 export HISTCONTROL=erasedups:ignoredups:ignorespace 
-export HISTIGNORE="ls:ll:cd:* --help" # ignore specific commands from history
+export HISTIGNORE="cd:* --help" # ignore specific commands from history
 
 # Initialise apps if they are available
 if command -v starship &> /dev/null; then
@@ -31,5 +31,9 @@ set -o history
 if command -v zoxide &> /dev/null; then
     eval "$(zoxide init --cmd cd bash)"
 fi
+
+eval "$(fzf --bash)" &> /dev/null
+# Can also use the following. Get path of fzf by using 'rpm -ql fzf | grep bash'
+# [[ -f /usr/share/fzf/shell/key-bindings.bash ]] && source /usr/share/fzf/shell/key-bindings.bash
 
 . "$HOME/.cargo/env"
