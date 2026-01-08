@@ -19,6 +19,7 @@ map('n', '<M-Tab>', ':bnext<CR>', { desc = "Next buffer" })
 -- lsp
 map('n', '<F18>', vim.lsp.buf.rename, { desc = "Rename symbol" }) -- to map to Shift+F6 in JetBrains
 map('n', 'gd', vim.lsp.buf.definition, { noremap = true, silent = true, desc = "Go to definition" })
+map('n', '<leader>ca', vim.lsp.buf.code_action, { noremap = true, silent = true, desc = "Code actions" })
 -- grr native binding to get list of all uses
 
 -- telescope
