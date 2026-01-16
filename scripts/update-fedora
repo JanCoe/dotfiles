@@ -3,16 +3,6 @@ set -euo pipefail
 
 ASK_SUDO=true  # Set to false to skip password prompt when running as root
 
-# Run commands with sudo password as appropriate
-run_cmd() {
-    if $ASK_SUDO; then
-        printf "%s\n" "$pwd" | sudo -S "$@"
-    else
-        "$@"
-    fi
-    printf "\n" 
-}
-
 # Detect if running as root 
 if [[ "$EUID" -eq 0 ]]; then
     ASK_SUDO=false
@@ -20,16 +10,15 @@ if [[ "$EUID" -eq 0 ]]; then
 fi
 
 if $ASK_SUDO; then
-    read -r -s -p "Enter your sudo password: " pwd
-    printf "\n\n" 
+    sudo -v
 fi
 
 printf "%s\n" "==> Updating DNF packages..."
-run_cmd dnf upgrade --refresh -y
+sudo dnf upgrade --refresh -y
 
 printf "%s\n" "==> Cleaning up DNF..."
-run_cmd dnf autoremove -y
-run_cmd dnf clean all
+sudo dnf autoremove -y
+sudo dnf clean all
 
 if command -v flatpak &>/dev/null; then
     printf "%s\n" "==> Updating Flatpak apps..."

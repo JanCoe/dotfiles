@@ -37,3 +37,4 @@ eval "$(fzf --bash)" &> /dev/null
 # [[ -f /usr/share/fzf/shell/key-bindings.bash ]] && source /usr/share/fzf/shell/key-bindings.bash
 
 . "$HOME/.cargo/env"
+export PATH="/home/JanCoe/.cargo/bin:$PATH"
