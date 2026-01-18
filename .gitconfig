@@ -1,8 +1,6 @@
 [user]
 	name = Jan Coetzee
 	email = jan@jancoe.io
-[ui "color"]
-    ui = always
 [color]
     ui = true
 [init]
