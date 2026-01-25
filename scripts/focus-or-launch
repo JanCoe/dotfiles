@@ -3,11 +3,13 @@
 identifier="${1}"  # The application’s identifier (from `hyprctl clients`)
 launch_cmd="${2}"  # Command to launch the application
 
-addr=$(hyprctl clients -j | jq -r --arg id "$identifier" \
-  '.[] | select(.initialTitle == $id) | .address' | head -n 1)
-
-[[ -z "$addr" ]] && addr=$(hyprctl clients -j | jq -r --arg id "$identifier" \
-  '.[] | select(.initialClass == $id) | .address' | head -n 1)
+addr=$(
+  hyprctl clients -j |
+  jq -r --arg id "$identifier" '
+    (map(select(.initialTitle == $id)) +
+     map(select(.initialClass == $id)))[0].address // empty
+  '
+)
 
 if [[ -n "$addr" ]]; then
     hyprctl dispatch focuswindow address:"$addr"

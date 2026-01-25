@@ -2,11 +2,11 @@
 [ -f "$HOME/.aliases" ] && . "$HOME/.aliases"
 
 # File extensions to run in neovim 
-alias -s py=nvim
-alias -s config=nvim
 alias -s cfg=nvim
-alias -s yaml=nvim
+alias -s config=nvim
+alias -s py=nvim
 alias -s rs=nvim
+alias -s yaml=nvim
 
 # Use vim motions in command line 
 bindkey -v
