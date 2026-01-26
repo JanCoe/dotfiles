@@ -1,6 +1,7 @@
 vim.wo.relativenumber = true
 vim.wo.number = true
 
+vim.opt.cmdheight = 0
 vim.opt.scrolloff = 999
 vim.opt.colorcolumn = "108"
 vim.opt.signcolumn = "yes"
