@@ -16,12 +16,12 @@ fi
 printf "%s\n" "==> Updating DNF packages..."
 sudo dnf upgrade --refresh -y
 
-printf "%s\n" "==> Cleaning up DNF..."
+printf "\n%s\n" "==> Cleaning up DNF..."
 sudo dnf autoremove -y
 sudo dnf clean all
 
 if command -v flatpak &>/dev/null; then
-    printf "%s\n" "==> Updating Flatpak apps..."
+    printf "\n%s\n" "==> Updating Flatpak apps..."
     flatpak update -y
 
     printf "\n%s\n" "==> Cleaning up unused Flatpak runtimes..."
