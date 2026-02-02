@@ -1,0 +1,47 @@
+let mapleader = " "
+
+" Line numbers
+set relativenumber
+set number
+
+" Display
+set scrolloff=999
+set colorcolumn=108
+set nowrap
+set showmatch
+set matchtime=2
+
+" Indentation
+set smartindent
+set autoindent
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+
+" Search
+set ignorecase
+set smartcase
+set hlsearch
+set incsearch
+
+" Editing
+set virtualedit=block
+set clipboard=unnamed,unnamedplus
+
+" Splits
+set splitbelow
+set splitright
+
+" Performance
+set ttyfast
+
+" Files
+set path+=.,**
+set noswapfile
+
+" Navigation keymaps
+nnoremap H ^
+vnoremap H ^
+nnoremap L $
+vnoremap L $
