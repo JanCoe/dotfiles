@@ -1,0 +1,11 @@
+[Unit]
+Description=Save Vivaldi profile from RAM back to disk
+DefaultDependencies=no
+Before=shutdown.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/vivaldi-save-profile.sh
+
+[Install]
+WantedBy=shutdown.target

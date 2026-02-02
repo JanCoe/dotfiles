@@ -1,0 +1,10 @@
+[Unit]
+Description=Restore Vivaldi profile into RAM
+After=graphical-session.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/vivaldi-restore-profile.sh
+
+[Install]
+WantedBy=default.target
