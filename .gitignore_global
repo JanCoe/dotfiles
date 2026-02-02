@@ -1,7 +1,6 @@
-# Dotfiles but not gitignore or .config
+# Dotfiles but not gitignore
 .*
 !.gitignore
-!.config
 
 # OS generated files
 **/.DS_Store
