@@ -1,6 +1,6 @@
 max_width = 108
-fn_call_width = 108
+fn_call_width = 80 
 struct_lit_width = 30
 struct_variant_width = 40
 reorder_imports = true
-single_line_if_else_max_width = 80
+single_line_if_else_max_width = 80 
