@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+START_TIME=$SECONDS
+
 ASK_SUDO=true  # Set to false to skip password prompt when running as root
 
 # Detect if running as root 
@@ -40,3 +42,6 @@ printf "\n%s\n" "==> Checking if reboot is required..."
 needs-restarting -r
 
 set +x
+
+ELAPSED=$(( SECONDS - START_TIME ))
+printf "\n==> Total time: %d min %d sec\n" $(( ELAPSED / 60 )) $(( ELAPSED % 60 ))
