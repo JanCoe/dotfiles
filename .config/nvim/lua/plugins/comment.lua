@@ -5,7 +5,8 @@ return {
       sticky = false
     })
 
-    -- Keymaps
+    -- tmux sends C-/ as C-_ so map it
+    vim.keymap.set({ "n", "v" }, "<C-_>", "<C-/>", { remap = true })
     vim.keymap.set("n", "<C-/>", function()
       require("Comment.api").toggle.linewise.current()
     end, { noremap = true, silent = true, desc = "Toggle comment on line" })
