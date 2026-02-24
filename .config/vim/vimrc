@@ -1,15 +1,37 @@
+set nocompatible
+
 let mapleader = " "
 
-" Line numbers
-set relativenumber
-set number
+" Plugins (vim-plug)
+" Install: curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+"   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+" Run :PlugInstall from inside vi
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'arcticicestudio/nord-vim'
+Plug 'tpope/vim-commentary'
+
+call plug#end()
+
+colorscheme nord
+
+" Cursor: block in normal, pipe in insert
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
 
 " Display
+set relativenumber
+set number
 set scrolloff=999
 set colorcolumn=108
+set signcolumn=yes
 set nowrap
 set showmatch
 set matchtime=2
+set termguicolors
 
 " Indentation
 set smartindent
@@ -33,15 +55,52 @@ set clipboard=unnamed,unnamedplus
 set splitbelow
 set splitright
 
-" Performance
+" Performance / files
 set ttyfast
-
-" Files
 set path+=.,**
 set noswapfile
 
-" Navigation keymaps
+" Navigation
 nnoremap H ^
 vnoremap H ^
 nnoremap L $
 vnoremap L $
+
+" File commands
+nnoremap <leader>w :write<CR>
+nnoremap <leader>q :quit<CR>
+
+" Buffers
+nnoremap <leader><Tab> :bnext<CR>
+nnoremap <M-Tab> :bnext<CR>
+
+" Comments — vim-commentary: gcc (normal), gc (visual)
+" tmux sends C-/ as C-_ so map both
+nmap <C-/> gcc
+vmap <C-/> gc
+nmap <C-_> gcc
+vmap <C-_> gc
+
+" Filetype settings
+augroup ftplugin_lua
+  autocmd!
+  autocmd FileType lua setlocal tabstop=2 shiftwidth=2 softtabstop=2
+augroup END
+
+augroup ftplugin_markdown
+  autocmd!
+  autocmd FileType markdown setlocal wrap linebreak nolist tabstop=8
+  autocmd FileType markdown nnoremap <buffer> j gj
+  autocmd FileType markdown nnoremap <buffer> k gk
+  autocmd FileType markdown vnoremap <buffer> j gj
+  autocmd FileType markdown vnoremap <buffer> k gk
+  autocmd FileType markdown nnoremap <buffer> H g^
+  autocmd FileType markdown nnoremap <buffer> L g$
+  autocmd FileType markdown vnoremap <buffer> H g^
+  autocmd FileType markdown vnoremap <buffer> L g$
+augroup END
+
+augroup ftplugin_yaml
+  autocmd!
+  autocmd FileType yaml setlocal expandtab shiftwidth=2 softtabstop=2
+augroup END
