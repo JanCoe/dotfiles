@@ -36,5 +36,13 @@ eval "$(fzf --bash)" &> /dev/null
 # Can also use the following. Get path of fzf by using 'rpm -ql fzf | grep bash'
 # [[ -f /usr/share/fzf/shell/key-bindings.bash ]] && source /usr/share/fzf/shell/key-bindings.bash
 
+function y() {
+    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+    command yazi "$@" --cwd-file="$tmp"
+    IFS= read -r -d '' cwd < "$tmp"
+    [ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+    rm -f -- "$tmp"
+}
+
 . "$HOME/.cargo/env"
 export PATH="/home/JanCoe/.cargo/bin:$PATH"

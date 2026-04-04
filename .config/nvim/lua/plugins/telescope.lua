@@ -11,6 +11,7 @@ return {
     { '<leader>fg', function() require('telescope.builtin').live_grep() end,  desc = 'Live grep' },
     { '<leader>fb', function() require('telescope.builtin').buffers() end,    desc = 'Find buffers' },
     { '<leader>fh', function() require('telescope.builtin').help_tags() end,  desc = 'Find help' },
+    { '<leader>fd', function() require('telescope.builtin').diagnostics() end, desc = 'Find diagnostics' },
   },
   config = function()
     local telescope = require('telescope')

@@ -32,4 +32,3 @@ fi
 
 alias pic="wezterm imgcat"  # wezterm picture
 alias v="nvim"
-alias y="yazi"
