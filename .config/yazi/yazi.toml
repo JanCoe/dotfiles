@@ -6,3 +6,13 @@ wrap = "no"
 tab_size = 2
 image = true
 script = "$XDG_CONFIG_HOME/yazi/preview.sh"
+
+# [opener]
+# heic = [
+#     { run = 'heif-convert "$1" /tmp/yazi-heic-preview.jpg && imv /tmp/y6azi-heic-preview.jpg', desc = "View HEIC" },
+# ]
+#
+# [open]
+# rules = [
+#     { mime = "image/heic", use = "heic" },
+# ]
