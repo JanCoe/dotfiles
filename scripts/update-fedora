@@ -30,11 +30,6 @@ if command -v flatpak &>/dev/null; then
     flatpak uninstall --unused -y
 fi
 
-if command -v rustup &>/dev/null; then
-    printf "\n%s\n" "==> Updating Rust toolchains..."
-    rustup update
-fi
-
 if command -v cargo &>/dev/null; then
     printf "\n%s\n" "==> Updating Cargo packages..."
     cargo install-update --all
