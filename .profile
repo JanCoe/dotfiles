@@ -44,6 +44,7 @@ fi
 [[ "$OSTYPE" == darwin22 ]] && export BASH_SILENCE_DEPRECATION_WARNING=1
 
 export PATH
+export BROWSER="vivaldi-stable"
 export EDITOR=nvim
 export VISUAL=nvim
 export SYSTEMD_EDITOR=nvim

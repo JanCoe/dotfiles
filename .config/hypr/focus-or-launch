@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+identifier="${1}"  # The application’s identifier (from `hyprctl clients`)
+launch_cmd="${2}"  # Command to launch the application
+
+addr=$(
+  hyprctl clients -j |
+  jq -r --arg id "$identifier" '
+    (map(select(.initialTitle == $id)) +
+     map(select(.initialClass == $id)))[0].address // empty
+  '
+)
+
+if [[ -n "$addr" ]]; then
+    hyprctl dispatch focuswindow address:"$addr"
+else
+    $launch_cmd &
+fi

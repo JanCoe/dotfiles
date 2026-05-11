@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+identifier="${1}"  # window title or app-id to match
+launch_cmd="${2}"  # command to launch the application
+
+id=$(
+  niri msg --json windows |
+  jq -r --arg id "$identifier" '
+    (map(select(.title == $id)) +
+     map(select(."app-id" == $id)))[0].id // empty
+  '
+)
+
+if [[ -n "$id" ]]; then
+    niri msg action focus-window --id "$id"
+else
+    $launch_cmd &
+fi

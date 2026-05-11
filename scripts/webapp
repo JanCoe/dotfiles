@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Opens the first argument as a web application on wayland
+# Prepends hhtps:// to the url
+
+url="${1}"
+[[ "$url" != https://* ]] && url="https://$url"
+browser="${BROWSER:-vivaldi-stable}"
+exec "$browser" --new-window --ozone-platform=wayland --app="$url"
