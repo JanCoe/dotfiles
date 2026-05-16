@@ -32,7 +32,9 @@ if command -v zoxide &> /dev/null; then
     eval "$(zoxide init --cmd cd bash)"
 fi
 
-eval "$(fzf --bash)" &> /dev/null
+if command -v fzf &> /dev/null; then
+    eval "$(fzf --bash)" &> /dev/null
+fi
 # Can also use the following. Get path of fzf by using 'rpm -ql fzf | grep bash'
 # [[ -f /usr/share/fzf/shell/key-bindings.bash ]] && source /usr/share/fzf/shell/key-bindings.bash
 
