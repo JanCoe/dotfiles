@@ -8,6 +8,7 @@
 # User specific aliases and functions
 if [[ -d ~/.bashrc.d ]]; then
     for rc in ~/.bashrc.d/*; do
+        # shellcheck source=/dev/null 
         [[ -f "$rc" ]] && . "$rc"
     done
 fi
@@ -46,5 +47,7 @@ function y() {
     rm -f -- "$tmp"
 }
 
-. "$HOME/.cargo/env"
-export PATH="/home/JanCoe/.cargo/bin:$PATH"
+if [[ -f "$HOME/.cargo/env" ]]; then
+    # shellcheck source=/dev/null
+    . "$HOME/.cargo/env"
+fi
