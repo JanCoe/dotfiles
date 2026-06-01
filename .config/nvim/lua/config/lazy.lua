@@ -32,6 +32,7 @@ local dev_plugins = {
   require("plugins.treesitter"),
   require("plugins.mason"),
   require("plugins.masonconfig"),
+  require("plugins.lspconfig"),
   require("plugins.rufffmt"),
   require("plugins.rustfmt").setup(),
   require("plugins.typst-preview"),
@@ -39,7 +40,6 @@ local dev_plugins = {
 }
 
 require("lazy").setup({
-  dependencies = { "config.keymaps" },
   spec = vim.list_extend(core_plugins, MODE == "dev" and dev_plugins or {}),
   install = { colorscheme = { "nord" } },
   checker = { enabled = true },

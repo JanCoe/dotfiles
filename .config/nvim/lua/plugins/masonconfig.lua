@@ -10,7 +10,6 @@ return {
         "mutt_ls",
         "pyright",
         "ruff",
-        "rust_analyzer",
         "yamlls"
       },
       automatic_installation = true,
