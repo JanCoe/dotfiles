@@ -1,6 +1,6 @@
 import QtQuick
 import QtQuick.Layouts
-import ".."
+import Theme
 
 Text {
     font.family: Theme.fontFamily

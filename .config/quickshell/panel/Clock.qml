@@ -1,6 +1,6 @@
 import QtQuick
 import QtQuick.Layouts
-import ".."
+import Theme
 
 BarText {
     id: clock

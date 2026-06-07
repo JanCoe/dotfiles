@@ -2,7 +2,7 @@ import QtQuick
 import QtQuick.Layouts
 import Quickshell.Hyprland
 import ".."
-import "../.."
+import Theme
 
 Repeater {
     model: 10
