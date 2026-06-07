@@ -2,8 +2,8 @@ import QtQuick
 import QtQuick.Layouts
 import Quickshell.Io
 import Quickshell.Hyprland
-import "Theme.js" as Theme
 import "workspaces"
+import ".."
 
 RowLayout {
     id: workspaces

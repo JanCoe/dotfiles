@@ -1,7 +1,7 @@
 import QtQuick
 import QtQuick.Layouts
 import Quickshell.Io
-import "Theme.js" as Theme
+import ".."
 import "systemstats"
 
 RowLayout {

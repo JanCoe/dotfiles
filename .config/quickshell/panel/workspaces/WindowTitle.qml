@@ -11,7 +11,7 @@ Item {
     // Active window title
     Process {
         id: windowProc
-        command: ["sh", "-c", "hyprctl activewindow -j | jq -r '.title // empty'"]
+        command: ["sh", "-c", "hyprctl activewindow -j | jq -r '(.title | select(. != \"\")) // .class // empty'"]
         stdout: SplitParser {
             onRead: data => {
                 value = data ? data.trim() : ""

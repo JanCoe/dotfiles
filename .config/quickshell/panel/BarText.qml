@@ -1,6 +1,6 @@
 import QtQuick
 import QtQuick.Layouts
-import "Theme.js" as Theme
+import ".."
 
 Text {
     font.family: Theme.fontFamily
