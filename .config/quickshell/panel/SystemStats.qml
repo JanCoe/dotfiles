@@ -1,7 +1,7 @@
 import QtQuick
 import QtQuick.Layouts
 import Quickshell.Io
-import "Theme.js" as Theme
+import "Nord.js" as Theme
 
 RowLayout {
     id: stats
@@ -11,15 +11,15 @@ RowLayout {
 
     // System info
     property string kernelVersion: "Linux"
-    property int cpuUsage: 0
+    // property int cpuUsage: 0
     property int memUsage: 0
     property int diskUsage: 0
     property int volumeLevel: 0
 
 
     // CPU tracking
-    property var lastCpuIdle: 0
-    property var lastCpuTotal: 0
+    // property var lastCpuIdle: 0
+    // property var lastCpuTotal: 0
 
     // Kernel version
     Process {
@@ -33,33 +33,37 @@ RowLayout {
         Component.onCompleted: running = true
     }
 
-    // CPU usage
-    Process {
-        id: cpuProc
-        command: ["sh", "-c", "head -1 /proc/stat"]
-        stdout: SplitParser {
-            onRead: data => {
-                var parts = data.trim().split(/\s+/)
-                var values = []
-                for (var i = 1; i <= 7; i++)
-                    values.push(parseInt(parts[i]) || 0)
-
-                var total = values.reduce((sum, v) => sum + v, 0)
-                var idleTime = values[3] + values[4]
-
-                if (stats.lastCpuTotal > 0) {
-                    var totalDiff = total - stats.lastCpuTotal
-                    var idleDiff = idleTime - stats.lastCpuIdle
-                    if (totalDiff > 0) {
-                        stats.cpuUsage = Math.round(100 * (1 - idleDiff / totalDiff))
-                    }
-                }
-                stats.lastCpuTotal = total
-                stats.lastCpuIdle = idleTime
-            }
-        }
-        Component.onCompleted: running = true
+    CpuUsage {
+        id: cpuProc2
     }
+
+    // CPU usage
+    //Process {
+    //    id: cpuProc
+    //    command: ["sh", "-c", "head -1 /proc/stat"]
+     //   stdout: SplitParser {
+      //      onRead: data => {
+       //         var parts = data.trim().split(/\s+/)
+        //        var values = []
+         //       for (var i = 1; i <= 7; i++)
+          //          values.push(parseInt(parts[i]) || 0)
+//
+ //               var total = values.reduce((sum, v) => sum + v, 0)
+  //              var idleTime = values[3] + values[4]
+//
+ //               if (stats.lastCpuTotal > 0) {
+  //                  var totalDiff = total - stats.lastCpuTotal
+   //                 var idleDiff = idleTime - stats.lastCpuIdle
+    //                if (totalDiff > 0) {
+     //                   stats.cpuUsage = Math.round(100 * (1 - idleDiff / totalDiff))
+      //              }
+       //         }
+        //        stats.lastCpuTotal = total
+         //       stats.lastCpuIdle = idleTime
+          //  }
+//        }
+ //       Component.onCompleted: running = true
+  //  }
 
     // Memory usage
     Process {
@@ -129,7 +133,7 @@ RowLayout {
     Separator {}
 
     BarText {
-        text: "CPU: " + stats.cpuUsage + "%"
+        text: "CPU: " + cpuProc2.cpuUsage + "%"
         color: Theme.nord13
     }
 

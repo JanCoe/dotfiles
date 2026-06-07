@@ -2,7 +2,7 @@ import QtQuick
 import QtQuick.Layouts
 import Quickshell.Io
 import Quickshell.Hyprland
-import "Theme.js" as Theme
+import "Nord.js" as Theme
 
 RowLayout {
     id: workspaces
@@ -11,7 +11,6 @@ RowLayout {
 
     spacing: 0
     Layout.alignment: Qt.AlignVCenter
-    
 
     Repeater {
         model: 10

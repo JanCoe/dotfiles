@@ -1,6 +1,6 @@
 import QtQuick
 import QtQuick.Layouts
-import "Theme.js" as Theme
+import "Nord.js" as Theme
 
 Rectangle {
     width: 1
