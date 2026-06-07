@@ -1,6 +1,6 @@
 import QtQuick
 import QtQuick.Layouts
-import "Nord.js" as Theme
+import "Theme.js" as Theme
 
 Text {
     font.family: Theme.fontFamily

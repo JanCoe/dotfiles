@@ -6,8 +6,6 @@ Item {
 
     property int value: 0
 
-    function refresh() { volProc.running = true }
-
     Process {
         id: volProc
         command: ["wpctl", "get-volume", "@DEFAULT_AUDIO_SINK@"]
@@ -20,6 +18,6 @@ Item {
                 }
             }
         }
-
     }
+    function refresh() { volProc.running = true }
 }

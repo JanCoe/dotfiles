@@ -14,6 +14,6 @@ Item {
                 if (data) root.value = data.trim()
             }
         }
-
+        Component.onCompleted: running = true
     }
 }

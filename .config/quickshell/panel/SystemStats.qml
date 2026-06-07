@@ -1,11 +1,18 @@
 import QtQuick
 import QtQuick.Layouts
 import Quickshell.Io
-import "Nord.js" as Theme
+import "Theme.js" as Theme
+import "systemstats"
 
 RowLayout {
     id: stats
     
+    KernelVersion { id: kernelVersion }
+    CpuUsage { id: cpuUsage }
+    MemUsage { id: memUsage }
+    DiskUsage { id: diskUsage }
+    VolumeLevel { id: volumeLevel }
+
     Timer {
         interval: 2000
         running: true
@@ -18,45 +25,39 @@ RowLayout {
         }
     }
 
-    KernelVersion { id: kernelVersion }
-    CpuUsage { id: cpuUsage }
-    MemUsage { id: memUsage }
-    DiskUsage { id: diskUsage }
-    VolumeLevel { id: volumeLevel }
-
     spacing: 0
     Layout.alignment: Qt.AlignVCenter
 
     BarText {
         text: kernelVersion.value
-        color: Theme.nord11
+        color: Theme.punchy1
     }
 
     Separator {}
 
     BarText {
         text: "CPU: " + cpuUsage.value + "%"
-        color: Theme.nord13
+        color: Theme.punchy3
     }
 
     Separator {}
 
     BarText {
         text: "Mem: " + memUsage.value + "%"
-        color: Theme.nord8
+        color: Theme.colour1
     }
 
     Separator {}
 
     BarText {
         text: "Disk: " + diskUsage.value + "%"
-        color: Theme.nord11
+        color: Theme.punchy1
     }
 
     Separator {}
 
     BarText {
         text: "Vol: " + volumeLevel.value + "%"
-        color: Theme.nord13
+        color: Theme.punchy3
     }
 }

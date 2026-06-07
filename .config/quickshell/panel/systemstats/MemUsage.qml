@@ -6,8 +6,6 @@ Item {
 
     property int value: 0
 
-    function refresh() { memProc.running = true }
-
     Process {
         id: memProc
         command: ["sh", "-c", "free | grep Mem"]
@@ -20,6 +18,6 @@ Item {
                 root.value = Math.round(100 * used / total)
             }
         }
-
     }
+    function refresh() { memProc.running = true }
 }

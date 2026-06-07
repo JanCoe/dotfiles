@@ -1,13 +1,18 @@
 .pragma library
 
-var nord0  = "#2e3440"
-var nord3  = "#4c566a"
-var nord4  = "#d8dee9"
-var nord8  = "#88c0d0"
-var nord9  = "#81a1c1"
-var nord11 = "#bf616a"
-var nord13 = "#ebcb8b"
-var nord15 = "#b48ead"
-
-var fontFamily = "JetBrainsMono Nerd Font"
-var fontSize   = 18
+var background1 = "#2E3440"  // Nord0 (darkest background)
+var background2 = "#3B4252"  // Nord1 (darker background)
+var background3 = "#434C5E"  // Nord2 (dark background, selection)
+var background4 = "#4C566A"  // Nord3 (dark background, comments)
+var foreground1 = "#D8DEE9"  // Nord4 (light foreground)
+var foreground2 = "#E5E9F0"  // Nord5 (lighter foreground)
+var foreground3 = "#ECEFF4"  // Nord6 (brightest foreground, white)
+var colour1     = "#8FBCBB"  // Nord7 (cyan, aqua)
+var colour2     = "#88C0D0"  // Nord8 (light cyan)
+var colour3     = "#81A1C1"  // Nord9 (blue)
+var colour4     = "#5E81AC"  // Nord10 (dark blue)
+var punchy1     = "#BF616A"  // Nord11 (red)
+var punchy2     = "#D08770"  // Nord12 (orange)
+var punchy3     = "#EBCB8B"  // Nord13 (yellow)
+var punchy4     = "#A3BE8C"  // Nord14 (green)
+var punchy5     = "#B48EAD"  // Nord15 (purple)

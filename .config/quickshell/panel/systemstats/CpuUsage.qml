@@ -5,11 +5,8 @@ Item {
     id: root
 
     property int value: 0
-
     property var lastCpuIdle: 0
     property var lastCpuTotal: 0
-
-    function refresh() { cpuProc.running = true }
 
     Process {
         id: cpuProc
@@ -35,6 +32,6 @@ Item {
                 root.lastCpuIdle = idleTime
             }
         }
-
     }
+    function refresh() { cpuProc.running = true }
 }

@@ -6,8 +6,6 @@ Item {
 
     property int value: 0
 
-    function refresh() { diskProc.running = true }
-
     Process {
         id: diskProc
         command: ["sh", "-c", "df / | tail -1"]
@@ -19,6 +17,6 @@ Item {
                 root.value = parseInt(percentStr.replace('%', '')) || 0
             }
         }
-
     }
+    function refresh() { diskProc.running = true }
 }

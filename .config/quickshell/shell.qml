@@ -2,7 +2,7 @@ import Quickshell
 import Quickshell.Wayland
 import QtQuick
 import QtQuick.Layouts
-import "panel/Nord.js" as Theme
+import "panel/Theme.js" as Theme
 import "panel"
 
 ShellRoot {
@@ -26,13 +26,13 @@ ShellRoot {
             }
 
             implicitHeight: 30
-            color: Theme.nord0
+            color: Theme.background1
 
             // --- CENTER: active window (screen-centered) ---
             BarText {
                 anchors.centerIn: parent
                 text: root.activeWindow
-                color: Theme.nord15
+                color: Theme.punchy5
                 width: Math.min(implicitWidth, parent.width / 3)
                 elide: Text.ElideRight
             }

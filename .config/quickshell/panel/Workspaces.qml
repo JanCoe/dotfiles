@@ -2,7 +2,7 @@ import QtQuick
 import QtQuick.Layouts
 import Quickshell.Io
 import Quickshell.Hyprland
-import "Nord.js" as Theme
+import "Theme.js" as Theme
 
 RowLayout {
     id: workspaces
@@ -27,14 +27,14 @@ RowLayout {
 
             BarText {
                 text: index + 1
-                color: parent.isActive ? Theme.nord8 : (parent.hasWindows ? Theme.nord8 : Theme.nord3)
+                color: parent.isActive ? Theme.colour1 : (parent.hasWindows ? Theme.colour1 : Theme.background4)
                 anchors.centerIn: parent
             }
 
             Rectangle {
                 width: 20
                 height: 3
-                color: parent.isActive ? Theme.nord15 : Theme.nord0
+                color: parent.isActive ? Theme.punchy5: Theme.background1
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.bottom: parent.bottom
             }
@@ -50,7 +50,7 @@ RowLayout {
 
     BarText {
         text: workspaces.currentLayout
-        color: Theme.nord4
+        color: Theme.foreground1
     }
     
     // Current layout (Hyprland: dwindle/master/floating)
