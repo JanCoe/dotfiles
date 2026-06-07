@@ -9,8 +9,8 @@ ShellRoot {
     id: root
 
     // Data
-    property string activeWindow: "Window"
-    property string currentLayout: "Tile"
+    property string activeWindow
+    property string currentLayout: "Tiled"
 
     Variants {
         model: Quickshell.screens
@@ -43,8 +43,10 @@ ShellRoot {
 
                 // --- LEFT: workspaces + layout ---
                 Workspaces {
+                    id: workspacesPanel
                     currentLayout: root.currentLayout
                     Layout.leftMargin: 8
+                    onActiveWindowChanged: root.activeWindow = activeWindow
                 }
 
                 // --- SPACER ---

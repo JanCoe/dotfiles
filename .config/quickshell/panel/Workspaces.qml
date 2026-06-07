@@ -3,14 +3,19 @@ import QtQuick.Layouts
 import Quickshell.Io
 import Quickshell.Hyprland
 import "Theme.js" as Theme
+import "workspaces"
 
 RowLayout {
     id: workspaces
 
     required property string currentLayout
+    readonly property string activeWindow: windowTitle.value
 
     spacing: 0
     Layout.alignment: Qt.AlignVCenter
+
+    CurrentLayout { id: currentLayout }
+    WindowTitle { id: windowTitle }
 
     Repeater {
         model: 10
@@ -49,44 +54,16 @@ RowLayout {
     Separator {}
 
     BarText {
-        text: workspaces.currentLayout
+        text: currentLayout.value
         color: Theme.foreground1
-    }
-    
-    // Current layout (Hyprland: dwindle/master/floating)
-    Process {
-        id: layoutProc
-        command: ["sh", "-c", "hyprctl activewindow -j | jq -r 'if .floating then \"Floating\" elif .fullscreen == 1 then \"Fullscreen\" else \"Tiled\" end'"]
-        stdout: SplitParser {
-            onRead: data => {
-                if (data && data.trim()) {
-                    currentLayout = data.trim()
-                }
-            }
-        }
-        Component.onCompleted: running = true
-    }
-    
-    // Active window title
-    Process {
-        id: windowProc
-        command: ["sh", "-c", "hyprctl activewindow -j | jq -r '.title // empty'"]
-        stdout: SplitParser {
-            onRead: data => {
-                if (data && data.trim()) {
-                    activeWindow = data.trim()
-                }
-            }
-        }
-        Component.onCompleted: running = true
     }
     
     // Event-based updates for window/layout (instant)
     Connections {
         target: Hyprland
         function onRawEvent(event) {
-            windowProc.running = true
-            layoutProc.running = true
+            windowTitle.refresh()
+            currentLayout.refresh()
         }
     }
 
