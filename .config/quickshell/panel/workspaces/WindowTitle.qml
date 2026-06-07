@@ -14,12 +14,10 @@ Item {
         command: ["sh", "-c", "hyprctl activewindow -j | jq -r '.title // empty'"]
         stdout: SplitParser {
             onRead: data => {
-                if (data && data.trim()) {
-                    value = data.trim()
-                }
+                value = data ? data.trim() : ""
             }
         }
         Component.onCompleted: running = true
     }
-    function refresh() { windowProc.running = true }
+    function refresh() { value = ""; windowProc.running = true }
 }
