@@ -7,11 +7,13 @@ import "systemstats"
 
 RowLayout {
     id: stats
-    
+
     KernelVersion { id: kernelVersion }
     CpuUsage { id: cpuUsage }
     MemUsage { id: memUsage }
     DiskUsage { id: diskUsage }
+    Temperature { id: temperature }
+    NetworkStatus { id: networkStatus }
     VolumeLevel { id: volumeLevel }
 
     Timer {
@@ -22,6 +24,8 @@ RowLayout {
             cpuUsage.refresh()
             memUsage.refresh()
             diskUsage.refresh()
+            temperature.refresh()
+            networkStatus.refresh()
             volumeLevel.refresh()
         }
     }
@@ -53,6 +57,20 @@ RowLayout {
     BarText {
         text: "Disk: " + diskUsage.value + "%"
         color: Theme.punchy1
+    }
+
+    Separator {}
+
+    BarText {
+        text: temperature.value + "°C"
+        color: temperature.value >= 80 ? Theme.punchy1 : Theme.punchy2
+    }
+
+    Separator {}
+
+    BarText {
+        text: networkStatus.connected ? networkStatus.essid + " " + networkStatus.signal + "%" : "Disconnected"
+        color: networkStatus.connected ? Theme.punchy4 : Theme.punchy1
     }
 
     Separator {}

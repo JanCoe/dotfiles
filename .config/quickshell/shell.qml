@@ -1,5 +1,6 @@
 import Quickshell
 import "panel"
+import "menu"
 
 ShellRoot {
     id: root
@@ -9,4 +10,6 @@ ShellRoot {
 
         Panel {}
     }
+
+    SystemMenu {}
 }
