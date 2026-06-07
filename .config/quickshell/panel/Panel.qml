@@ -1,7 +1,8 @@
 import Quickshell
 import QtQuick
 import QtQuick.Layouts
-import Theme
+import qs.Theme
+import qs.Assets
 import "workspaces"
 
 PanelWindow {
@@ -34,16 +35,12 @@ PanelWindow {
             Layout.leftMargin: 8
         }
 
-        Item {
-            Layout.fillWidth: true
-        }
+        Item { Layout.fillWidth: true }
 
         SystemStats {}
 
         Separator {}
 
-        Clock {
-            Layout.rightMargin: 8
-        }
+        Clock { Layout.rightMargin: 8 }
     }
 }

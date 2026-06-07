@@ -1,7 +1,8 @@
 import QtQuick
 import QtQuick.Layouts
 import Quickshell.Io
-import Theme
+import qs.Theme
+import qs.Assets
 import "systemstats"
 
 RowLayout {

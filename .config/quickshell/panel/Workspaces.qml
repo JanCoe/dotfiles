@@ -3,7 +3,8 @@ import QtQuick.Layouts
 import Quickshell.Io
 import Quickshell.Hyprland
 import "workspaces"
-import Theme
+import qs.Theme
+import qs.Assets
 
 RowLayout {
     id: workspaces

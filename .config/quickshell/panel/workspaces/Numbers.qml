@@ -1,8 +1,8 @@
 import QtQuick
 import QtQuick.Layouts
 import Quickshell.Hyprland
-import ".."
-import Theme
+import qs.Theme
+import qs.Assets
 
 Repeater {
     model: 10

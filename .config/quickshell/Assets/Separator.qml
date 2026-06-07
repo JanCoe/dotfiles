@@ -1,6 +1,6 @@
 import QtQuick
 import QtQuick.Layouts
-import Theme
+import qs.Theme
 
 Rectangle {
     width: 1
