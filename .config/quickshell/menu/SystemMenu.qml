@@ -2,6 +2,7 @@ import Quickshell
 import Quickshell.Wayland
 import Quickshell.Io
 import QtQuick
+import QtQuick.Controls
 import QtQuick.Layouts
 import qs.Theme
 
@@ -13,40 +14,55 @@ Scope {
     property string currentMenu: "main"
     property int selectedIndex: 0
 
-    property var menus: ({
-        main: [
-            { label: "books", icon: "📖", action: "books" },
-            { label: "configs", icon: "⚙️", action: "submenu", target: "configs" },
-            { label: "connect", icon: "🔗", action: "submenu", target: "connect" },
-            { label: "system", icon: "⚡", action: "submenu", target: "system" },
-            { label: "utilities", icon: "🔧", action: "submenu", target: "utilities" }
-        ],
-        configs: [
-            { label: "aliases", icon: "", action: "edit", file: "$HOME/.aliases" },
-            { label: "bash", icon: "", action: "edit", file: "$HOME/.bashrc" },
-            { label: "foot", icon: "", action: "edit", file: "$XDG_CONFIG_HOME/foot/foot.ini" },
-            { label: "hyprland", icon: "", action: "edit", file: "$XDG_CONFIG_HOME/hypr/hyprland.conf" },
-            { label: "hyprland-keymaps", icon: "", action: "edit", file: "$XDG_CONFIG_HOME/hypr/keymaps.conf" },
-            { label: "nvim", icon: "", action: "edit", file: "$XDG_CONFIG_HOME/nvim/init.lua" },
-            { label: "nvim-keymaps", icon: "", action: "edit", file: "$XDG_CONFIG_HOME/nvim/lua/config/keymaps.lua" },
-            { label: "profile", icon: "", action: "edit", file: "$HOME/.profile" },
-            { label: "starship", icon: "", action: "edit", file: "$XDG_CONFIG_HOME/starship/starship.toml" },
-            { label: "quickshell", icon: "", action: "edit", file: "$XDG_CONFIG_HOME/quickshell/" }
-        ],
-        connect: [
-            { label: "audio", icon: "🔊", action: "cmd", cmd: ["pavucontrol"] },
-            { label: "bluetooth", icon: "🅱️", action: "cmd", cmd: ["blueman-manager"] },
-            { label: "wifi", icon: "📶", action: "cmd", cmd: ["nm-connection-editor"] }
-        ],
-        system: [
-            { label: "monitor", icon: "", action: "cmd", cmd: ["toggle-monitor"] },
-            { label: "poweroff", icon: "⏹", action: "cmd", cmd: ["poweroff"] },
-            { label: "reboot", icon: "🔄", action: "cmd", cmd: ["reboot"] }
-        ],
-        utilities: [
-            { label: "screenshot", icon: "", action: "cmd", cmd: ["screenshot"] }
-        ]
+    readonly property var mainMenu: [
+        { label: "books", icon: "📖", action: "books" },
+        { label: "configs", icon: "⚙️", action: "submenu", target: "configs" },
+        { label: "connect", icon: "🔗", action: "submenu", target: "connect" },
+        { label: "system", icon: "⚡", action: "submenu", target: "system" },
+        { label: "utilities", icon: "🔧", action: "submenu", target: "utilities" }
+    ]
+
+    readonly property var configsMenu: [
+        { label: "aliases", icon: "", action: "edit", file: "$HOME/.aliases" },
+        { label: "bash", icon: "", action: "edit", file: "$HOME/.bashrc" },
+        { label: "foot", icon: "", action: "edit", file: "$XDG_CONFIG_HOME/foot/foot.ini" },
+        { label: "hyprland", icon: "", action: "edit", file: "$XDG_CONFIG_HOME/hypr/hyprland.conf" },
+        { label: "hyprland-keymaps", icon: "", action: "edit", file: "$XDG_CONFIG_HOME/hypr/keymaps.conf" },
+        { label: "nvim", icon: "", action: "edit", file: "$XDG_CONFIG_HOME/nvim/init.lua" },
+        { label: "nvim-keymaps", icon: "", action: "edit", file: "$XDG_CONFIG_HOME/nvim/lua/config/keymaps.lua" },
+        { label: "profile", icon: "", action: "edit", file: "$HOME/.profile" },
+        { label: "starship", icon: "", action: "edit", file: "$XDG_CONFIG_HOME/starship/starship.toml" },
+        { label: "quickshell", icon: "", action: "edit", file: "$XDG_CONFIG_HOME/quickshell/" }
+    ]
+
+    readonly property var connectMenu: [
+        { label: "audio", icon: "🔊", action: "cmd", cmd: ["pavucontrol"] },
+        { label: "bluetooth", icon: "🅱️", action: "cmd", cmd: ["blueman-manager"] },
+        { label: "wifi", icon: "📶", action: "cmd", cmd: ["nm-connection-editor"] }
+    ]
+
+    readonly property var systemMenu: [
+        { label: "monitor", icon: "", action: "cmd", cmd: ["toggle-monitor"] },
+        { label: "poweroff", icon: "⏹", action: "cmd", cmd: ["poweroff"] },
+        { label: "reboot", icon: "🔄", action: "cmd", cmd: ["reboot"] }
+    ]
+
+    readonly property var utilitiesMenu: [
+        { label: "screenshot", icon: "", action: "cmd", cmd: ["screenshot"] }
+    ]
+
+    property var booksMenu: []
+
+    readonly property var menuMap: ({
+        main: mainMenu,
+        configs: configsMenu,
+        connect: connectMenu,
+        system: systemMenu,
+        utilities: utilitiesMenu,
+        books: booksMenu
     })
+
+    readonly property var currentItems: menuMap[currentMenu] ?? []
 
     IpcHandler {
         target: "systemmenu"
@@ -89,24 +105,26 @@ Scope {
     }
 
     function executeItem(item) {
-        if (item.action === "submenu") {
+        switch (item.action) {
+        case "submenu":
             navigateTo(item.target)
-        } else if (item.action === "books") {
+            return
+        case "books":
             booksScanOutput = ""
             booksScanProc.running = true
-        } else if (item.action === "openbook") {
+            return
+        case "openbook":
             cmdProcess.command = ["zathura", item.file]
-            cmdProcess.startDetached()
-            dismiss()
-        } else if (item.action === "edit") {
+            break
+        case "edit":
             cmdProcess.command = ["sh", "-c", "$TERMINAL -e nvim " + item.file]
-            cmdProcess.startDetached()
-            dismiss()
-        } else if (item.action === "cmd") {
+            break
+        case "cmd":
             cmdProcess.command = item.cmd
-            cmdProcess.startDetached()
-            dismiss()
+            break
         }
+        cmdProcess.startDetached()
+        dismiss()
     }
 
     property string booksScanOutput: ""
@@ -119,17 +137,12 @@ Scope {
                 if (data.trim()) root.booksScanOutput += data.trim() + "\n"
             }
         }
-        onExited: (exitCode, exitStatus) => {
+        onExited: {
             let lines = root.booksScanOutput.trim().split("\n").filter(l => l.length > 0)
-            let items = lines.map(path => {
-                let parts = path.split("/")
-                let name = parts[parts.length - 1].replace(/\.pdf$/i, "")
+            root.booksMenu = lines.map(path => {
+                let name = path.split("/").pop().replace(/\.pdf$/i, "")
                 return { label: name, icon: "", action: "openbook", file: path }
-            })
-            items.sort((a, b) => a.label.localeCompare(b.label))
-            let updated = Object.assign({}, root.menus)
-            updated.books = items
-            root.menus = updated
+            }).sort((a, b) => a.label.localeCompare(b.label))
             root.navigateTo("books")
         }
     }
@@ -148,7 +161,7 @@ Scope {
                 left: true
             }
 
-            implicitWidth: menuColumn.implicitWidth + 24
+            implicitWidth: 260
             implicitHeight: menuColumn.implicitHeight + 24
             color: Theme.background1
 
@@ -160,27 +173,10 @@ Scope {
                 anchors.fill: parent
                 focus: true
 
-                Keys.onPressed: event => {
-                    let items = root.menus[root.currentMenu] || []
-                    let count = items.length
-                    if (event.key === Qt.Key_Down || event.key === Qt.Key_J) {
-                        root.selectedIndex = (root.selectedIndex + 1) % count
-                        event.accepted = true
-                    } else if (event.key === Qt.Key_Up || event.key === Qt.Key_K) {
-                        root.selectedIndex = (root.selectedIndex - 1 + count) % count
-                        event.accepted = true
-                    } else if (event.key === Qt.Key_Return || event.key === Qt.Key_Right || event.key === Qt.Key_L) {
-                        root.executeItem(items[root.selectedIndex])
-                        event.accepted = true
-                    } else if (event.key === Qt.Key_Escape || event.key === Qt.Key_Left || event.key === Qt.Key_H) {
-                        root.navigateBack()
-                        event.accepted = true
-                    }
-                }
-
                 ColumnLayout {
                     id: menuColumn
-                    anchors.centerIn: parent
+                    anchors.fill: parent
+                    anchors.margins: 12
                     spacing: 2
 
                     RowLayout {
@@ -208,56 +204,86 @@ Scope {
                         }
                     }
 
-                    Repeater {
-                        model: root.menus[root.currentMenu] || []
+                    ListView {
+                        id: menuList
+                        Layout.fillWidth: true
+                        Layout.preferredHeight: contentHeight
+                        interactive: false
+                        focus: true
+                        currentIndex: root.selectedIndex
+                        model: root.currentItems
 
-                        Rectangle {
-                            id: menuItem
-                            Layout.fillWidth: true
-                            implicitWidth: row.implicitWidth + 24
-                            implicitHeight: row.implicitHeight + 16
+                        Keys.onPressed: event => {
+                            let count = root.currentItems.length
+                            switch (event.key) {
+                            case Qt.Key_Down:
+                            case Qt.Key_J:
+                                root.selectedIndex = (root.selectedIndex + 1) % count
+                                event.accepted = true
+                                return
+                            case Qt.Key_Up:
+                            case Qt.Key_K:
+                                root.selectedIndex = (root.selectedIndex - 1 + count) % count
+                                event.accepted = true
+                                return
+                            case Qt.Key_Return:
+                            case Qt.Key_Right:
+                            case Qt.Key_L:
+                                root.executeItem(root.currentItems[root.selectedIndex])
+                                event.accepted = true
+                                return
+                            case Qt.Key_Escape:
+                            case Qt.Key_Left:
+                            case Qt.Key_H:
+                                root.navigateBack()
+                                event.accepted = true
+                                return
+                            }
+                        }
+
+                        highlight: Rectangle {
+                            color: Theme.background3
                             radius: 4
-                            color: (mouseArea.containsMouse || index === root.selectedIndex) ? Theme.background3 : "transparent"
+                        }
 
+                        delegate: ItemDelegate {
                             required property var modelData
                             required property int index
 
-                            RowLayout {
-                                id: row
-                                anchors.verticalCenter: parent.verticalCenter
-                                anchors.left: parent.left
-                                anchors.leftMargin: 8
+                            width: menuList.width
+                            hoverEnabled: true
+                            onHoveredChanged: if (hovered) root.selectedIndex = index
+                            onClicked: root.executeItem(modelData)
+
+                            contentItem: RowLayout {
                                 spacing: 8
 
                                 Text {
-                                    text: menuItem.modelData.icon
+                                    text: modelData.icon
                                     font.pixelSize: Theme.fontSize - 2
-                                    visible: menuItem.modelData.icon !== ""
+                                    visible: text !== ""
                                 }
 
                                 Text {
-                                    text: menuItem.modelData.label
+                                    text: modelData.label
                                     font.family: Theme.fontFamily
                                     font.pixelSize: Theme.fontSize - 2
                                     color: Theme.foreground1
                                 }
+
+                                Item { Layout.fillWidth: true }
 
                                 Text {
                                     text: "›"
                                     font.family: Theme.fontFamily
                                     font.pixelSize: Theme.fontSize - 2
                                     color: Theme.background4
-                                    visible: menuItem.modelData.action === "submenu"
+                                    visible: modelData.action === "submenu"
                                 }
                             }
 
-                            MouseArea {
-                                id: mouseArea
-                                anchors.fill: parent
-                                hoverEnabled: true
-                                cursorShape: Qt.PointingHandCursor
-                                onEntered: root.selectedIndex = menuItem.index
-                                onClicked: root.executeItem(menuItem.modelData)
+                            background: Rectangle {
+                                color: "transparent"
                             }
                         }
                     }
