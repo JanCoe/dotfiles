@@ -2,7 +2,6 @@ import Quickshell
 import Quickshell.Wayland
 import Quickshell.Io
 import QtQuick
-import QtQuick.Controls
 import QtQuick.Layouts
 import qs.Theme
 
@@ -161,7 +160,7 @@ Scope {
                 left: true
             }
 
-            implicitWidth: 260
+            implicitWidth: menuColumn.implicitWidth + 24
             implicitHeight: menuColumn.implicitHeight + 24
             color: Theme.background1
 
@@ -173,10 +172,37 @@ Scope {
                 anchors.fill: parent
                 focus: true
 
+                Keys.onPressed: event => {
+                    let count = root.currentItems.length
+                    switch (event.key) {
+                    case Qt.Key_Down:
+                    case Qt.Key_J:
+                        root.selectedIndex = (root.selectedIndex + 1) % count
+                        event.accepted = true
+                        return
+                    case Qt.Key_Up:
+                    case Qt.Key_K:
+                        root.selectedIndex = (root.selectedIndex - 1 + count) % count
+                        event.accepted = true
+                        return
+                    case Qt.Key_Return:
+                    case Qt.Key_Right:
+                    case Qt.Key_L:
+                        root.executeItem(root.currentItems[root.selectedIndex])
+                        event.accepted = true
+                        return
+                    case Qt.Key_Escape:
+                    case Qt.Key_Left:
+                    case Qt.Key_H:
+                        root.navigateBack()
+                        event.accepted = true
+                        return
+                    }
+                }
+
                 ColumnLayout {
                     id: menuColumn
-                    anchors.fill: parent
-                    anchors.margins: 12
+                    anchors.centerIn: parent
                     spacing: 2
 
                     RowLayout {
@@ -204,86 +230,56 @@ Scope {
                         }
                     }
 
-                    ListView {
-                        id: menuList
-                        Layout.fillWidth: true
-                        Layout.preferredHeight: contentHeight
-                        interactive: false
-                        focus: true
-                        currentIndex: root.selectedIndex
+                    Repeater {
                         model: root.currentItems
 
-                        Keys.onPressed: event => {
-                            let count = root.currentItems.length
-                            switch (event.key) {
-                            case Qt.Key_Down:
-                            case Qt.Key_J:
-                                root.selectedIndex = (root.selectedIndex + 1) % count
-                                event.accepted = true
-                                return
-                            case Qt.Key_Up:
-                            case Qt.Key_K:
-                                root.selectedIndex = (root.selectedIndex - 1 + count) % count
-                                event.accepted = true
-                                return
-                            case Qt.Key_Return:
-                            case Qt.Key_Right:
-                            case Qt.Key_L:
-                                root.executeItem(root.currentItems[root.selectedIndex])
-                                event.accepted = true
-                                return
-                            case Qt.Key_Escape:
-                            case Qt.Key_Left:
-                            case Qt.Key_H:
-                                root.navigateBack()
-                                event.accepted = true
-                                return
-                            }
-                        }
-
-                        highlight: Rectangle {
-                            color: Theme.background3
+                        Rectangle {
+                            id: menuItem
+                            Layout.fillWidth: true
+                            implicitWidth: row.implicitWidth + 24
+                            implicitHeight: row.implicitHeight + 16
                             radius: 4
-                        }
+                            color: (mouseArea.containsMouse || index === root.selectedIndex) ? Theme.background3 : "transparent"
 
-                        delegate: ItemDelegate {
                             required property var modelData
                             required property int index
 
-                            width: menuList.width
-                            hoverEnabled: true
-                            onHoveredChanged: if (hovered) root.selectedIndex = index
-                            onClicked: root.executeItem(modelData)
-
-                            contentItem: RowLayout {
+                            RowLayout {
+                                id: row
+                                anchors.verticalCenter: parent.verticalCenter
+                                anchors.left: parent.left
+                                anchors.leftMargin: 8
                                 spacing: 8
 
                                 Text {
-                                    text: modelData.icon
+                                    text: menuItem.modelData.icon
                                     font.pixelSize: Theme.fontSize - 2
-                                    visible: text !== ""
+                                    visible: menuItem.modelData.icon !== ""
                                 }
 
                                 Text {
-                                    text: modelData.label
+                                    text: menuItem.modelData.label
                                     font.family: Theme.fontFamily
                                     font.pixelSize: Theme.fontSize - 2
                                     color: Theme.foreground1
                                 }
-
-                                Item { Layout.fillWidth: true }
 
                                 Text {
                                     text: "›"
                                     font.family: Theme.fontFamily
                                     font.pixelSize: Theme.fontSize - 2
                                     color: Theme.background4
-                                    visible: modelData.action === "submenu"
+                                    visible: menuItem.modelData.action === "submenu"
                                 }
                             }
 
-                            background: Rectangle {
-                                color: "transparent"
+                            MouseArea {
+                                id: mouseArea
+                                anchors.fill: parent
+                                hoverEnabled: true
+                                cursorShape: Qt.PointingHandCursor
+                                onEntered: root.selectedIndex = menuItem.index
+                                onClicked: root.executeItem(menuItem.modelData)
                             }
                         }
                     }
