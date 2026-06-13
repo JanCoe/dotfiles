@@ -3,7 +3,7 @@ pragma Singleton
 import QtQuick
 
 QtObject {
-    readonly property string fontFamily: "JetBrainsMono Nerd Font"
+    readonly property string fontFamily: "Inter"
     readonly property int fontSize: 18
 
     readonly property color background1: "#2E3440"

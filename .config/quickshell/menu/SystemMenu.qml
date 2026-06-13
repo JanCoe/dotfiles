@@ -4,6 +4,7 @@ import Quickshell.Io
 import QtQuick
 import QtQuick.Layouts
 import qs.Theme
+import qs.wifi
 
 Scope {
     id: root
@@ -37,7 +38,7 @@ Scope {
     readonly property var connectMenu: [
         { label: "audio", icon: "🔊", action: "cmd", cmd: ["pavucontrol"] },
         { label: "bluetooth", icon: "🅱️", action: "cmd", cmd: ["blueman-manager"] },
-        { label: "wifi", icon: "📶", action: "cmd", cmd: ["nm-connection-editor"] }
+        { label: "wifi", icon: "📶", action: "wifi" }
     ]
 
     readonly property var systemMenu: [
@@ -111,6 +112,10 @@ Scope {
         case "books":
             booksScanOutput = ""
             booksScanProc.running = true
+            return
+        case "wifi":
+            Net.panelOpen = !Net.panelOpen
+            dismiss()
             return
         case "openbook":
             cmdProcess.command = ["zathura", item.file]

@@ -4,10 +4,14 @@ import QtQuick.Layouts
 import qs.Theme
 import qs.Assets
 import "workspaces"
+import "../wifi"
 
 PanelWindow {
+    id: panel
     property var modelData
     screen: modelData
+
+    WifiPanel { screen: panel.screen }
 
     anchors {
         top: true

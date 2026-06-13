@@ -1,9 +1,11 @@
 import QtQuick
 import QtQuick.Layouts
+import Quickshell
 import Quickshell.Io
 import qs.Theme
 import qs.Assets
 import "systemstats"
+import "../wifi"
 
 RowLayout {
     id: stats
@@ -17,7 +19,7 @@ RowLayout {
     VolumeLevel { id: volumeLevel }
 
     Timer {
-        interval: 2000
+        interval: 1000
         running: true
         repeat: true
         onTriggered: {
@@ -57,6 +59,9 @@ RowLayout {
     BarText {
         text: "Disk: " + diskUsage.value + "%"
         color: Theme.punchy1
+        interactive: true
+        onClicked: Quickshell.execDetached(["run-or-kill", "thunar"])
+
     }
 
     Separator {}
@@ -69,14 +74,18 @@ RowLayout {
     Separator {}
 
     BarText {
-        text: networkStatus.connected ? networkStatus.essid + " " + networkStatus.signal + "%" : "Disconnected"
+        text: networkStatus.connected ? " " + networkStatus.essid + " " + networkStatus.signal + "%" : "Disconnected"
         color: networkStatus.connected ? Theme.punchy4 : Theme.punchy1
+        interactive: true
+        onClicked: Net.panelOpen = !Net.panelOpen
     }
 
     Separator {}
 
     BarText {
-        text: "Vol: " + volumeLevel.value + "%"
+        text: " " + volumeLevel.value + "%"
         color: Theme.punchy3
+        interactive: true
+        onClicked: Quickshell.execDetached(["run-or-kill", "pavucontrol"])
     }
 }

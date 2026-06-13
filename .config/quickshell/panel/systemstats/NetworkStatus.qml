@@ -23,5 +23,5 @@ Item {
             }
         }
     }
-    function refresh() { connected = false; netProc.running = true }
+    function refresh() { netProc.running = true }
 }
