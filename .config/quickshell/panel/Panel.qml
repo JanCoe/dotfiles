@@ -20,7 +20,7 @@ PanelWindow {
     }
 
     implicitHeight: 30
-    color: Theme.background1
+    color: "transparent" 
 
     BarText {
         anchors.centerIn: parent

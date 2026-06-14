@@ -6,13 +6,13 @@ import qs.Assets
 BarText {
     id: clock
 
-    text: Qt.formatDateTime(new Date(), "ddd, dd MMM - HH:mm")
+    text: Qt.formatDateTime(new Date(), "HH:mm:ss")
     color: Theme.foreground1
 
     Timer {
         interval: 1000
         running: true
         repeat: true
-        onTriggered: clock.text = Qt.formatDateTime(new Date(), "ddd, dd MMM - HH:mm")
+        onTriggered: clock.text = Qt.formatDateTime(new Date(), "HH:mm:ss")
     }
 }
