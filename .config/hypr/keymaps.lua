@@ -1,3 +1,5 @@
+local focus_or_launch = require("focus_or_launch")
+
 -- Add CTRL to a keycombination to move the active thing there
 local mainMod = "SUPER"
 local lft = "H"
@@ -27,20 +29,19 @@ hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("hyprctl reload"))
 -- Applications and utilities
 -- hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("system-menu"))
 hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(terminal))
-hl.bind(mainMod .. " + SLASH", hl.dsp.exec_cmd('focus-or-launch "1Password" 1password'))
-hl.bind(mainMod .. " + A", hl.dsp.exec_cmd('focus-or-launch claude.ai_/ "' .. webapp .. '=https://claude.ai"'))
-hl.bind(mainMod .. " + B", hl.dsp.exec_cmd('focus-or-launch "Vivaldi - Vivaldi" ' .. browser))
-hl.bind(mainMod .. " + C", hl.dsp.exec_cmd('focus-or-launch chatgpt.com_/ "' .. webapp .. '=https://chatgpt.com"'))
+hl.bind(mainMod .. " + SLASH", focus_or_launch("1Password", "1password"))
+hl.bind(mainMod .. " + A", focus_or_launch("claude.ai_/", webapp .. "=https://claude.ai"))
+hl.bind(mainMod .. " + B", focus_or_launch("Vivaldi - Vivaldi", browser))
+hl.bind(mainMod .. " + C", focus_or_launch("chatgpt.com_/", webapp .. "=https://chatgpt.com"))
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd("run-or-kill " .. menu))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd("run-or-kill " .. files))
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("quickshell ipc call systemmenu toggle"))
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd(termapp .. " -e nvim"))
-hl.bind(mainMod .. " + O", hl.dsp.exec_cmd('focus-or-launch obsidian "md.obsidian.Obsidian -disable-gpu"'))
+hl.bind(mainMod .. " + O", focus_or_launch("obsidian", "md.obsidian.Obsidian -disable-gpu"))
 hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("run-or-kill pavucontrol --tab=3"))
-hl.bind(mainMod .. " + W",
-  hl.dsp.exec_cmd('focus-or-launch web.whatsapp.com_/ "' .. webapp .. '=https://web.whatsapp.com"'))
-hl.bind(mainMod .. " + X", hl.dsp.exec_cmd('focus-or-launch excalidraw.com_/ "' .. webapp .. '=https://excalidraw.com"'))
-hl.bind(mainMod .. " + Y", hl.dsp.exec_cmd('focus-or-launch youtube.com_/ "' .. webapp .. '=https://youtube.com"'))
+hl.bind(mainMod .. " + W", focus_or_launch("web.whatsapp.com_/", webapp .. "=https://web.whatsapp.com"))
+hl.bind(mainMod .. " + X", focus_or_launch("excalidraw.com_/", webapp .. "=https://excalidraw.com"))
+hl.bind(mainMod .. " + Y", focus_or_launch("youtube.com_/", webapp .. "=https://youtube.com"))
 
 -- Focus movement
 hl.bind(mainMod .. " + " .. lft, hl.dsp.focus({ direction = "l" }))

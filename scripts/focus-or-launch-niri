@@ -13,5 +13,5 @@ id=$(
 if [[ -n "$id" ]]; then
     niri msg action focus-window --id "$id"
 else
-    $launch_cmd &
+    bash -c "$launch_cmd"
 fi
