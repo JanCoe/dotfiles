@@ -6,7 +6,6 @@ import QtQuick.Layouts
 
 Rectangle {
     id: batteryPill
-    Layout.alignment: parent.right
     anchors.rightMargin: 16
 
     width: batteryLabel.width + 32

@@ -1,13 +1,14 @@
 import Quickshell
-import QtQuick
+import "panel"
+import "menu"
 
 ShellRoot {
     id: root
 
     Variants {
         model: Quickshell.screens
-        delegate: Component {
-            Panel {}
-        }
+        Panel {}
     }
+
+    SystemMenu {}
 }
