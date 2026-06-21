@@ -3,7 +3,6 @@ import Quickshell.Io
 import Quickshell.Wayland
 import QtQuick
 import QtQuick.Layouts
-import "workspaces"
 
 PanelWindow {
     id: panel
@@ -24,10 +23,9 @@ PanelWindow {
     RowLayout {
         anchors.fill: parent
         spacing: 0
-        
+
         Workspaces { }
-        Item { Layout.fillWidth: true }
-        Clock { }
+        Clock { anchors.centerIn: parent }
         Item { Layout.fillWidth: true }
         Battery { }
     }

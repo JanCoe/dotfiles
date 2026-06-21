@@ -3,7 +3,6 @@ import Quickshell.Io
 import Quickshell.Wayland
 import QtQuick
 import QtQuick.Layouts
-import "workspaces"
 
 Rectangle {
     id: clockPill
@@ -15,29 +14,19 @@ Rectangle {
     border.color: Qt.rgba(1, 1, 1, 0.35)
     border.width: 1
 
-    Text {
+    BarText {
         id: timeLabel
-        property bool interactive: true
+        interactive: true
         property bool showDate: false
-        signal clicked()
 
         anchors.centerIn: parent
         color: "grey"
-        font.pixelSize: 18
-        font.family: "Inter"
         text: {
             if (!timeLabel.showDate) {
                 Qt.formatTime(new Date(), "HH:mm:ss")
             } else {
                 Qt.formatTime(new Date(), "HH:mm")
             }
-        }
-
-        MouseArea {
-            anchors.fill: parent
-            enabled: timeLabel.interactive
-            cursorShape: timeLabel.interactive ? Qt.PointingHandCursor : Qt.ArrowCursor
-            onClicked: timeLabel.clicked()
         }
 
         onClicked: timeLabel.showDate = !timeLabel.showDate

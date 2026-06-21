@@ -7,7 +7,7 @@ ShellRoot {
     Variants {
         model: Quickshell.screens
         delegate: Component {
-            Panel {}
+            Panel { }
         }
     }
 }
