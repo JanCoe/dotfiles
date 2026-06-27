@@ -1,4 +1,5 @@
 local focus_or_launch = require("focus_or_launch")
+local apps = require("applications")
 
 -- Add CTRL to a keycombination to move the active thing there
 local mainMod = "SUPER"
@@ -7,12 +8,7 @@ local dwn = "J"
 local up_ = "K"
 local rgt = "L"
 
-local terminal = "wezterm"
-local menu = "fuzzel"
-local browser = "vivaldi-stable"
-local files = "Thunar"
-local termapp = terminal
-local webapp = browser .. " --new-window --ozone-platform=wayland --app"
+local webapp = apps.browser .. " --new-window --ozone-platform=wayland --app"
 
 -- System and window management
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen())
@@ -28,15 +24,15 @@ hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("hyprctl reload"))
 
 -- Applications and utilities
 -- hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("system-menu"))
-hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(terminal))
+hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(apps.terminal))
 hl.bind(mainMod .. " + SLASH", focus_or_launch("1Password", "1password"))
 hl.bind(mainMod .. " + A", focus_or_launch("claude.ai_/", webapp .. "=https://claude.ai"))
-hl.bind(mainMod .. " + B", focus_or_launch("Vivaldi - Vivaldi", browser))
+hl.bind(mainMod .. " + B", focus_or_launch("Vivaldi - Vivaldi", apps.browser))
 hl.bind(mainMod .. " + C", focus_or_launch("chatgpt.com_/", webapp .. "=https://chatgpt.com"))
-hl.bind(mainMod .. " + D", hl.dsp.exec_cmd("run-or-kill " .. menu))
-hl.bind(mainMod .. " + E", hl.dsp.exec_cmd("run-or-kill " .. files))
+hl.bind(mainMod .. " + D", hl.dsp.exec_cmd("run-or-kill " .. apps.menu))
+hl.bind(mainMod .. " + E", hl.dsp.exec_cmd("run-or-kill " .. apps.files))
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("quickshell ipc call systemmenu toggle"))
-hl.bind(mainMod .. " + N", hl.dsp.exec_cmd(termapp .. " -e nvim"))
+hl.bind(mainMod .. " + N", hl.dsp.exec_cmd(apps.terminal .. " -e nvim"))
 hl.bind(mainMod .. " + O", focus_or_launch("obsidian", "md.obsidian.Obsidian -disable-gpu"))
 hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("run-or-kill pavucontrol --tab=3"))
 hl.bind(mainMod .. " + W", focus_or_launch("web.whatsapp.com_/", webapp .. "=https://web.whatsapp.com"))
