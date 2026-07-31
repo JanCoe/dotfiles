@@ -43,6 +43,11 @@ return binding({
   { "CTRL",       "j",     a.ActivatePaneDirection('Down') },
   { "CTRL",       "k",     a.ActivatePaneDirection('Up') },
   { "CTRL",       "l",     a.ActivatePaneDirection('Right') },
+  -- Use CTRL + SHIFT + h,j,k,l to resize panes
+  { "CTRL|SHIFT", "h",     a.AdjustPaneSize { 'Left', 5 } },
+  { "CTRL|SHIFT", "j",     a.AdjustPaneSize { 'Down', 1 } },
+  { "CTRL|SHIFT", "k",     a.AdjustPaneSize { 'Up', 1 } },
+  { "CTRL|SHIFT", "l",     a.AdjustPaneSize { 'Right', 5 } },
   -- Move to another pane (next or previous)
   { "CTRL",       "]",     a.ActivatePaneDirection('Next') },
   { "CTRL",       "[",     a.ActivatePaneDirection('Prev') },

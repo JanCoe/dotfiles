@@ -39,11 +39,17 @@ hl.bind(mainMod .. " + W", focus_or_launch("web.whatsapp.com_/", webapp .. "=htt
 hl.bind(mainMod .. " + X", focus_or_launch("excalidraw.com_/", webapp .. "=https://excalidraw.com"))
 hl.bind(mainMod .. " + Y", focus_or_launch("youtube.com_/", webapp .. "=https://youtube.com"))
 
--- Focus movement
+-- Focus change
 hl.bind(mainMod .. " + " .. lft, hl.dsp.focus({ direction = "l" }))
 hl.bind(mainMod .. " + " .. dwn, hl.dsp.focus({ direction = "d" }))
 hl.bind(mainMod .. " + " .. up_, hl.dsp.focus({ direction = "u" }))
 hl.bind(mainMod .. " + " .. rgt, hl.dsp.focus({ direction = "r" }))
+
+-- Resize - doesn't work, figure it out later
+-- hl.bind(mainMod .. " + SHIFT + " .. lft, hl.dsp.window.resize({ x = -5, y = 0 }))
+-- hl.bind(mainMod .. " + SHIFT + " .. dwn, hl.dsp.window.resize({ x = 0, y = 5 }))
+-- hl.bind(mainMod .. " + SHIFT + " .. up_, hl.dsp.window.resize({ x = 0, y = -5 }))
+-- hl.bind(mainMod .. " + SHIFT + " .. rgt, hl.dsp.window.resize({ x = 5, y = 0 }))
 
 -- Window movement
 hl.bind(mainMod .. " + CTRL + " .. lft, hl.dsp.window.move({ direction = "l" }))

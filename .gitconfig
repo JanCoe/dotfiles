@@ -1,6 +1,8 @@
 [user]
 	name = Jan Coetzee
 	email = jan@jancoe.io
+[github]
+    user = JanCoe
 [color]
     ui = true
 [init]
@@ -9,6 +11,21 @@
     autocrlf = input
     excludesfile = ~/.gitignore_global
     editor = nvim
+    pager = delta
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+    navigate = true # n / N to jump between file diffs
+    side-by-side = true
+    line-numbers = true
+[diff]
+	colorMoved = default
+	colorMovedWS = allow-indentation-change
+[merge]
+    tool = nvimdiff
+    conflictstyle = diff3
+[mergetool "nvimdiff"]
+    layout = "LOCAL,BASE,REMOTE / MERGED"
 [credential "https://github.com"]
     helper = !/usr/bin/gh auth git-credential
 [filter "lfs"]
@@ -16,8 +33,3 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
     required = true
-[github]
-    user = JanCoe
-[diff]
-	colorMoved = zebra
-	colorMovedWS = allow-indentation-change
