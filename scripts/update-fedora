@@ -15,6 +15,15 @@ if $ASK_SUDO; then
     sudo -v
 fi
 
+# Keep sudo alive in the background
+( while true; do sudo -n -v; sleep 60; done) & SUDO_KEEPALIVE_PID=$!
+
+# Kill keepalive if script exits
+cleanup() {
+    kill "$SUDO_KEEPALIVE_PID" 2>/dev/null || true
+}
+trap cleanup EXIT
+
 printf "%s\n" "==> Updating DNF packages..."
 sudo dnf upgrade --refresh -y
 

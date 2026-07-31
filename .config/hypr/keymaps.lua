@@ -13,8 +13,8 @@ local webapp = apps.browser .. " --new-window --ozone-platform=wayland --app"
 -- System and window management
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen())
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
-hl.bind(mainMod .. " + EQUAL", hl.dsp.layout("orientationright"))
-hl.bind(mainMod .. " + MINUS", hl.dsp.layout("orientationleft"))
+hl.bind(mainMod .. " + MINUS", hl.dsp.layout("preselect r")) -- next window: split vertically, opens right
+hl.bind(mainMod .. " + EQUAL", hl.dsp.layout("preselect d")) -- next window: split horizontally, opens bottom
 
 hl.bind(mainMod .. " + SPACE", hl.dsp.layout("togglesplit"))
 hl.bind(mainMod .. " + SHIFT + SPACE", hl.dsp.window.float({ action = "toggle" }))
