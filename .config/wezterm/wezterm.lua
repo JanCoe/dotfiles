@@ -3,7 +3,7 @@ local config = wezterm.config_builder()
 config.keys = require("keymaps")
 
 config.font = wezterm.font_with_fallback({ "JetBrains Mono", "Symbols Nerd Font" })
-config.font_size = 21
+config.font_size = 18
 config.color_scheme = "nord"
 config.window_background_opacity = 0.75
 config.max_fps = 120
