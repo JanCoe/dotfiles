@@ -1,4 +1,5 @@
 vim.g.mapleader = " "
+vim.g.nord_bold = false
 
 require("config.lazy")
 require("config.options")

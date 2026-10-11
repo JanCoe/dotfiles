@@ -37,6 +37,7 @@ local dev_plugins = {
   require("plugins.rustfmt").setup(),
   require("plugins.typst-preview"),
   require("plugins.comment"),
+  require("plugins.render-markdown"),
 }
 
 require("lazy").setup({
