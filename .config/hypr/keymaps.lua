@@ -13,6 +13,7 @@ local webapp = apps.browser .. " --new-window --ozone-platform=wayland --app"
 -- System and window management
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen())
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
+hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.exec_cmd("pkill -x zoom"))
 hl.bind(mainMod .. " + MINUS", hl.dsp.layout("preselect r")) -- next window: split vertically, opens right
 hl.bind(mainMod .. " + EQUAL", hl.dsp.layout("preselect d")) -- next window: split horizontally, opens bottom
 

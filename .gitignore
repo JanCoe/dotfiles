@@ -5,3 +5,4 @@
 
 # tmux plugin manager and plugins
 .config/tmux/plugins/
+.config/gh/hosts.yml
