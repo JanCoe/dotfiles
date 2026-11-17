@@ -1,81 +1,56 @@
 import Quickshell
 import Quickshell.Io
-import Quickshell.Wayland
 import QtQuick
 import QtQuick.Layouts
+import qs.Theme
 
-Rectangle {
+Pill {
     id: batteryPill
-    anchors.rightMargin: 16
 
-    width: batteryLabel.width + 32
-    height: 28
-    radius: height / 2
-    color: Qt.rgba(0, 0, 0, 0.55)
-    border.color: Qt.rgba(1, 1, 1, 0.4)
-    border.width: 1
+    // One entry per battery found: { name, pct, charging }.
+    // Empty on machines without a battery, which hides the pill entirely.
+    property var batteries: []
+    visible: batteries.length > 0
 
-    property int bat0val: 0
-    property int bat1val: 0
-    property bool bat0charging
-    property bool bat1charging
+    implicitWidth: batteryLabel.implicitWidth + 32
+    Layout.rightMargin: 8
 
-    Text {
+    BarText {
         id: batteryLabel
-        property bool interactive: true
         anchors.centerIn: parent
-        color: "grey"
-        font.pixelSize: 18
-        text: parent.batteryIcon(batteryPill.bat0val, batteryPill.bat0charging) + " " + parent.batteryIcon(batteryPill.bat1val, batteryPill.bat1charging)
-        //+ " " + batteryPill.bat0val + "% " + (batteryPill.bat1charging ? "⚡" : "") + batteryPill.bat1val + "%"
-        signal clicked()
+        color: Theme.colour1
+        text: batteryPill.batteries.map(b => batteryPill.batteryIcon(b.pct, b.charging)).join(" ")
 
         MouseArea {
             anchors.fill: parent
-            enabled: batteryLabel.interactive
-            cursorShape: batteryLabel.interactive ? Qt.PointingHandCursor : Qt.ArrowCursor
-            onClicked: batteryLabel.clicked()
-        }
-
-        onClicked: parent.refresh()
-    }
-
-    Process {
-        id: bat0Val
-        command: ["cat", "/sys/class/power_supply/BAT0/capacity"]
-        stdout: SplitParser {
-            onRead: data => { batteryPill.bat0val = parseInt(data.trim()) }
+            cursorShape: Qt.PointingHandCursor
+            onClicked: batteryPill.refresh()
         }
     }
 
+    // Prints "<capacity> <status>" for every BAT* that exists
     Process {
-        id: bat1Val
-        command: ["cat", "/sys/class/power_supply/BAT1/capacity"]
-        stdout: SplitParser {
-            onRead: data => { batteryPill.bat1val = parseInt(data.trim()) }
-        }
-    }
-
-    Process {
-        id: bat0Charging
-        command: ["cat", "/sys/class/power_supply/BAT0/status"]
-        stdout: SplitParser {
-            onRead: data => batteryPill.bat0charging = data.trim() == "Charging"
-        }
-    }
-
-    Process {
-        id: bat1Charging
-        command: ["cat", "/sys/class/power_supply/BAT1/status"]
-        stdout: SplitParser {
-            onRead: data => batteryPill.bat1charging = data.trim() == "Charging"
+        id: batteryRead
+        command: ["sh", "-c",
+            "for b in /sys/class/power_supply/BAT*; do " +
+            "[ -r \"$b/capacity\" ] && echo \"$(cat \"$b/capacity\") $(cat \"$b/status\")\"; " +
+            "done; true"]
+        stdout: StdioCollector {
+            onStreamFinished: {
+                batteryPill.batteries = text.trim().split("\n")
+                    .filter(line => line.length > 0)
+                    .map(line => {
+                        const parts = line.trim().split(" ")
+                        return { pct: parseInt(parts[0]), charging: parts[1] === "Charging" }
+                    })
+            }
         }
     }
 
     Process {
         id: udevMonitor
         command: ["udevadm", "monitor", "--subsystem-match=power_supply", "--udev"]
-        running: true
+        running: batteryPill.visible
         stdout: SplitParser {
             onRead: _ => chargingRefreshDelay.restart()
         }
@@ -85,17 +60,11 @@ Rectangle {
         id: chargingRefreshDelay
         interval: 500
         repeat: false
-        onTriggered: {
-            bat0Charging.running = true
-            bat1Charging.running = true
-        }
+        onTriggered: batteryPill.refresh()
     }
 
     function refresh() {
-        bat0Val.running = true
-        bat1Val.running = true
-        bat0Charging.running = true
-        bat1Charging.running = true
+        batteryRead.running = true
     }
 
     function batteryIcon(pct, charging) {
@@ -113,6 +82,6 @@ Rectangle {
         running: true
         repeat: true
         triggeredOnStart: true
-        onTriggered: parent.refresh()
+        onTriggered: batteryPill.refresh()
     }
 }

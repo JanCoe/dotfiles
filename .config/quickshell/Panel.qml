@@ -25,8 +25,8 @@ PanelWindow {
         spacing: 0
 
         Workspaces { }
-        Clock { anchors.centerIn: parent }
         Item { Layout.fillWidth: true }
         Battery { }
+        Clock { }
     }
 }

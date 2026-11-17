@@ -3,16 +3,12 @@ import Quickshell.Io
 import Quickshell.Wayland
 import QtQuick
 import QtQuick.Layouts
+import qs.Theme
 
-Rectangle {
+Pill {
     id: clockPill
-    width: 100
-    height: 28
-    radius: height / 2
-
-    color: Qt.rgba(0, 0, 0, 0.55)
-    border.color: Qt.rgba(1, 1, 1, 0.35)
-    border.width: 1
+    implicitWidth: timeLabel.implicitWidth + 32
+    Layout.rightMargin: 16
 
     BarText {
         id: timeLabel
@@ -20,7 +16,7 @@ Rectangle {
         property bool showDate: false
 
         anchors.centerIn: parent
-        color: "grey"
+        color: Theme.colour1
         text: {
             if (!timeLabel.showDate) {
                 Qt.formatTime(new Date(), "HH:mm:ss")
